@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo-Sight AI — See India Shine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface2: #1c1c1c;
+  --border: #2a2a2a;
+  --text: #f0ece4;
+  --text-dim: #8a8580;
+  --accent: #c5ff3e;
+  --accent-dim: #6b8a1f;
+  --warm: #e8c37e;
+  --red: #ff4d4d;
+  --glass-gradient: linear-gradient(135deg, #2a2d30, #4a4d50, #2a2d30);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ LANGUAGE BAR ============ */
+.lang-bar {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 40px;
+  font-size: 13px;
+}
+.lang-bar .brand { font-family:'Playfair Display',serif; font-weight:700; letter-spacing:1px; font-size:15px; }
+.lang-bar .brand span { color: var(--accent); }
+.lang-options { display:flex; gap:6px; }
+.lang-options button {
+  background: transparent; border:1px solid var(--border); color: var(--text-dim);
+  padding: 4px 12px; border-radius: 4px; cursor:pointer; font-size:12px;
+  font-family:'DM Sans',sans-serif; transition: all 0.3s;
+}
+.lang-options button.active, .lang-options button:hover {
+  background: var(--accent); color: var(--bg); border-color: var(--accent);
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  padding: 100px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(197,255,62,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(232,195,126,0.03) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background: var(--surface2); border:1px solid var(--border);
+  padding: 6px 16px; border-radius: 100px; font-size:12px; color:var(--text-dim);
+  margin-bottom: 30px;
+  animation: fadeInDown 0.8s ease-out;
+}
+.hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation: pulse 2s infinite; }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-12px) rotate(1deg)} }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 7vw, 90px);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+.hero h1 .strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+  color: var(--text-dim);
+}
+.hero h1 .glow {
+  color: var(--accent);
+  text-shadow: 0 0 40px rgba(197,255,62,0.2);
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-glasses {
+  position: relative;
+  width: min(80vw, 700px);
+  margin: 0 auto 40px;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+.hero-glasses img {
+  width: 100%;
+  filter: drop-shadow(0 20px 60px rgba(197,255,62,0.08));
+  animation: float 6s ease-in-out infinite;
+}
+
+.price-tag {
+  display: inline-flex; align-items:center; gap:16px;
+  font-size: 28px; font-weight: 700;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+.price-tag .old { text-decoration:line-through; color:var(--text-dim); font-size:22px; }
+.price-tag .free { color:var(--accent); font-family:'Playfair Display',serif; font-size:36px; }
+
+.hero-cta {
+  margin-top: 30px;
+  animation: fadeInUp 0.8s ease-out 1s both;
+}
+.hero-cta a {
+  display:inline-block;
+  background: var(--accent); color: var(--bg);
+  padding: 16px 48px; border-radius: 6px;
+  font-weight: 700; font-size: 16px;
+  text-decoration: none; letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+.hero-cta a:hover { transform:translateY(-2px); box-shadow: 0 8px 30px rgba(197,255,62,0.25); }
+
+.scroll-hint {
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  color:var(--text-dim); font-size:12px; letter-spacing:2px;
+  animation: fadeInUp 1s ease-out 1.4s both;
+}
+
+/* ============ THE REVEAL SECTION ============ */
+.reveal {
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+}
+.reveal::before {
+  content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.section-label {
+  font-size:12px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--accent); margin-bottom:20px;
+}
+.reveal h2 {
+  font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,48px);
+  font-weight:700; margin-bottom:20px; line-height:1.2;
+}
+.reveal p {
+  color:var(--text-dim); max-width:650px; margin:0 auto 50px; line-height:1.7; font-size:17px;
+}
+
+.stats-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px; max-width:900px; margin:0 auto 60px;
+}
+.stat-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  padding:30px 20px; text-align:center;
+  transition: all 0.3s;
+}
+.stat-card:hover { border-color:var(--accent); transform:translateY(-4px); }
+.stat-card .num { font-family:'Playfair Display',serif; font-size:36px; font-weight:800; color:var(--warm); }
+.stat-card .label { font-size:13px; color:var(--text-dim); margin-top:8px; line-height:1.4; }
+
+.glasses-side {
+  max-width: 500px; width:80%; margin:40px auto 0;
+  filter: drop-shadow(0 10px 40px rgba(0,0,0,0.4));
+}
+
+/* ============ PLEDGE SECTION ============ */
+.pledge {
+  padding: 80px 40px 100px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.pledge h2 {
+  font-family:'Playfair Display',serif; font-size:clamp(26px,3.5vw,40px);
+  text-align:center; margin-bottom:10px;
+}
+.pledge .initiative-name {
+  text-align:center; color:var(--accent); font-size:14px;
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:40px;
+}
+
+.pledge-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.pledge-statement {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.pledge-statement::before {
+  content: '"'; position:absolute; top:-5px; left:16px;
+  font-family:'Playfair Display',serif; font-size:60px; color:var(--accent); opacity:0.3;
+}
+.pledge-checkbox {
+  display:flex; align-items:flex-start; gap:14px; cursor:pointer;
+}
+.pledge-checkbox input[type="checkbox"] {
+  appearance: none; width:22px; height:22px; min-width:22px;
+  border:2px solid var(--border); border-radius:4px;
+  background:transparent; cursor:pointer; margin-top:2px;
+  transition: all 0.3s;
+}
+.pledge-checkbox input[type="checkbox"]:checked {
+  background:var(--accent); border-color:var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230a0a0a'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  background-size: 16px; background-position:center; background-repeat:no-repeat;
+}
+.pledge-checkbox .pledge-text {
+  font-size:16px; line-height:1.5; color:var(--text);
+}
+.pledge-checkbox .pledge-text span { color:var(--accent); font-weight:600; }
+
+.form-row { display:flex; gap:16px; margin-top:24px; }
+.form-row.single { flex-direction:column; }
+
+.form-group {
+  flex:1; display:flex; flex-direction:column; gap:6px;
+}
+.form-group label {
+  font-size:12px; color:var(--text-dim); letter-spacing:1px; text-transform:uppercase;
+}
+.form-group input, .form-group select {
+  background: var(--bg); border:1px solid var(--border); border-radius:8px;
+  padding: 12px 16px; color:var(--text); font-size:15px;
+  font-family:'DM Sans',sans-serif; outline:none; transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group select:focus { border-color:var(--accent); }
+.form-group select { cursor:pointer; }
+.form-group select option { background:var(--bg); }
+
+.submit-btn {
+  width:100%; margin-top:30px;
+  background: var(--accent); color: var(--bg);
+  border:none; padding:16px; border-radius:8px;
+  font-size:16px; font-weight:700; cursor:pointer;
+  font-family:'DM Sans',sans-serif; letter-spacing:0.5px;
+  transition: all 0.3s;
+}
+.submit-btn:hover { box-shadow: 0 6px 25px rgba(197,255,62,0.3); transform:translateY(-1px); }
+.submit-btn:disabled { opacity:0.4; cursor:not-allowed; transform:none; box-shadow:none; }
+
+.signup-nudge {
+  text-align:center; margin-top:20px; font-size:13px; color:var(--text-dim);
+}
+.signup-nudge a { color:var(--accent); text-decoration:underline; cursor:pointer; }
+
+/* ============ MAP SECTION ============ */
+.map-section {
+  padding: 80px 40px;
+  text-align:center;
+  position:relative;
+}
+.map-section h2 {
+  font-family:'Playfair Display',serif; font-size:clamp(26px,3.5vw,40px);
+  margin-bottom:10px;
+}
+.map-section .sub { color:var(--text-dim); margin-bottom:40px; font-size:15px; }
+
+.map-container {
+  max-width: 800px; margin:0 auto;
+  display:flex; gap:40px; align-items:flex-start;
+  flex-wrap:wrap; justify-content:center;
+}
+
+.india-map-wrap {
+  flex:1; min-width:320px; max-width:500px;
+  position:relative;
+}
+.india-map-wrap svg { width:100%; height:auto; }
+
+.leaderboard {
+  flex:0 0 260px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:24px;
+  text-align:left; max-height:500px; overflow-y:auto;
+}
+.leaderboard h3 {
+  font-family:'Playfair Display',serif; font-size:18px; margin-bottom:16px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.leaderboard h3 span { font-size:12px; color:var(--text-dim); font-family:'DM Sans',sans-serif; }
+.lb-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 0; border-bottom:1px solid var(--border);
+  font-size:14px;
+}
+.lb-row:last-child { border:none; }
+.lb-row .rank { color:var(--text-dim); width:28px; font-size:12px; }
+.lb-row .state { flex:1; }
+.lb-row .count { color:var(--accent); font-weight:700; font-family:'Playfair Display',serif; font-size:16px; }
+
+.total-counter {
+  margin-top:40px;
+  font-family:'Playfair Display',serif;
+}
+.total-counter .big-num {
+  font-size:clamp(48px,8vw,80px); font-weight:800; color:var(--accent);
+  text-shadow: 0 0 60px rgba(197,255,62,0.15);
+}
+.total-counter .label { font-size:14px; color:var(--text-dim); font-family:'DM Sans',sans-serif; letter-spacing:2px; }
+
+/* ============ FOOTER ============ */
+.footer {
+  text-align:center; padding:60px 40px 40px;
+  border-top:1px solid var(--border);
+}
+.footer .disclaimer {
+  font-size:14px; color:var(--text-dim); max-width:500px; margin:0 auto 20px; line-height:1.6;
+}
+.footer .disclaimer strong { color:var(--text); }
+.footer .tagline {
+  font-family:'Playfair Display',serif; font-size:20px; color:var(--warm);
+  margin-bottom:30px;
+}
+.footer .credits { font-size:11px; color:var(--text-dim); opacity:0.5; }
+
+/* ============ SUCCESS STATE ============ */
+.success-message {
+  display:none; text-align:center; padding:40px 20px;
+}
+.success-message .check {
+  width:64px; height:64px; border-radius:50%; background:var(--accent);
+  display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px;
+}
+.success-message .check svg { width:32px; height:32px; }
+.success-message h3 { font-family:'Playfair Display',serif; font-size:24px; margin-bottom:10px; }
+.success-message p { color:var(--text-dim); font-size:15px; }
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:768px) {
+  .lang-bar { padding:10px 20px; }
+  .hero, .reveal, .pledge, .map-section { padding-left:20px; padding-right:20px; }
+  .form-row { flex-direction:column; }
+  .pledge-form { padding:24px; }
+  .map-container { flex-direction:column; align-items:center; }
+  .leaderboard { flex:unset; width:100%; max-width:400px; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px) {
+  .stats-grid { grid-template-columns:1fr; }
+  .lang-options button { padding:4px 8px; font-size:11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <div class="brand">NEO-SIGHT <span>AI</span></div>
+  <div class="lang-options">
+    <button class="active" onclick="setLang('en')">EN</button>
+    <button onclick="setLang('hi')">हिन्दी</button>
+    <button onclick="setLang('ta')">தமிழ்</button>
+    <button onclick="setLang('bn')">বাংলা</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><div class="dot"></div> <span data-i18n="badge">This is not a real product</span></div>
+  <h1>
+    <span class="strike" data-i18n="hero_strike">Buy these glasses.</span><br>
+    <span class="glow" data-i18n="hero_glow">Clean India instead.</span>
+  </h1>
+  <p class="hero-sub" data-i18n="hero_sub">Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.</p>
+  <div class="hero-glasses">
+    <img src="neo-sight glasses.png" alt="Neo-Sight AI Glasses">
+  </div>
+  <div class="price-tag">
+    <span class="old">₹9,999</span>
+    <span class="free" data-i18n="free">FREE</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#pledge" data-i18n="cta">Take the pledge instead →</a>
+  </div>
+  <div class="scroll-hint">↓ SCROLL ↓</div>
+</section>
+
+<!-- REVEAL SECTION -->
+<section class="reveal">
+  <div class="section-label" data-i18n="reveal_label">The reality</div>
+  <h2 data-i18n="reveal_h2">India reached the Moon.<br>We haven't reached the drain.</h2>
+  <p data-i18n="reveal_p">We build world-class metros, launch satellites, process billions in digital payments — and walk past open garbage every single day. The contrast isn't funny anymore.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="num">$3.9T</div>
+      <div class="label" data-i18n="stat1">GDP (2025)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">21/30</div>
+      <div class="label" data-i18n="stat2">Most polluted cities globally are Indian</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">~20%</div>
+      <div class="label" data-i18n="stat3">Of waste is actually processed</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1.4B</div>
+      <div class="label" data-i18n="stat4">People. One priority missing.</div>
+    </div>
+  </div>
+
+  <img src="new glass angle 2.png" alt="Neo-Sight AI Side View" class="glasses-side">
+</section>
+
+<!-- PLEDGE SECTION -->
+<section class="pledge" id="pledge">
+  <h2 data-i18n="pledge_h2">Make your voice count.</h2>
+  <div class="initiative-name">SAAF NAZAR INITIATIVE</div>
+
+  <div class="pledge-form" id="pledgeForm">
+    <div class="pledge-statement">
+      <label class="pledge-checkbox">
+        <input type="checkbox" id="pledgeCheck">
+        <div class="pledge-text" data-i18n="pledge_text">
+          I believe <span>cleanliness and hygienic living conditions for all</span> should be a top priority for India's local and national leaders — and I will do my part as a citizen to help.
+        </div>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label data-i18n="label_name">Your Name</label>
+        <input type="text" id="userName" placeholder="First name is enough">
+      </div>
+      <div class="form-group">
+        <label data-i18n="label_state">State</label>
+        <select id="userState">
+          <option value="">Select your state</option>
+          <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
+          <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+          <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+          <option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option>
+          <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+          <option>Manipur</option><option>Meghalaya</option><option>Mizoram</option>
+          <option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+          <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option>
+          <option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option>
+          <option>Uttarakhand</option><option>West Bengal</option>
+          <option>Andaman & Nicobar Islands</option><option>Chandigarh</option>
+          <option>Dadra & Nagar Haveli and Daman & Diu</option><option>Delhi</option>
+          <option>Jammu & Kashmir</option><option>Ladakh</option>
+          <option>Lakshadweep</option><option>Puducherry</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row single">
+      <div class="form-group">
+        <label data-i18n="label_city">City / Town</label>
+        <input type="text" id="userCity" placeholder="Optional but helps show local support">
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" disabled data-i18n="submit_btn">I pledge — count me in</button>
+
+    <div class="signup-nudge" data-i18n="signup_nudge">
+      Want to leave a comment or join the conversation? <a href="#" onclick="alert('Sign up flow would go here')">Sign up →</a>
+    </div>
+  </div>
+
+  <div class="success-message" id="successMsg">
+    <div class="check"><svg viewBox="0 0 24 24" fill="#0a0a0a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+    <h3 data-i18n="success_h3">You're counted.</h3>
+    <p data-i18n="success_p">Your voice from <strong id="successState"></strong> has been added. Share this to make it louder.</p>
+    <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;" onclick="shareTwitter()">Share on X</a>
+      <a href="#" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;" onclick="shareWA()">WhatsApp</a>
+      <a href="#" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;" onclick="copyLink()">Copy link</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div class="section-label" data-i18n="map_label">The movement</div>
+  <h2 data-i18n="map_h2">Where India is speaking up</h2>
+  <p class="sub" data-i18n="map_sub">Every dot is someone who said: this matters.</p>
+
+  <div class="total-counter">
+    <div class="big-num" id="totalCount">12,847</div>
+    <div class="label" data-i18n="counter_label">PLEDGES AND COUNTING</div>
+  </div>
+
+  <div class="map-container">
+    <div class="india-map-wrap">
+      <!-- Simplified India Map SVG -->
+      <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+        <!-- India outline simplified -->
+        <path d="M280 40 L320 35 L370 50 L400 45 L420 55 L440 50 L460 70 L470 90 L490 100 
+                 L500 85 L520 90 L530 110 L510 120 L520 140 L540 150 L550 170 
+                 L540 190 L550 210 L560 230 L550 250 L555 270 L545 290 L550 310 
+                 L540 330 L545 350 L535 370 L540 390 L530 410 L520 430 L510 440
+                 L500 460 L485 470 L475 490 L460 510 L445 520 L430 540 L415 550
+                 L400 560 L385 570 L370 590 L355 600 L340 610 L320 615 L300 610
+                 L285 600 L275 585 L265 570 L250 560 L235 545 L225 530 L215 510
+                 L210 490 L200 475 L190 460 L180 445 L175 430 L165 415 L155 400
+                 L150 385 L145 370 L140 355 L130 340 L125 320 L120 300 L115 280
+                 L110 260 L105 240 L100 220 L110 200 L120 185 L130 170 L140 155
+                 L155 140 L165 130 L175 115 L190 100 L205 90 L215 80 L230 70
+                 L245 60 L260 50 Z"
+              fill="var(--surface2)" stroke="var(--border)" stroke-width="1.5"/>
+
+        <!-- State dots with labels - approximate positions -->
+        <g class="map-dots">
+          <!-- J&K -->
+          <circle cx="220" cy="80" r="6" fill="var(--accent)" opacity="0.8"><animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite"/></circle>
+          <!-- Punjab -->
+          <circle cx="220" cy="130" r="7" fill="var(--accent)" opacity="0.9"/>
+          <!-- Delhi -->
+          <circle cx="260" cy="165" r="8" fill="var(--accent)" opacity="1"><animate attributeName="r" values="7;10;7" dur="2.5s" repeatCount="indefinite"/></circle>
+          <!-- Rajasthan -->
+          <circle cx="195" cy="220" r="7" fill="var(--accent)" opacity="0.7"/>
+          <!-- UP -->
+          <circle cx="320" cy="200" r="9" fill="var(--accent)" opacity="1"><animate attributeName="r" values="8;11;8" dur="2s" repeatCount="indefinite"/></circle>
+          <!-- Gujarat -->
+          <circle cx="155" cy="300" r="7" fill="var(--accent)" opacity="0.8"/>
+          <!-- MP -->
+          <circle cx="280" cy="280" r="6" fill="var(--accent)" opacity="0.7"/>
+          <!-- Bihar -->
+          <circle cx="390" cy="220" r="7" fill="var(--accent)" opacity="0.8"/>
+          <!-- West Bengal -->
+          <circle cx="420" cy="270" r="7" fill="var(--accent)" opacity="0.8"/>
+          <!-- Maharashtra -->
+          <circle cx="220" cy="360" r="9" fill="var(--accent)" opacity="1"><animate attributeName="r" values="8;11;8" dur="2.2s" repeatCount="indefinite"/></circle>
+          <!-- Telangana -->
+          <circle cx="290" cy="390" r="6" fill="var(--accent)" opacity="0.7"/>
+          <!-- Karnataka -->
+          <circle cx="240" cy="440" r="8" fill="var(--accent)" opacity="0.9"/>
+          <!-- Tamil Nadu -->
+          <circle cx="290" cy="510" r="8" fill="var(--accent)" opacity="0.9"/>
+          <!-- Kerala -->
+          <circle cx="240" cy="520" r="6" fill="var(--accent)" opacity="0.7"/>
+          <!-- Odisha -->
+          <circle cx="380" cy="320" r="5" fill="var(--accent)" opacity="0.6"/>
+          <!-- NE States -->
+          <circle cx="480" cy="180" r="5" fill="var(--accent)" opacity="0.6"/>
+          <!-- Assam -->
+          <circle cx="470" cy="160" r="6" fill="var(--accent)" opacity="0.7"/>
+        </g>
+
+        <!-- Glow effect -->
+        <defs>
+          <radialGradient id="dotGlow">
+            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="leaderboard">
+      <h3 data-i18n="lb_title">By State <span data-i18n="lb_sub">pledges</span></h3>
+      <div class="lb-row"><span class="rank">1</span><span class="state">Maharashtra</span><span class="count">2,341</span></div>
+      <div class="lb-row"><span class="rank">2</span><span class="state">Delhi</span><span class="count">1,892</span></div>
+      <div class="lb-row"><span class="rank">3</span><span class="state">Uttar Pradesh</span><span class="count">1,654</span></div>
+      <div class="lb-row"><span class="rank">4</span><span class="state">Karnataka</span><span class="count">1,487</span></div>
+      <div class="lb-row"><span class="rank">5</span><span class="state">Tamil Nadu</span><span class="count">1,203</span></div>
+      <div class="lb-row"><span class="rank">6</span><span class="state">West Bengal</span><span class="count">987</span></div>
+      <div class="lb-row"><span class="rank">7</span><span class="state">Gujarat</span><span class="count">876</span></div>
+      <div class="lb-row"><span class="rank">8</span><span class="state">Punjab</span><span class="count">654</span></div>
+      <div class="lb-row"><span class="rank">9</span><span class="state">Kerala</span><span class="count">521</span></div>
+      <div class="lb-row"><span class="rank">10</span><span class="state">Rajasthan</span><span class="count">498</span></div>
+      <div class="lb-row"><span class="rank">11</span><span class="state">Bihar</span><span class="count">412</span></div>
+      <div class="lb-row"><span class="rank">12</span><span class="state">Telangana</span><span class="count">322</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="tagline" data-i18n="footer_tagline">"Neo-Sight AI is not a real product. The dirt is."</div>
+  <div class="disclaimer" data-i18n="footer_disclaimer">
+    This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter. 
+    There is only the question: if India can build what it has built — why does the street outside still look like that?
+  </div>
+  <div class="credits">Saaf Nazar Initiative — A citizen-led awareness project</div>
+</footer>
+
+<script>
+// ============ FORM LOGIC ============
+const pledgeCheck = document.getElementById('pledgeCheck');
+const submitBtn = document.getElementById('submitBtn');
+const userName = document.getElementById('userName');
+const userState = document.getElementById('userState');
+
+function validateForm() {
+  submitBtn.disabled = !(pledgeCheck.checked && userName.value.trim() && userState.value);
+}
+
+pledgeCheck.addEventListener('change', validateForm);
+userName.addEventListener('input', validateForm);
+userState.addEventListener('change', validateForm);
+
+submitBtn.addEventListener('click', function() {
+  document.getElementById('pledgeForm').style.display = 'none';
+  const successMsg = document.getElementById('successMsg');
+  successMsg.style.display = 'block';
+  document.getElementById('successState').textContent = userState.value;
+  
+  // Increment counter
+  const counter = document.getElementById('totalCount');
+  let num = parseInt(counter.textContent.replace(/,/g,'')) + 1;
+  counter.textContent = num.toLocaleString();
+
+  // Update leaderboard for selected state
+  const rows = document.querySelectorAll('.lb-row');
+  rows.forEach(row => {
+    if(row.querySelector('.state').textContent === userState.value) {
+      const countEl = row.querySelector('.count');
+      let c = parseInt(countEl.textContent.replace(/,/g,'')) + 1;
+      countEl.textContent = c.toLocaleString();
+    }
+  });
+});
+
+// ============ SHARE ============
+function shareTwitter() {
+  const text = encodeURIComponent("I just pledged for a cleaner India through the Saaf Nazar Initiative. Neo-Sight AI glasses won't clean our streets — but we can. Take the pledge:");
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`);
+}
+function shareWA() {
+  const text = encodeURIComponent("I just pledged for a cleaner India. Neo-Sight AI glasses aren't real — but the dirt is. Take the pledge: " + window.location.href);
+  window.open(`https://wa.me/?text=${text}`);
+}
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href);
+  alert('Link copied!');
+}
+
+// ============ i18n ============
+const translations = {
+  en: {
+    badge: "This is not a real product",
+    hero_strike: "Buy these glasses.",
+    hero_glow: "Clean India instead.",
+    hero_sub: "Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.",
+    free: "FREE",
+    cta: "Take the pledge instead →",
+    reveal_label: "The reality",
+    reveal_h2: "India reached the Moon.<br>We haven't reached the drain.",
+    reveal_p: "We build world-class metros, launch satellites, process billions in digital payments — and walk past open garbage every single day. The contrast isn't funny anymore.",
+    stat1: "GDP (2025)", stat2: "Most polluted cities globally are Indian",
+    stat3: "Of waste is actually processed", stat4: "People. One priority missing.",
+    pledge_h2: "Make your voice count.",
+    pledge_text: 'I believe <span>cleanliness and hygienic living conditions for all</span> should be a top priority for India\'s local and national leaders — and I will do my part as a citizen to help.',
+    label_name: "Your Name", label_state: "State", label_city: "City / Town",
+    submit_btn: "I pledge — count me in",
+    signup_nudge: 'Want to leave a comment or join the conversation? <a href="#" onclick="alert(\'Sign up flow would go here\')">Sign up →</a>',
+    success_h3: "You're counted.", success_p: "Your voice has been added. Share this to make it louder.",
+    map_label: "The movement", map_h2: "Where India is speaking up",
+    map_sub: "Every dot is someone who said: this matters.",
+    counter_label: "PLEDGES AND COUNTING",
+    lb_title: "By State", lb_sub: "pledges",
+    footer_tagline: '"Neo-Sight AI is not a real product. The dirt is."',
+    footer_disclaimer: 'This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter. There is only the question: if India can build what it has built — why does the street outside still look like that?'
+  },
+  hi: {
+    badge: "यह एक असली उत्पाद नहीं है",
+    hero_strike: "ये चश्मा खरीदो।",
+    hero_glow: "इसके बजाय भारत साफ़ करो।",
+    hero_sub: "Neo-Sight AI आपकी सड़कें साफ़ नहीं करेगा। कोई चश्मा नहीं करेगा। लेकिन आपने क्लिक किया — इसका मतलब आपको फ़र्क पड़ता है। 20 सेकंड दीजिए।",
+    free: "मुफ़्त",
+    cta: "इसके बजाय संकल्प लें →",
+    reveal_label: "हक़ीक़त",
+    reveal_h2: "भारत चाँद पर पहुँचा।<br>नाले तक नहीं पहुँचे।",
+    reveal_p: "हम विश्व-स्तरीय मेट्रो बनाते हैं, उपग्रह छोड़ते हैं, अरबों डिजिटल भुगतान प्रोसेस करते हैं — और हर दिन खुले कचरे के बगल से गुज़रते हैं।",
+    stat1: "GDP (2025)", stat2: "दुनिया के सबसे प्रदूषित शहर भारतीय हैं",
+    stat3: "कचरे का वास्तव में प्रोसेस होता है", stat4: "लोग। एक प्राथमिकता गायब।",
+    pledge_h2: "अपनी आवाज़ गिनाएँ।",
+    pledge_text: 'मेरा मानना है कि <span>सभी के लिए स्वच्छता और स्वस्थ रहने की स्थिति</span> भारत के स्थानीय और राष्ट्रीय नेताओं के लिए सर्वोच्च प्राथमिकता होनी चाहिए — और मैं एक नागरिक के रूप में अपना हिस्सा करूँगा।',
+    label_name: "आपका नाम", label_state: "राज्य", label_city: "शहर / कस्बा",
+    submit_btn: "मैं संकल्प लेता/लेती हूँ",
+    signup_nudge: 'टिप्पणी छोड़ना चाहते हैं? <a href="#" onclick="alert(\'Sign up flow\')">साइन अप करें →</a>',
+    success_h3: "आप गिने गए।", success_p: "आपकी आवाज़ जोड़ दी गई है। शेयर करें।",
+    map_label: "आंदोलन", map_h2: "भारत कहाँ से बोल रहा है",
+    map_sub: "हर बिंदु किसी ने कहा: यह मायने रखता है।",
+    counter_label: "संकल्प और बढ़ रहे हैं",
+    lb_title: "राज्य अनुसार", lb_sub: "संकल्प",
+    footer_tagline: '"Neo-Sight AI एक असली उत्पाद नहीं है। गंदगी असली है।"',
+    footer_disclaimer: 'यह एक <strong>व्यंग्य और जागरूकता परियोजना</strong> है। कोई चश्मा नहीं है। कोई AI फ़िल्टर नहीं है। बस एक सवाल है: अगर भारत वो सब बना सकता है जो उसने बनाया है — तो बाहर सड़क अभी भी वैसी क्यों है?'
+  },
+  ta: {
+    badge: "இது உண்மையான தயாரிப்பு அல்ல",
+    hero_strike: "இந்த கண்ணாடியை வாங்குங்கள்.",
+    hero_glow: "அதற்கு பதிலாக இந்தியாவை சுத்தம் செய்யுங்கள்.",
+    hero_sub: "Neo-Sight AI உங்கள் தெருக்களை சுத்தம் செய்யாது. ஆனால் நீங்கள் கிளிக் செய்தீர்கள் — அதாவது உங்களுக்கு அக்கறை உள்ளது.",
+    free: "இலவசம்",
+    cta: "உறுதிமொழி எடுங்கள் →",
+    reveal_label: "உண்மை",
+    reveal_h2: "இந்தியா நிலவை அடைந்தது.<br>சாக்கடையை அடையவில்லை.",
+    reveal_p: "உலகத்தரம் வாய்ந்த மெட்ரோக்கள், செயற்கைக்கோள்கள், டிஜிட்டல் பேமெண்ட்கள் — ஆனால் திறந்த குப்பையை கடந்து நடக்கிறோம்.",
+    pledge_h2: "உங்கள் குரலை எண்ணுங்கள்.",
+    pledge_text: '<span>அனைவருக்கும் தூய்மையான வாழ்க்கை நிலைமைகள்</span> இந்தியாவின் தலைவர்களுக்கு முன்னுரிமையாக இருக்க வேண்டும் என்று நான் நம்புகிறேன்.',
+    label_name: "உங்கள் பெயர்", label_state: "மாநிலம்", label_city: "நகரம்",
+    submit_btn: "நான் உறுதிமொழி எடுக்கிறேன்",
+    success_h3: "நீங்கள் எண்ணப்பட்டீர்கள்.", success_p: "உங்கள் குரல் சேர்க்கப்பட்டது.",
+    map_h2: "இந்தியா எங்கிருந்து பேசுகிறது", counter_label: "உறுதிமொழிகள்",
+    footer_tagline: '"Neo-Sight AI உண்மையான தயாரிப்பு அல்ல. அழுக்கு உண்மை."',
+    footer_disclaimer: 'இது ஒரு <strong>நையாண்டி மற்றும் விழிப்புணர்வு திட்டம்</strong>.'
+  },
+  bn: {
+    badge: "এটি একটি আসল পণ্য নয়",
+    hero_strike: "এই চশমা কিনুন।",
+    hero_glow: "এর বদলে ভারত পরিষ্কার করুন।",
+    hero_sub: "Neo-Sight AI আপনার রাস্তা পরিষ্কার করবে না। কোনো চশমাই করবে না। কিন্তু আপনি ক্লিক করেছেন — মানে আপনি চিন্তা করেন।",
+    free: "বিনামূল্যে",
+    cta: "এর বদলে প্রতিশ্রুতি নিন →",
+    reveal_label: "বাস্তবতা",
+    reveal_h2: "ভারত চাঁদে পৌঁছেছে।<br>নর্দমায় পৌঁছায়নি।",
+    reveal_p: "আমরা বিশ্বমানের মেট্রো তৈরি করি, স্যাটেলাইট পাঠাই — আর প্রতিদিন খোলা আবর্জনা পেরিয়ে হাঁটি।",
+    pledge_h2: "আপনার কণ্ঠ গণনা করুন।",
+    pledge_text: 'আমি বিশ্বাস করি <span>সকলের জন্য পরিচ্ছন্নতা ও স্বাস্থ্যকর জীবনযাপন</span> ভারতের নেতাদের জন্য শীর্ষ অগ্রাধিকার হওয়া উচিত।',
+    label_name: "আপনার নাম", label_state: "রাজ্য", label_city: "শহর",
+    submit_btn: "আমি প্রতিশ্রুতি দিচ্ছি",
+    success_h3: "আপনাকে গণনা করা হয়েছে।", success_p: "আপনার কণ্ঠ যোগ করা হয়েছে।",
+    map_h2: "ভারত কোথা থেকে কথা বলছে", counter_label: "প্রতিশ্রুতি চলছে",
+    footer_tagline: '"Neo-Sight AI একটি আসল পণ্য নয়। ময়লা আসল।"',
+    footer_disclaimer: 'এটি একটি <strong>ব্যঙ্গ ও সচেতনতা প্রকল্প</strong>।'
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-options button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.documentElement.lang = lang;
+  
+  const t = translations[lang];
+  if(!t) return;
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(t[key]) el.innerHTML = t[key];
+  });
+}
+
+// ============ ANIMATE ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, {threshold:0.1});
+
+document.querySelectorAll('.stat-card, .pledge-form, .leaderboard, .india-map-wrap, .total-counter').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'all 0.8s ease-out';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

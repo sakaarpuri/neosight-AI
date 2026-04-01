@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo-Sight AI — See India Shine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --surface2: #f3f1ec;
+  --border: #e5e1d8;
+  --text: #1a1815;
+  --text-dim: #8c8578;
+  --accent: #2d6a4f;
+  --accent-light: #e9f5ef;
+  --warm: #c4841d;
+  --red: #c1392b;
+  --tag-bg: #f0ede6;
+  --glass: rgba(255,255,255,0.68);
+  --shadow-lg: 0 30px 80px rgba(44,36,24,0.12);
+  --shadow-md: 0 16px 40px rgba(44,36,24,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(233,245,239,0.85), transparent 28%),
+    radial-gradient(circle at 85% 18%, rgba(196,132,29,0.12), transparent 20%),
+    linear-gradient(180deg, #fdfcf9 0%, #faf9f6 38%, #f6f3ed 100%);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ LANG BAR ============ */
+.lang-bar {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  background: rgba(250,249,246,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 40px;
+  font-size: 13px;
+}
+.lang-bar .brand {
+  font-family:'Instrument Serif',serif; font-weight:400; font-size:18px;
+  letter-spacing: 0.5px; color: var(--text);
+}
+.lang-bar .brand span { color: var(--accent); }
+.lang-options { display:flex; gap:4px; }
+.lang-options button {
+  background: transparent; border:1px solid var(--border); color: var(--text-dim);
+  padding: 4px 12px; border-radius: 100px; cursor:pointer; font-size:12px;
+  font-family:'DM Sans',sans-serif; transition: all 0.3s;
+}
+.lang-options button.active, .lang-options button:hover {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 112px 40px 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(30px);
+  pointer-events: none;
+  animation: driftGlow 12s ease-in-out infinite;
+}
+
+.hero::before {
+  width: 360px;
+  height: 360px;
+  background: rgba(45,106,79,0.08);
+  top: 10%;
+  left: -80px;
+}
+
+.hero::after {
+  width: 300px;
+  height: 300px;
+  background: rgba(196,132,29,0.1);
+  right: -60px;
+  bottom: 12%;
+  animation-delay: -4s;
+}
+
+.hero-shell {
+  width: min(1180px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-copy {
+  max-width: 560px;
+}
+
+.hero-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  background: rgba(255,255,255,0.72); border:1px solid rgba(229,225,216,0.9);
+  padding: 8px 18px; border-radius: 100px; font-size:13px; color:var(--text-dim);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(18px);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.hero-kicker {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  font-weight: 600;
+  animation: fadeUp 0.7s ease-out 0.18s both;
+}
+
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.45; transform:scale(0.9); } }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes driftGlow { 0%,100% { transform:translate3d(0,0,0) scale(1); } 50% { transform:translate3d(18px,-18px,0) scale(1.08); } }
+@keyframes floatStage { 0%,100% { transform:translateY(0px); } 50% { transform:translateY(-10px); } }
+@keyframes floatChip { 0%,100% { transform:translateY(0px); } 50% { transform:translateY(-12px); } }
+@keyframes spinOrb { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+@keyframes scanSweep { 0% { transform:translateY(-120%); } 100% { transform:translateY(120%); } }
+
+.tag-dot,
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(45,106,79,0.14);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(42px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1.02;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  animation: fadeUp 0.7s ease-out 0.28s both;
+}
+.hero h1 .strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+  color: var(--text-dim);
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-dim);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  animation: fadeUp 0.7s ease-out 0.4s both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  animation: fadeUp 0.7s ease-out 0.52s both;
+}
+
+.hero-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.74);
+  border: 1px solid rgba(229,225,216,0.9);
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+}
+
+.hero-proof strong {
+  font-family:'Instrument Serif',serif;
+  font-size: 28px;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.hero-proof span {
+  max-width: 150px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+
+.hero-trust-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s ease-out 0.64s both;
+}
+
+.hero-trust-pill {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(229,225,216,0.9);
+  background: rgba(255,255,255,0.68);
+  color: var(--text-dim);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 25px rgba(44,36,24,0.06);
+  backdrop-filter: blur(14px);
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeUp 0.85s ease-out 0.38s both;
+}
+
+.hero-orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(45,106,79,0.16);
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 420px;
+  height: 420px;
+  animation: spinOrb 28s linear infinite;
+}
+
+.orbit-two {
+  width: 520px;
+  height: 520px;
+  border-style: dashed;
+  border-color: rgba(196,132,29,0.18);
+  animation: spinOrb 40s linear infinite reverse;
+}
+
+.hero-stage {
+  position: relative;
+  width: min(100%, 540px);
+  padding: 24px;
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.88), rgba(255,255,255,0.56)),
+    linear-gradient(135deg, rgba(233,245,239,0.75), rgba(255,255,255,0.18));
+  border: 1px solid rgba(255,255,255,0.72);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(24px);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.85), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(233,245,239,0.8), transparent 26%);
+  pointer-events: none;
+}
+
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  inset: -20% 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(45,106,79,0.09) 50%, transparent 70%);
+  opacity: 0.7;
+  pointer-events: none;
+  animation: scanSweep 7s linear infinite;
+}
+
+.hero-stage-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(45,106,79,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,106,79,0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.28), transparent 82%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.28), transparent 82%);
+  pointer-events: none;
+}
+
+.hero-stage-top,
+.hero-glasses,
+.price-row,
+.scan-panel {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(28px);
+}
+
+.hero-stage-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.hero-stage-label {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.66);
+  border: 1px solid rgba(229,225,216,0.94);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hero-glasses {
+  width: min(78vw, 460px);
+  margin: 0 auto 18px;
+}
+
+.hero-glasses img {
+  width: 100%;
+  filter: drop-shadow(0 24px 60px rgba(45,106,79,0.12));
+  animation: floatStage 8s ease-in-out infinite;
+}
+
+.price-row {
+  display: inline-flex; align-items:center; gap:14px;
+  font-size: 22px;
+  margin-bottom: 18px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(229,225,216,0.94);
+  box-shadow: 0 12px 24px rgba(44,36,24,0.06);
+  animation: none;
+}
+.price-row .old {
+  text-decoration: line-through; color: var(--text-dim); font-size:18px;
+}
+.price-row .free {
+  font-family:'Instrument Serif',serif; font-size:32px; color:var(--accent);
+}
+.hero-cta a {
+  display:inline-block;
+  background: var(--accent); color: #fff;
+  padding: 14px 40px; border-radius: 100px;
+  font-weight: 600; font-size: 15px;
+  text-decoration: none; letter-spacing: 0.3px;
+  transition: all 0.3s;
+  box-shadow: 0 12px 30px rgba(45,106,79,0.2);
+}
+.hero-cta a:hover {
+  transform:translateY(-2px);
+  box-shadow: 0 18px 36px rgba(45,106,79,0.24);
+}
+
+.scan-panel {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(248,246,241,0.8);
+  border: 1px solid rgba(229,225,216,0.96);
+}
+
+.scan-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-dim);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(229,225,216,0.85);
+}
+
+.scan-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.scan-row strong {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.hero-chip {
+  position: absolute;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(229,225,216,0.94);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  line-height: 1.05;
+  max-width: 170px;
+  color: var(--text);
+  animation: floatChip 7s ease-in-out infinite;
+}
+
+.hero-chip span {
+  display: block;
+  margin-top: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.hero-chip-left {
+  top: 18%;
+  left: -16px;
+}
+
+.hero-chip-right {
+  right: -6px;
+  bottom: 15%;
+  animation-delay: -2s;
+}
+
+/* ============ REALITY ============ */
+.reality {
+  padding: 80px 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.section-tag {
+  font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--accent); margin-bottom:20px; font-weight:500;
+}
+.reality h2 {
+  font-family:'Instrument Serif',serif; font-size:clamp(24px,3.5vw,40px);
+  font-weight:400; margin-bottom:16px; line-height:1.3;
+}
+.reality > p {
+  color:var(--text-dim); max-width:560px; margin:0 auto 44px; line-height:1.7; font-size:16px;
+}
+
+.stats {
+  display:flex; justify-content:center; gap:16px; flex-wrap:wrap;
+  max-width:820px; margin:0 auto 50px;
+}
+.stat {
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  padding:24px 28px; text-align:center; flex:1; min-width:160px;
+  transition: all 0.3s;
+}
+.stat:hover { border-color:var(--accent); }
+.stat .n {
+  font-family:'Instrument Serif',serif; font-size:30px; color:var(--warm);
+}
+.stat .l { font-size:12px; color:var(--text-dim); margin-top:6px; line-height:1.4; }
+
+.glasses-alt {
+  max-width: 420px; width:70%; margin:0 auto;
+  filter: drop-shadow(0 8px 30px rgba(0,0,0,0.06));
+}
+
+/* ============ FORM ============ */
+.form-section {
+  padding: 80px 40px 60px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+}
+.form-section h2 {
+  font-family:'Instrument Serif',serif; font-size:clamp(24px,3vw,36px);
+  text-align:center; margin-bottom:6px; font-weight:400;
+}
+.initiative {
+  text-align:center; color:var(--accent); font-size:12px;
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:36px;
+  font-weight:500;
+}
+
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.statement {
+  background: var(--surface2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.check-label {
+  display:flex; align-items:flex-start; gap:12px; cursor:pointer;
+}
+.check-label input[type="checkbox"] {
+  appearance: none; width:20px; height:20px; min-width:20px;
+  border:1.5px solid var(--border); border-radius:4px;
+  background:transparent; cursor:pointer; margin-top:2px;
+  transition: all 0.2s;
+}
+.check-label input:checked {
+  background:var(--accent); border-color:var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  background-size: 14px; background-position:center; background-repeat:no-repeat;
+}
+.check-label .txt {
+  font-size:15px; line-height:1.6; color:var(--text);
+}
+.check-label .txt span { color:var(--accent); font-weight:600; }
+
+.fields { display:flex; gap:12px; margin-top:20px; }
+.fields.single { flex-direction:column; }
+.field { flex:1; display:flex; flex-direction:column; gap:5px; }
+.field label {
+  font-size:11px; color:var(--text-dim); letter-spacing:1px; text-transform:uppercase; font-weight:500;
+}
+.field input, .field select {
+  background: var(--bg); border:1px solid var(--border); border-radius:8px;
+  padding: 11px 14px; color:var(--text); font-size:14px;
+  font-family:'DM Sans',sans-serif; outline:none; transition: border-color 0.2s;
+}
+.field input:focus, .field select:focus { border-color:var(--accent); }
+.field select { cursor:pointer; }
+.field select option { background:var(--bg); }
+.field input::placeholder { color: var(--border); }
+
+.go-btn {
+  width:100%; margin-top:24px;
+  background: var(--accent); color: #fff;
+  border:none; padding:14px; border-radius:100px;
+  font-size:15px; font-weight:600; cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition: all 0.2s;
+}
+.go-btn:hover { box-shadow: 0 4px 16px rgba(45,106,79,0.2); }
+.go-btn:disabled { opacity:0.35; cursor:not-allowed; }
+
+.signup-note {
+  text-align:center; margin-top:16px; font-size:12px; color:var(--text-dim);
+}
+.signup-note a { color:var(--accent); text-decoration:underline; cursor:pointer; }
+
+/* success */
+.done { display:none; text-align:center; padding:32px 16px; }
+.done .tick {
+  width:52px; height:52px; border-radius:50%; background:var(--accent-light);
+  display:inline-flex; align-items:center; justify-content:center; margin-bottom:16px;
+}
+.done .tick svg { width:24px; height:24px; color:var(--accent); }
+.done h3 { font-family:'Instrument Serif',serif; font-size:22px; margin-bottom:8px; font-weight:400; }
+.done p { color:var(--text-dim); font-size:14px; line-height:1.5; }
+.share-row { margin-top:20px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.share-row a {
+  background:var(--surface2); border:1px solid var(--border); color:var(--text);
+  padding:8px 20px; border-radius:100px; text-decoration:none; font-size:13px;
+  transition: all 0.2s;
+}
+.share-row a:hover { border-color:var(--accent); }
+
+/* ============ MAP ============ */
+.map-section {
+  padding: 60px 40px 80px;
+  text-align:center;
+  border-top: 1px solid var(--border);
+}
+.map-section h2 {
+  font-family:'Instrument Serif',serif; font-size:clamp(24px,3vw,36px);
+  margin-bottom:8px; font-weight:400;
+}
+.map-section .sub { color:var(--text-dim); margin-bottom:32px; font-size:14px; }
+
+.counter {
+  margin-bottom:40px;
+  font-family:'Instrument Serif',serif;
+}
+.counter .num {
+  font-size:clamp(40px,7vw,64px); font-weight:400; color:var(--accent);
+}
+.counter .lab { font-size:12px; color:var(--text-dim); font-family:'DM Sans',sans-serif; letter-spacing:2px; text-transform:uppercase; }
+
+.map-wrap {
+  max-width: 780px; margin:0 auto;
+  display:flex; gap:32px; align-items:flex-start;
+  flex-wrap:wrap; justify-content:center;
+}
+
+.india-svg {
+  flex:1; min-width:300px; max-width:460px;
+}
+.india-svg svg { width:100%; height:auto; }
+
+.board {
+  flex:0 0 240px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:20px;
+  text-align:left; max-height:460px; overflow-y:auto;
+}
+.board h3 {
+  font-family:'Instrument Serif',serif; font-size:16px; margin-bottom:14px; font-weight:400;
+  display:flex; justify-content:space-between;
+}
+.board h3 span { font-size:11px; color:var(--text-dim); font-family:'DM Sans',sans-serif; }
+.row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:9px 0; border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.row:last-child { border:none; }
+.row .r { color:var(--text-dim); width:24px; font-size:11px; }
+.row .s { flex:1; }
+.row .c { color:var(--accent); font-weight:600; font-family:'Instrument Serif',serif; font-size:15px; }
+
+/* ============ FOOTER ============ */
+footer {
+  text-align:center; padding:48px 40px 36px;
+  border-top:1px solid var(--border);
+}
+footer .line {
+  font-family:'Instrument Serif',serif; font-size:18px; color:var(--text);
+  margin-bottom:12px; font-style:italic;
+}
+footer .disc {
+  font-size:13px; color:var(--text-dim); max-width:460px; margin:0 auto 16px; line-height:1.6;
+}
+footer .disc strong { color:var(--text); font-weight:600; }
+footer .cr { font-size:10px; color:var(--text-dim); opacity:0.5; }
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:768px) {
+  .lang-bar { padding:10px 20px; }
+  .hero, .reality, .form-section, .map-section { padding-left:20px; padding-right:20px; }
+  .hero { padding-top:108px; padding-bottom:54px; }
+  .hero-shell { grid-template-columns:1fr; gap:26px; }
+  .hero-copy { max-width:none; text-align:center; }
+  .hero-actions, .hero-trust-row { justify-content:center; }
+  .hero-proof { justify-content:center; }
+  .hero-visual { min-height:auto; }
+  .hero-stage { width:min(100%, 560px); padding:18px; }
+  .hero-stage-top { flex-direction:column; align-items:flex-start; }
+  .hero-glasses { width:min(82vw, 420px); }
+  .hero-chip { display:none; }
+  .orbit-one { width:320px; height:320px; }
+  .orbit-two { width:400px; height:400px; }
+  .fields { flex-direction:column; }
+  .form-card { padding:20px; }
+  .map-wrap { flex-direction:column; align-items:center; }
+  .board { flex:unset; width:100%; max-width:360px; }
+}
+@media(max-width:480px) {
+  .hero h1 { font-size:clamp(36px, 11vw, 52px); }
+  .hero-sub { margin-bottom:24px; }
+  .hero-actions { flex-direction:column; }
+  .hero-proof { width:100%; }
+  .hero-proof span { max-width:180px; }
+  .hero-stage-label, .hero-status { font-size:11px; }
+  .scan-panel { padding:14px; }
+  .scan-row { font-size:12px; }
+  .stats { flex-direction:column; }
+  .stat { min-width:unset; }
+  .lang-options button { padding:3px 8px; font-size:11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <div class="brand">Neo-Sight <span>AI</span></div>
+  <div class="lang-options">
+    <button class="active" onclick="setLang('en')">EN</button>
+    <button onclick="setLang('hi')">हिन्दी</button>
+    <button onclick="setLang('ta')">தமிழ்</button>
+    <button onclick="setLang('bn')">বাংলা</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shell">
+    <div class="hero-copy">
+      <div class="hero-tag"><span class="tag-dot"></span><span data-i18n="badge">This is not a real product.</span></div>
+      <div class="hero-kicker" data-i18n="hero_kicker">AI vision demo • civic reality check</div>
+      <h1>
+        <span class="strike" data-i18n="h1a">Buy these glasses.</span><br>
+        <span data-i18n="h1b">Clean India instead.</span>
+      </h1>
+      <p class="hero-sub" data-i18n="sub">Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds.</p>
+      <div class="hero-actions">
+        <div class="hero-cta">
+          <a href="#form" data-i18n="cta">Show it matters to you →</a>
+        </div>
+        <div class="hero-proof">
+          <strong id="heroVoices">12,847+</strong>
+          <span data-i18n="hero_proof">citizens already raised a hand</span>
+        </div>
+      </div>
+      <div class="hero-trust-row">
+        <div class="hero-trust-pill">live civic signal</div>
+        <div class="hero-trust-pill">no waitlist. no app.</div>
+        <div class="hero-trust-pill">awareness mode active</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+      <div class="hero-chip hero-chip-left">Glass UI<span>trust layer</span></div>
+      <div class="hero-chip hero-chip-right">Public priority<span>still loading</span></div>
+
+      <div class="hero-stage">
+        <div class="hero-stage-grid" aria-hidden="true"></div>
+        <div class="hero-stage-top">
+          <div class="hero-stage-label">NEO-SIGHT AI / DEMO</div>
+          <div class="hero-status"><span class="status-dot"></span>Awareness mode active</div>
+        </div>
+        <div class="hero-glasses">
+          <img src="neo-sight glasses.png" alt="Neo-Sight AI">
+        </div>
+        <div class="price-row">
+          <span class="old">₹9,999</span>
+          <span class="free" data-i18n="free">FREE</span>
+        </div>
+        <div class="scan-panel">
+          <div class="scan-row"><span>AI cleanliness boost</span><strong>0%</strong></div>
+          <div class="scan-row"><span>Citizen intent capture</span><strong>100%</strong></div>
+          <div class="scan-row"><span>Reality distortion</span><strong>Disabled</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REALITY -->
+<section class="reality">
+  <div class="section-tag" data-i18n="rl">The reality</div>
+  <h2 data-i18n="rh">India reached the Moon.<br>We haven't reached the drain.</h2>
+  <p data-i18n="rp">World-class metros, satellites, billions in digital payments — and we walk past open garbage every day.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">$3.9T</div><div class="l" data-i18n="s1">GDP (2025)</div></div>
+    <div class="stat"><div class="n">21/30</div><div class="l" data-i18n="s2">Most polluted cities are Indian</div></div>
+    <div class="stat"><div class="n">~20%</div><div class="l" data-i18n="s3">Waste actually processed</div></div>
+    <div class="stat"><div class="n">1.4B</div><div class="l" data-i18n="s4">People. One priority missing.</div></div>
+  </div>
+  <img src="new glass angle 2.png" alt="Neo-Sight AI" class="glasses-alt">
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <h2 data-i18n="fh">Show it matters to you.</h2>
+  <div class="initiative">SAAF NAZAR INITIATIVE</div>
+
+  <div class="form-card" id="formCard">
+    <div class="statement">
+      <label class="check-label">
+        <input type="checkbox" id="chk">
+        <div class="txt" data-i18n="chk_txt">I believe <span>cleanliness and hygienic living conditions for all</span> should be a top priority for India's local and national leaders — and I'll do my part as a citizen.</div>
+      </label>
+    </div>
+
+    <div class="fields">
+      <div class="field">
+        <label data-i18n="ln">Your name</label>
+        <input type="text" id="uName" placeholder="First name is enough">
+      </div>
+      <div class="field">
+        <label data-i18n="ls">State</label>
+        <select id="uState">
+          <option value="">Select state</option>
+          <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
+          <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+          <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+          <option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option>
+          <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+          <option>Manipur</option><option>Meghalaya</option><option>Mizoram</option>
+          <option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+          <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option>
+          <option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option>
+          <option>Uttarakhand</option><option>West Bengal</option>
+          <option>Andaman & Nicobar Islands</option><option>Chandigarh</option>
+          <option>Dadra & Nagar Haveli and Daman & Diu</option><option>Delhi</option>
+          <option>Jammu & Kashmir</option><option>Ladakh</option>
+          <option>Lakshadweep</option><option>Puducherry</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="fields single">
+      <div class="field">
+        <label data-i18n="lc">City / Town (optional)</label>
+        <input type="text" id="uCity" placeholder="Helps show local support">
+      </div>
+    </div>
+
+    <button class="go-btn" id="goBtn" disabled data-i18n="btn">Count me in →</button>
+
+    <div class="signup-note" data-i18n="sn">Want to leave a comment? <a href="#" onclick="alert('Sign up flow')">Sign up →</a></div>
+  </div>
+
+  <div class="done" id="doneMsg">
+    <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h3 data-i18n="dh">Noted.</h3>
+    <p data-i18n="dp">You and <strong id="doneCount">12,848</strong> others from <strong id="doneState"></strong>. Share it.</p>
+    <div class="share-row">
+      <a href="#" onclick="shareX()">Share on X</a>
+      <a href="#" onclick="shareWA()">WhatsApp</a>
+      <a href="#" onclick="copyLink()">Copy link</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="section-tag" data-i18n="ml">Across India</div>
+  <h2 data-i18n="mh">Where people are speaking up</h2>
+  <p class="sub" data-i18n="ms">Every dot is someone who said: this matters.</p>
+
+  <div class="counter">
+    <div class="num" id="totalNum">12,847</div>
+    <div class="lab" data-i18n="cl">voices and counting</div>
+  </div>
+
+  <div class="map-wrap">
+    <div class="india-svg">
+      <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+        <path d="M280 40 L320 35 L370 50 L400 45 L420 55 L440 50 L460 70 L470 90 L490 100 
+                 L500 85 L520 90 L530 110 L510 120 L520 140 L540 150 L550 170 
+                 L540 190 L550 210 L560 230 L550 250 L555 270 L545 290 L550 310 
+                 L540 330 L545 350 L535 370 L540 390 L530 410 L520 430 L510 440
+                 L500 460 L485 470 L475 490 L460 510 L445 520 L430 540 L415 550
+                 L400 560 L385 570 L370 590 L355 600 L340 610 L320 615 L300 610
+                 L285 600 L275 585 L265 570 L250 560 L235 545 L225 530 L215 510
+                 L210 490 L200 475 L190 460 L180 445 L175 430 L165 415 L155 400
+                 L150 385 L145 370 L140 355 L130 340 L125 320 L120 300 L115 280
+                 L110 260 L105 240 L100 220 L110 200 L120 185 L130 170 L140 155
+                 L155 140 L165 130 L175 115 L190 100 L205 90 L215 80 L230 70
+                 L245 60 L260 50 Z"
+              fill="var(--surface2)" stroke="var(--border)" stroke-width="1"/>
+        <g opacity="0.8">
+          <circle cx="220" cy="80" r="4" fill="var(--accent)"/>
+          <circle cx="220" cy="130" r="5" fill="var(--accent)"/>
+          <circle cx="260" cy="165" r="7" fill="var(--accent)" opacity="0.9"><animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite"/></circle>
+          <circle cx="195" cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="320" cy="200" r="7" fill="var(--accent)"><animate attributeName="r" values="6;9;6" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="155" cy="300" r="5" fill="var(--accent)"/>
+          <circle cx="280" cy="280" r="4" fill="var(--accent)"/>
+          <circle cx="390" cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="420" cy="270" r="5" fill="var(--accent)"/>
+          <circle cx="220" cy="360" r="7" fill="var(--accent)"><animate attributeName="r" values="6;9;6" dur="2.8s" repeatCount="indefinite"/></circle>
+          <circle cx="290" cy="390" r="4" fill="var(--accent)"/>
+          <circle cx="240" cy="440" r="6" fill="var(--accent)"/>
+          <circle cx="290" cy="510" r="6" fill="var(--accent)"/>
+          <circle cx="240" cy="520" r="4" fill="var(--accent)"/>
+          <circle cx="380" cy="320" r="4" fill="var(--accent)"/>
+          <circle cx="470" cy="160" r="4" fill="var(--accent)"/>
+          <circle cx="480" cy="180" r="3" fill="var(--accent)"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="board">
+      <h3 data-i18n="bh">By state <span data-i18n="bs">voices</span></h3>
+      <div class="row"><span class="r">1</span><span class="s">Maharashtra</span><span class="c">2,341</span></div>
+      <div class="row"><span class="r">2</span><span class="s">Delhi</span><span class="c">1,892</span></div>
+      <div class="row"><span class="r">3</span><span class="s">Uttar Pradesh</span><span class="c">1,654</span></div>
+      <div class="row"><span class="r">4</span><span class="s">Karnataka</span><span class="c">1,487</span></div>
+      <div class="row"><span class="r">5</span><span class="s">Tamil Nadu</span><span class="c">1,203</span></div>
+      <div class="row"><span class="r">6</span><span class="s">West Bengal</span><span class="c">987</span></div>
+      <div class="row"><span class="r">7</span><span class="s">Gujarat</span><span class="c">876</span></div>
+      <div class="row"><span class="r">8</span><span class="s">Punjab</span><span class="c">654</span></div>
+      <div class="row"><span class="r">9</span><span class="s">Kerala</span><span class="c">521</span></div>
+      <div class="row"><span class="r">10</span><span class="s">Rajasthan</span><span class="c">498</span></div>
+      <div class="row"><span class="r">11</span><span class="s">Bihar</span><span class="c">412</span></div>
+      <div class="row"><span class="r">12</span><span class="s">Telangana</span><span class="c">322</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="line" data-i18n="fl">"Neo-Sight AI is not a real product. The dirt is."</div>
+  <div class="disc" data-i18n="fd">This is a <strong>satire and awareness project</strong>. No glasses. No AI filter. Just one question: if India can build everything it has — why does the street outside still look like that?</div>
+  <div class="cr">Saaf Nazar Initiative — a citizen-led awareness project</div>
+</footer>
+
+<script>
+const chk=document.getElementById('chk'), btn=document.getElementById('goBtn'),
+      uName=document.getElementById('uName'), uState=document.getElementById('uState');
+
+function validate(){btn.disabled=!(chk.checked&&uName.value.trim()&&uState.value)}
+chk.addEventListener('change',validate);
+uName.addEventListener('input',validate);
+uState.addEventListener('change',validate);
+
+btn.addEventListener('click',()=>{
+  document.getElementById('formCard').style.display='none';
+  const d=document.getElementById('doneMsg');d.style.display='block';
+  document.getElementById('doneState').textContent=uState.value;
+  const t=document.getElementById('totalNum');
+  let n=parseInt(t.textContent.replace(/,/g,''))+1;
+  t.textContent=n.toLocaleString();
+  document.getElementById('heroVoices').textContent=n.toLocaleString()+'+';
+  document.getElementById('doneCount').textContent=n.toLocaleString();
+  document.querySelectorAll('.row').forEach(r=>{
+    if(r.querySelector('.s').textContent===uState.value){
+      const c=r.querySelector('.c');
+      c.textContent=(parseInt(c.textContent.replace(/,/g,''))+1).toLocaleString();
+    }
+  });
+});
+
+function shareX(){
+  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent("I said cleanliness should be a priority for India. Neo-Sight AI glasses aren't real — but the dirt is.")+
+  '&url='+encodeURIComponent(location.href));
+}
+function shareWA(){
+  window.open('https://wa.me/?text='+encodeURIComponent("Neo-Sight AI glasses aren't real — but the dirt is. Show it matters to you: "+location.href));
+}
+function copyLink(){navigator.clipboard.writeText(location.href);alert('Link copied!')}
+
+const translations={
+  en:{badge:"This is not a real product.",h1a:"Buy these glasses.",h1b:"Clean India instead.",
+    sub:"Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds.",
+    hero_kicker:"AI vision demo • civic reality check",
+    hero_proof:"citizens already raised a hand",
+    free:"FREE",cta:"Show it matters to you →",rl:"The reality",
+    rh:"India reached the Moon.<br>We haven't reached the drain.",
+    rp:"World-class metros, satellites, billions in digital payments — and we walk past open garbage every day.",
+    s1:"GDP (2025)",s2:"Most polluted cities are Indian",s3:"Waste actually processed",s4:"People. One priority missing.",
+    fh:"Show it matters to you.",chk_txt:'I believe <span>cleanliness and hygienic living conditions for all</span> should be a top priority for India\'s local and national leaders — and I\'ll do my part as a citizen.',
+    ln:"Your name",ls:"State",lc:"City / Town (optional)",btn:"Count me in →",
+    sn:'Want to leave a comment? <a href="#" onclick="alert(\'Sign up flow\')">Sign up →</a>',
+    dh:"Noted.",dp:"Your voice has been added. Share it.",
+    ml:"Across India",mh:"Where people are speaking up",ms:"Every dot is someone who said: this matters.",
+    cl:"voices and counting",bh:"By state",bs:"voices",
+    fl:'"Neo-Sight AI is not a real product. The dirt is."',
+    fd:'This is a <strong>satire and awareness project</strong>. No glasses. No AI filter. Just one question: if India can build everything it has — why does the street outside still look like that?'},
+  hi:{badge:"यह एक असली उत्पाद नहीं है।",h1a:"ये चश्मा खरीदो।",h1b:"इसके बजाय भारत साफ़ करो।",
+    sub:"Neo-Sight AI सड़कें साफ़ नहीं करेगा। कोई चश्मा नहीं करेगा। लेकिन आपने क्लिक किया — यानी फ़र्क पड़ता है। 20 सेकंड दीजिए।",
+    hero_kicker:"AI विज़न डेमो • नागरिक सच्चाई की जाँच",
+    hero_proof:"लोग पहले ही अपनी आवाज़ उठा चुके हैं",
+    free:"मुफ़्त",cta:"दिखाओ कि यह ज़रूरी है →",rl:"हक़ीक़त",
+    rh:"भारत चाँद पर पहुँचा।<br>नाले तक नहीं पहुँचे।",
+    rp:"विश्व-स्तरीय मेट्रो, उपग्रह, अरबों डिजिटल भुगतान — और हर दिन खुले कचरे के बगल से गुज़रते हैं।",
+    s1:"GDP (2025)",s2:"सबसे प्रदूषित शहर भारतीय हैं",s3:"कचरा वास्तव में प्रोसेस होता है",s4:"लोग। एक प्राथमिकता गायब।",
+    fh:"दिखाओ कि यह ज़रूरी है।",
+    chk_txt:'मेरा मानना है कि <span>सभी के लिए स्वच्छता और स्वस्थ जीवन</span> भारत के नेताओं की सर्वोच्च प्राथमिकता होनी चाहिए — और मैं अपना हिस्सा करूँगा।',
+    ln:"आपका नाम",ls:"राज्य",lc:"शहर (वैकल्पिक)",btn:"मुझे गिनो →",
+    sn:'टिप्पणी छोड़ना है? <a href="#" onclick="alert(\'Sign up\')">साइन अप →</a>',
+    dh:"नोट किया।",dp:"आपकी आवाज़ जोड़ दी गई। शेयर करें।",
+    ml:"पूरे भारत में",mh:"लोग कहाँ से बोल रहे हैं",ms:"हर बिंदु = किसी ने कहा: यह मायने रखता है।",
+    cl:"आवाज़ें और बढ़ रही हैं",bh:"राज्य अनुसार",bs:"आवाज़ें",
+    fl:'"Neo-Sight AI असली नहीं है। गंदगी असली है।"',
+    fd:'यह एक <strong>व्यंग्य और जागरूकता परियोजना</strong> है। कोई चश्मा नहीं। कोई AI फ़िल्टर नहीं। बस एक सवाल।'},
+  ta:{badge:"இது உண்மையான தயாரிப்பு அல்ல.",h1a:"இந்த கண்ணாடியை வாங்குங்கள்.",h1b:"இந்தியாவை சுத்தம் செய்யுங்கள்.",
+    sub:"Neo-Sight AI தெருக்களை சுத்தம் செய்யாது. நீங்கள் கிளிக் செய்தீர்கள் — அக்கறை உள்ளது.",
+    hero_kicker:"AI காட்சி டெமோ • குடிமை உண்மைச் சோதனை",
+    hero_proof:"மக்கள் ஏற்கனவே குரல் கொடுத்துள்ளனர்",
+    free:"இலவசம்",cta:"இது முக்கியம் என்று காட்டுங்கள் →",rl:"உண்மை",
+    rh:"இந்தியா நிலவை அடைந்தது.<br>சாக்கடையை அடையவில்லை.",
+    rp:"மெட்ரோக்கள், செயற்கைக்கோள்கள், டிஜிட்டல் பேமெண்ட்கள் — திறந்த குப்பையை கடந்து நடக்கிறோம்.",
+    fh:"இது உங்களுக்கு முக்கியம் என்று காட்டுங்கள்.",
+    chk_txt:'<span>அனைவருக்கும் தூய்மை</span> இந்தியாவின் தலைவர்களுக்கு முன்னுரிமையாக இருக்க வேண்டும்.',
+    ln:"பெயர்",ls:"மாநிலம்",lc:"நகரம் (விருப்பத்திற்கு)",btn:"என்னை எண்ணுங்கள் →",
+    dh:"குறிக்கப்பட்டது.",dp:"உங்கள் குரல் சேர்க்கப்பட்டது.",
+    mh:"மக்கள் எங்கிருந்து பேசுகிறார்கள்",cl:"குரல்கள்",
+    fl:'"Neo-Sight AI உண்மையல்ல. அழுக்கு உண்மை."',
+    fd:'இது ஒரு <strong>நையாண்டி திட்டம்</strong>.'},
+  bn:{badge:"এটি আসল পণ্য নয়।",h1a:"এই চশমা কিনুন।",h1b:"ভারত পরিষ্কার করুন।",
+    sub:"Neo-Sight AI রাস্তা পরিষ্কার করবে না। কিন্তু আপনি ক্লিক করেছেন — মানে আপনি চিন্তা করেন।",
+    hero_kicker:"AI ভিশন ডেমো • নাগরিক বাস্তবতার পরীক্ষা",
+    hero_proof:"মানুষ ইতিমধ্যেই তাদের কণ্ঠ তুলেছে",
+    free:"বিনামূল্যে",cta:"দেখান এটি গুরুত্বপূর্ণ →",rl:"বাস্তবতা",
+    rh:"ভারত চাঁদে পৌঁছেছে।<br>নর্দমায় পৌঁছায়নি।",
+    rp:"মেট্রো, স্যাটেলাইট, ডিজিটাল পেমেন্ট — আর প্রতিদিন আবর্জনা পেরিয়ে হাঁটি।",
+    fh:"দেখান এটি আপনার কাছে গুরুত্বপূর্ণ।",
+    chk_txt:'<span>সকলের জন্য পরিচ্ছন্নতা</span> ভারতের নেতাদের শীর্ষ অগ্রাধিকার হওয়া উচিত।',
+    ln:"নাম",ls:"রাজ্য",lc:"শহর (ঐচ্ছিক)",btn:"আমাকে গণনা করুন →",
+    dh:"নোট করা হয়েছে।",dp:"আপনার কণ্ঠ যোগ হয়েছে।",
+    mh:"মানুষ কোথা থেকে কথা বলছে",cl:"কণ্ঠস্বর",
+    fl:'"Neo-Sight AI আসল নয়। ময়লা আসল।"',
+    fd:'এটি একটি <strong>ব্যঙ্গ প্রকল্প</strong>।'}
+};
+
+function setLang(l){
+  document.querySelectorAll('.lang-options button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  const t=translations[l];if(!t)return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');if(t[k])el.innerHTML=t[k];
+  });
+}
+
+const heroStage=document.querySelector('.hero-stage');
+if(heroStage && window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
+  heroStage.addEventListener('mousemove',e=>{
+    const rect=heroStage.getBoundingClientRect();
+    const px=(e.clientX-rect.left)/rect.width-0.5;
+    const py=(e.clientY-rect.top)/rect.height-0.5;
+    heroStage.style.setProperty('--ry',`${px*10}deg`);
+    heroStage.style.setProperty('--rx',`${py*-10}deg`);
+  });
+  heroStage.addEventListener('mouseleave',()=>{
+    heroStage.style.setProperty('--ry','0deg');
+    heroStage.style.setProperty('--rx','0deg');
+  });
+}
+
+// scroll reveal
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)'}});
+},{threshold:0.1});
+document.querySelectorAll('.stat,.form-card,.board,.india-svg,.counter').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';
+  el.style.transition='all 0.6s ease-out';obs.observe(el);
+});
+</script>
+
+</body>
+</html>
