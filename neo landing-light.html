@@ -458,6 +458,370 @@ body {
   animation-delay: -2s;
 }
 
+.hero-photo {
+  position: absolute;
+  width: 170px;
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.82);
+  box-shadow: var(--shadow-md);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.02);
+}
+
+.hero-photo-top {
+  top: 2%;
+  right: 4%;
+  transform: rotate(8deg);
+}
+
+.hero-photo-bottom {
+  left: 2%;
+  bottom: 0;
+  transform: rotate(-8deg);
+}
+
+.hero-thumb-row {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(28px);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.hero-thumb {
+  min-height: 118px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(229,225,216,0.94);
+  background: rgba(255,255,255,0.62);
+  box-shadow: 0 12px 24px rgba(44,36,24,0.06);
+}
+
+.hero-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.spec-strip {
+  padding: 0 40px 34px;
+}
+
+.spec-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.spec-item {
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(229,225,216,0.92);
+  border-radius: 24px;
+  padding: 18px 20px;
+  box-shadow: 0 16px 40px rgba(44,36,24,0.06);
+  backdrop-filter: blur(14px);
+}
+
+.spec-item strong {
+  display: block;
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.spec-item span {
+  display: block;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.launch-story,
+.reveal-fast,
+.faq-section,
+.cta-banner {
+  padding: 72px 40px;
+}
+
+.launch-shell,
+.reveal-shell,
+.faq-shell,
+.cta-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.launch-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.section-lead {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.launch-copy h2,
+.reveal-copy h2,
+.faq-heading h2,
+.cta-copy h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 4.5vw, 60px);
+  line-height: 1.04;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.launch-copy p,
+.reveal-copy p,
+.faq-heading p,
+.cta-copy p {
+  color: var(--text-dim);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+.launch-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.launch-point {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.74);
+  border: 1px solid rgba(229,225,216,0.92);
+  box-shadow: 0 12px 32px rgba(44,36,24,0.05);
+}
+
+.launch-index {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+}
+
+.launch-point strong,
+.reveal-stat strong,
+.faq-item strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.launch-point span,
+.reveal-stat span,
+.faq-item span {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.launch-mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 240px 200px;
+  gap: 14px;
+}
+
+.mosaic-card,
+.photo-card {
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(229,225,216,0.92);
+  background: rgba(255,255,255,0.76);
+  box-shadow: 0 18px 45px rgba(44,36,24,0.08);
+}
+
+.mosaic-card img,
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mosaic-a { grid-column: span 7; grid-row: span 2; padding: 20px; display: flex; align-items: center; justify-content: center; }
+.mosaic-a img { object-fit: contain; filter: drop-shadow(0 28px 48px rgba(45,106,79,0.16)); }
+.mosaic-b { grid-column: span 5; }
+.mosaic-c { grid-column: span 3; padding: 16px; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(233,245,239,0.9), rgba(255,255,255,0.72)); }
+.mosaic-c img { object-fit: contain; filter: drop-shadow(0 18px 30px rgba(44,36,24,0.12)); }
+.mosaic-d { grid-column: span 2; }
+
+.reveal-fast {
+  border-top: 1px solid var(--border);
+}
+
+.reveal-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.reveal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.reveal-stat {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.76);
+  border: 1px solid rgba(229,225,216,0.94);
+  box-shadow: 0 12px 32px rgba(44,36,24,0.05);
+}
+
+.reveal-stat em {
+  display: block;
+  font-family: 'Instrument Serif', serif;
+  font-size: 30px;
+  line-height: 1;
+  font-style: normal;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.reveal-media {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  gap: 14px;
+}
+
+.photo-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.photo-card {
+  min-height: 220px;
+}
+
+.photo-card img {
+  filter: grayscale(100%) contrast(1.04);
+}
+
+.photo-card.product-card {
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(233,245,239,0.78));
+}
+
+.photo-card.product-card img {
+  object-fit: contain;
+  filter: drop-shadow(0 18px 32px rgba(45,106,79,0.14));
+}
+
+.faq-section {
+  border-top: 1px solid var(--border);
+}
+
+.faq-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  padding: 20px 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(229,225,216,0.94);
+  box-shadow: 0 12px 32px rgba(44,36,24,0.05);
+}
+
+.cta-banner {
+  padding-top: 0;
+}
+
+.cta-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  border: 1px solid rgba(229,225,216,0.94);
+  box-shadow: var(--shadow-lg);
+  background:
+    linear-gradient(120deg, rgba(14,20,18,0.78), rgba(28,37,34,0.54)),
+    url('https://picsum.photos/seed/neo-cta/1400/900?grayscale') center/cover;
+  color: #f7f3ea;
+  min-height: 420px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.cta-copy {
+  padding: 42px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-copy .section-lead,
+.cta-copy p {
+  color: rgba(247,243,234,0.82);
+}
+
+.cta-copy h2 {
+  color: #fff8ef;
+}
+
+.cta-copy .hero-cta {
+  margin-top: 24px;
+}
+
+.cta-visual {
+  position: relative;
+  min-height: 100%;
+}
+
+.cta-product {
+  position: absolute;
+  right: -4%;
+  bottom: -4%;
+  width: min(720px, 108%);
+  filter: drop-shadow(0 40px 70px rgba(0,0,0,0.28));
+}
+
 /* ============ REALITY ============ */
 .reality {
   padding: 80px 40px;
@@ -676,6 +1040,24 @@ footer .cr { font-size:10px; color:var(--text-dim); opacity:0.5; }
   .hero-stage-top { flex-direction:column; align-items:flex-start; }
   .hero-glasses { width:min(82vw, 420px); }
   .hero-chip { display:none; }
+  .hero-photo { width: 140px; }
+  .hero-photo-top { top: -2%; right: 0; }
+  .hero-photo-bottom { left: 0; bottom: -2%; }
+  .hero-thumb-row { grid-template-columns: 1fr 1fr; }
+  .spec-strip, .launch-story, .reveal-fast, .faq-section, .cta-banner { padding-left:20px; padding-right:20px; }
+  .spec-shell,
+  .reveal-stats,
+  .faq-shell,
+  .cta-shell,
+  .launch-shell,
+  .reveal-shell { grid-template-columns:1fr; }
+  .spec-shell { gap: 12px; }
+  .launch-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+  .mosaic-a, .mosaic-b, .mosaic-c, .mosaic-d { grid-column: auto; grid-row: auto; min-height: 220px; }
+  .reveal-media { grid-template-columns:1fr; }
+  .cta-shell { min-height: 0; }
+  .cta-visual { min-height: 260px; }
+  .cta-product { width: min(520px, 110%); right: -8%; }
   .orbit-one { width:320px; height:320px; }
   .orbit-two { width:400px; height:400px; }
   .fields { flex-direction:column; }
@@ -692,6 +1074,14 @@ footer .cr { font-size:10px; color:var(--text-dim); opacity:0.5; }
   .hero-stage-label, .hero-status { font-size:11px; }
   .scan-panel { padding:14px; }
   .scan-row { font-size:12px; }
+  .hero-photo { display: none; }
+  .spec-shell,
+  .reveal-stats { grid-template-columns: 1fr; }
+  .launch-copy h2,
+  .reveal-copy h2,
+  .faq-heading h2,
+  .cta-copy h2 { font-size: clamp(30px, 10vw, 44px); }
+  .cta-copy { padding: 28px; }
   .stats { flex-direction:column; }
   .stat { min-width:unset; }
   .lang-options button { padding:3px 8px; font-size:11px; }
@@ -722,25 +1112,26 @@ footer .cr { font-size:10px; color:var(--text-dim); opacity:0.5; }
 <section class="hero">
   <div class="hero-shell">
     <div class="hero-copy">
-      <div class="hero-tag"><span class="tag-dot"></span><span data-i18n="badge">This is not a real product.</span></div>
-      <div class="hero-kicker" data-i18n="hero_kicker">AI vision demo • civic reality check</div>
+      <div class="hero-tag"><span class="tag-dot"></span><span>New release / awareness demo</span></div>
+      <div class="hero-kicker">AI VISION WEARABLE • CONCEPT DROP</div>
       <h1>
-        <span class="strike" data-i18n="h1a">Buy these glasses.</span><br>
-        <span data-i18n="h1b">Clean India instead.</span>
+        Neo-Sight AI.<br>
+        <span class="strike">Looks like a product.</span><br>
+        Clean India instead.
       </h1>
-      <p class="hero-sub" data-i18n="sub">Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds.</p>
+      <p class="hero-sub">For the first second, this behaves like a premium tech launch: sleek frames, cinematic photography, futuristic language. Then the point arrives. No glasses will clean a street. People and priorities will.</p>
       <div class="hero-actions">
         <div class="hero-cta">
-          <a href="#form" data-i18n="cta">Show it matters to you →</a>
+          <a href="#story">See the launch story →</a>
         </div>
         <div class="hero-proof">
           <strong id="heroVoices">12,847+</strong>
-          <span data-i18n="hero_proof">citizens already raised a hand</span>
+          <span>people already chose the real issue</span>
         </div>
       </div>
       <div class="hero-trust-row">
-        <div class="hero-trust-pill">live civic signal</div>
-        <div class="hero-trust-pill">no waitlist. no app.</div>
+        <div class="hero-trust-pill">titanium-look concept</div>
+        <div class="hero-trust-pill">launch page illusion</div>
         <div class="hero-trust-pill">awareness mode active</div>
       </div>
     </div>
@@ -748,27 +1139,118 @@ footer .cr { font-size:10px; color:var(--text-dim); opacity:0.5; }
     <div class="hero-visual">
       <div class="hero-orbit orbit-one" aria-hidden="true"></div>
       <div class="hero-orbit orbit-two" aria-hidden="true"></div>
-      <div class="hero-chip hero-chip-left">Glass UI<span>trust layer</span></div>
-      <div class="hero-chip hero-chip-right">Public priority<span>still loading</span></div>
+      <div class="hero-chip hero-chip-left">Launch feel<span>premium fiction</span></div>
+      <div class="hero-chip hero-chip-right">Real outcome<span>still on us</span></div>
+      <div class="hero-photo hero-photo-top"><img src="https://picsum.photos/seed/neo-editorial-1/500/640?grayscale" alt="Editorial campaign style photo" loading="lazy"></div>
+      <div class="hero-photo hero-photo-bottom"><img src="https://picsum.photos/seed/neo-editorial-2/500/640?grayscale" alt="Lifestyle campaign style photo" loading="lazy"></div>
 
       <div class="hero-stage">
         <div class="hero-stage-grid" aria-hidden="true"></div>
         <div class="hero-stage-top">
-          <div class="hero-stage-label">NEO-SIGHT AI / DEMO</div>
-          <div class="hero-status"><span class="status-dot"></span>Awareness mode active</div>
+          <div class="hero-stage-label">NEO-SIGHT AI / LIMITED DEMO</div>
+          <div class="hero-status"><span class="status-dot"></span>Launch page / awareness reveal</div>
         </div>
         <div class="hero-glasses">
-          <img src="neo-sight glasses.png" alt="Neo-Sight AI">
+          <img src="neo-sight glasses.png" alt="Neo-Sight AI" loading="eager">
         </div>
         <div class="price-row">
           <span class="old">₹9,999</span>
-          <span class="free" data-i18n="free">FREE</span>
+          <span class="free">FREE</span>
         </div>
         <div class="scan-panel">
-          <div class="scan-row"><span>AI cleanliness boost</span><strong>0%</strong></div>
-          <div class="scan-row"><span>Citizen intent capture</span><strong>100%</strong></div>
-          <div class="scan-row"><span>Reality distortion</span><strong>Disabled</strong></div>
+          <div class="scan-row"><span>Battery life fantasy</span><strong>36h</strong></div>
+          <div class="scan-row"><span>Actual street cleaning</span><strong>0%</strong></div>
+          <div class="scan-row"><span>Citizen attention capture</span><strong>100%</strong></div>
         </div>
+        <div class="hero-thumb-row">
+          <div class="hero-thumb"><img src="new glass angle 2.png" alt="Neo-Sight AI side profile" loading="lazy"></div>
+          <div class="hero-thumb"><img src="https://picsum.photos/seed/neo-editorial-3/520/420?grayscale" alt="Campaign editorial photo" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spec-strip">
+  <div class="spec-shell">
+    <div class="spec-item">
+      <strong>Ultra-light look</strong>
+      <span>Styled like premium consumer hardware so the page earns your first glance.</span>
+    </div>
+    <div class="spec-item">
+      <strong>Camera-first story</strong>
+      <span>Every visual cue whispers “buy now” before the copy starts to contradict it.</span>
+    </div>
+    <div class="spec-item">
+      <strong>Street-ready fiction</strong>
+      <span>The product fantasy is polished. The cleanliness problem underneath it is not.</span>
+    </div>
+    <div class="spec-item">
+      <strong>Citizen-powered truth</strong>
+      <span>The real CTA is not checkout. It is attention, pressure, and public accountability.</span>
+    </div>
+  </div>
+</section>
+
+<section class="launch-story" id="story">
+  <div class="launch-shell">
+    <div class="launch-copy">
+      <div class="section-lead">The Product Page Illusion</div>
+      <h2>Everything above the fold is designed to sell a future that does not exist.</h2>
+      <p>That is intentional. Sleek hardware language is easy to market. Public cleanliness is harder, slower, and less glamorous. Neo-Sight borrows the aesthetics of innovation so the real issue lands harder when the illusion breaks.</p>
+      <div class="launch-list">
+        <div class="launch-point">
+          <div class="launch-index">01</div>
+          <div><strong>Premium launch cues</strong><span>Big product render, glossy photography, specs, and confidence. It should feel believable at a glance.</span></div>
+        </div>
+        <div class="launch-point">
+          <div class="launch-index">02</div>
+          <div><strong>The reveal comes fast</strong><span>Within a few lines, the page admits the glasses are fake and redirects the attention where it belongs.</span></div>
+        </div>
+        <div class="launch-point">
+          <div class="launch-index">03</div>
+          <div><strong>The real action stays simple</strong><span>Sign the statement. Add your voice. Share the campaign. Turn spectacle into pressure.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="launch-mosaic">
+      <div class="mosaic-card mosaic-a"><img src="neo-sight glasses.png" alt="Front view of Neo-Sight AI glasses" loading="lazy"></div>
+      <div class="mosaic-card mosaic-b"><img src="https://picsum.photos/seed/neo-story-1/900/620?grayscale" alt="Editorial product campaign photo" loading="lazy"></div>
+      <div class="mosaic-card mosaic-c"><img src="new glass angle 2.png" alt="Side profile of Neo-Sight AI glasses" loading="lazy"></div>
+      <div class="mosaic-card mosaic-d"><img src="https://picsum.photos/seed/neo-story-2/520/620?grayscale" alt="Campaign texture photo" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal-fast">
+  <div class="reveal-shell">
+    <div class="reveal-copy">
+      <div class="section-lead">The Reveal</div>
+      <h2>Neo-Sight AI will not clean a drain, remove trash, or make hygiene someone else’s priority.</h2>
+      <p>That is the switch. The product is fiction. The frustration is not. India can ship rockets, payments rails, and world-class software, yet everyday cleanliness still gets normalized as background noise. This campaign asks people to stop treating it that way.</p>
+      <div class="reveal-stats">
+        <div class="reveal-stat">
+          <em>0%</em>
+          <strong>auto-cleaning</strong>
+          <span>No lens, chip, or wearable solves civic neglect.</span>
+        </div>
+        <div class="reveal-stat">
+          <em>1</em>
+          <strong>real priority</strong>
+          <span>Cleanliness should rank with the things we proudly build.</span>
+        </div>
+        <div class="reveal-stat">
+          <em>12k+</em>
+          <strong>voices already in</strong>
+          <span>The page works only if enough people decide the issue matters.</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-media">
+      <div class="photo-card"><img src="https://picsum.photos/seed/neo-reveal-1/900/1100?grayscale" alt="Awareness campaign photo" loading="lazy"></div>
+      <div class="photo-stack">
+        <div class="photo-card"><img src="https://picsum.photos/seed/neo-reveal-2/900/620?grayscale" alt="Urban editorial photo" loading="lazy"></div>
+        <div class="photo-card product-card"><img src="new glass angle 2.png" alt="Neo-Sight AI side profile" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -919,6 +1401,50 @@ footer .cr { font-size:10px; color:var(--text-dim); opacity:0.5; }
   </div>
 </section>
 
+<section class="faq-section">
+  <div class="faq-shell">
+    <div class="faq-heading">
+      <div class="section-lead">FAQ / The Honest Part</div>
+      <h2>After the product fantasy wears off, the page should still feel useful.</h2>
+      <p>These are the questions a real launch page would hide and an awareness campaign should answer plainly.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <strong>Is Neo-Sight AI a real product?</strong>
+        <span>No. It is a satirical concept built to borrow the language of tech launches and redirect that attention toward public cleanliness.</span>
+      </div>
+      <div class="faq-item">
+        <strong>Why make it look premium first?</strong>
+        <span>Because polished products get attention immediately. The campaign uses that reflex, then turns it into a more uncomfortable question about what we ignore in real life.</span>
+      </div>
+      <div class="faq-item">
+        <strong>What happens if I sign the statement?</strong>
+        <span>Your voice gets added to the public counter and state tally. The goal is to show visible, collective demand for cleaner streets and hygienic living conditions.</span>
+      </div>
+      <div class="faq-item">
+        <strong>Why not just build a real app instead?</strong>
+        <span>The problem is not a missing interface. It is missing urgency, accountability, and a refusal to accept filth as normal.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-shell">
+    <div class="cta-copy">
+      <div class="section-lead">One last product shot</div>
+      <h2>Let the page look expensive. Let the message stay simple.</h2>
+      <p>The glasses are fake. The question is real: if India can build at world scale, why should basic cleanliness still feel optional? Add your name and make the priority visible.</p>
+      <div class="hero-cta">
+        <a href="#form">Add your voice →</a>
+      </div>
+    </div>
+    <div class="cta-visual">
+      <img class="cta-product" src="neo-sight glasses.png" alt="Neo-Sight AI product render" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="line" data-i18n="fl">"Neo-Sight AI is not a real product. The dirt is."</div>
   <div class="disc" data-i18n="fd">This is a <strong>satire and awareness project</strong>. No glasses. No AI filter. Just one question: if India can build everything it has — why does the street outside still look like that?</div>
@@ -1052,7 +1578,7 @@ if(heroStage && window.matchMedia('(prefers-reduced-motion: no-preference)').mat
 const obs=new IntersectionObserver(e=>{
   e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)'}});
 },{threshold:0.1});
-document.querySelectorAll('.stat,.form-card,.board,.india-svg,.counter').forEach(el=>{
+document.querySelectorAll('.stat,.form-card,.board,.india-svg,.counter,.spec-item,.launch-copy,.launch-mosaic,.reveal-copy,.reveal-media,.faq-heading,.faq-item,.cta-shell').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(20px)';
   el.style.transition='all 0.6s ease-out';obs.observe(el);
 });
