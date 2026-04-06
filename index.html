@@ -74,9 +74,11 @@ nav .nav-cta:hover { background: var(--accent-bright); }
 
 /* ============ HERO ============ */
 .hero {
-  min-height: 185vh;
+  min-height: 100vh;
   padding: 96px 40px 48px;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .hero::before {
   content:'';
@@ -86,8 +88,7 @@ nav .nav-cta:hover { background: var(--accent-bright); }
 }
 
 .hero-shell {
-  position: sticky;
-  top: 92px;
+  position: relative;
   min-height: calc(100vh - 112px);
   max-width: 1120px;
   margin: 0 auto;
@@ -602,8 +603,8 @@ footer {
   nav .nav-cta { padding: 8px 18px; font-size: 12px; }
   .hero, .features, .specs, .pricing, .waitlist-section { padding-left: 24px; padding-right: 24px; }
   .features, .specs, .pricing, .waitlist-section { padding-top: 70px; padding-bottom: 70px; }
-  .hero { min-height: 165vh; }
-  .hero-shell { top: 82px; min-height: calc(100vh - 96px); }
+  .hero { min-height: 100vh; }
+  .hero-shell { min-height: calc(100vh - 96px); }
   .hero-stage { width: 100%; }
   .hero-product { width: min(100%, 92vw); padding: 14px; }
   .hero-video-overlay { inset: auto 12px 12px 12px; }
@@ -898,66 +899,90 @@ const heroSection = document.querySelector('.hero');
 const heroVideoProgress = document.getElementById('heroVideoProgress');
 if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   let duration = 0;
-  let ticking = false;
   let canScrub = false;
-  let lastScrollY = window.scrollY;
-  let pauseTimer = 0;
+  let heroProgress = 0;
+  let heroUnlocked = false;
+  let touchY = 0;
 
   const updateScrubMode = () => {
     if (!duration) return;
     canScrub = heroScrubVideo.seekable.length > 0 && heroScrubVideo.seekable.end(heroScrubVideo.seekable.length - 1) > 0;
   };
 
-  const syncScrub = () => {
+  const applyProgress = (nextProgress) => {
     if (!duration) return;
-    const rect = heroSection.getBoundingClientRect();
-    const sectionDistance = Math.max(heroSection.offsetHeight - window.innerHeight, 1);
-    const progress = Math.min(Math.max((-rect.top) / sectionDistance, 0), 1);
+    heroProgress = Math.min(Math.max(nextProgress, 0), 1);
     updateScrubMode();
     if (canScrub) {
-      heroScrubVideo.currentTime = duration * progress;
+      heroScrubVideo.currentTime = duration * heroProgress;
     } else {
-      const delta = Math.abs(window.scrollY - lastScrollY);
-      if (delta > 0.5) {
-        heroScrubVideo.playbackRate = Math.min(2.4, 0.9 + delta / 180);
-        const playPromise = heroScrubVideo.play();
-        if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {});
-        clearTimeout(pauseTimer);
-        pauseTimer = window.setTimeout(() => heroScrubVideo.pause(), 140);
-      }
+      heroScrubVideo.currentTime = duration * heroProgress;
     }
-    lastScrollY = window.scrollY;
-    if (heroVideoProgress) heroVideoProgress.textContent = `${Math.round(progress * 100)}%`;
+    if (heroVideoProgress) heroVideoProgress.textContent = `${Math.round(heroProgress * 100)}%`;
+    if (heroProgress >= 1) {
+      heroUnlocked = true;
+      if (heroVideoProgress) heroVideoProgress.textContent = `100%`;
+    }
   };
 
-  const queueScrub = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      syncScrub();
-      ticking = false;
-    });
+  const shouldLockHero = () => !heroUnlocked && window.scrollY <= 1;
+
+  const scrubByDelta = (delta) => {
+    if (!duration) return;
+    applyProgress(heroProgress + delta / 1200);
   };
 
   heroScrubVideo.pause();
   heroScrubVideo.addEventListener('loadedmetadata', () => {
     duration = heroScrubVideo.duration || 0;
     updateScrubMode();
-    syncScrub();
+    applyProgress(heroProgress);
   });
   heroScrubVideo.addEventListener('loadeddata', () => {
     updateScrubMode();
-    syncScrub();
+    applyProgress(heroProgress);
   });
   heroScrubVideo.addEventListener('progress', updateScrubMode);
   heroScrubVideo.addEventListener('canplay', updateScrubMode);
   if (heroScrubVideo.readyState >= 1) {
     duration = heroScrubVideo.duration || 0;
     updateScrubMode();
-    syncScrub();
+    applyProgress(heroProgress);
   }
-  window.addEventListener('scroll', queueScrub, { passive: true });
-  window.addEventListener('resize', queueScrub);
+
+  window.addEventListener('wheel', (event) => {
+    if (!shouldLockHero()) return;
+    event.preventDefault();
+    scrubByDelta(event.deltaY);
+  }, { passive: false });
+
+  window.addEventListener('touchstart', (event) => {
+    if (!shouldLockHero()) return;
+    touchY = event.touches[0]?.clientY ?? 0;
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (event) => {
+    if (!shouldLockHero()) return;
+    const currentY = event.touches[0]?.clientY ?? touchY;
+    const delta = touchY - currentY;
+    touchY = currentY;
+    event.preventDefault();
+    scrubByDelta(delta * 2.2);
+  }, { passive: false });
+
+  window.addEventListener('keydown', (event) => {
+    if (!shouldLockHero()) return;
+    const keyDeltas = {
+      ArrowDown: 140,
+      ArrowUp: -140,
+      PageDown: 320,
+      PageUp: -320,
+      ' ': 320,
+    };
+    if (!(event.key in keyDeltas)) return;
+    event.preventDefault();
+    scrubByDelta(keyDeltas[event.key]);
+  });
 }
 
 // Scroll reveal
@@ -977,5 +1002,6 @@ document.querySelectorAll('.feature-card, .spec-row, .price-card, .hero-product'
   observer.observe(el);
 });
 </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "326bf2d1bbb44b959cb57b3d228585c0"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
