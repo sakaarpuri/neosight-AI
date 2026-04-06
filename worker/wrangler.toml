@@ -1,0 +1,22 @@
+name = "veoclara-api"
+main = "src/index.ts"
+compatibility_date = "2026-04-06"
+workers_dev = false
+
+# Update these route patterns if your production domain changes.
+routes = [
+  { pattern = "veoclara.com/api/*", zone_name = "veoclara.com" },
+  { pattern = "www.veoclara.com/api/*", zone_name = "veoclara.com" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "neosightai-db"
+database_id = "185d7d66-26c6-429d-b007-4c98988c0087"
+
+[[kv_namespaces]]
+binding = "STATS"
+id = "55de5fa1693b4ca386aaabf9f8e5db1b"
+
+[observability]
+enabled = true

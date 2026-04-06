@@ -1,0 +1,80 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="50" x2="560" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C2120"/>
+      <stop offset="1" stop-color="#0D100F"/>
+    </linearGradient>
+    <linearGradient id="gridFade" x1="320" y1="70" x2="320" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0E2C4" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#F0E2C4" stop-opacity="0.02"/>
+    </linearGradient>
+    <radialGradient id="beam" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 216) rotate(90) scale(150 220)">
+      <stop stop-color="#E8DCC4" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#E8DCC4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spotHot" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 0) rotate(90) scale(32 32)">
+      <stop stop-color="#FFD27A"/>
+      <stop offset="0.55" stop-color="#FF9D3C"/>
+      <stop offset="1" stop-color="#FF6C2F" stop-opacity="0.12"/>
+    </radialGradient>
+    <filter id="glow" x="-40" y="-40" width="160" height="160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <rect x="20" y="20" width="600" height="380" rx="30" fill="url(#bg)"/>
+  <rect x="20.5" y="20.5" width="599" height="379" rx="29.5" stroke="#3A403E"/>
+
+  <rect x="56" y="56" width="528" height="308" rx="20" fill="#121615"/>
+  <rect x="56.5" y="56.5" width="527" height="307" rx="19.5" stroke="#303735"/>
+
+  <path d="M56 210H584" stroke="url(#gridFade)" stroke-width="1"/>
+  <path d="M320 56V364" stroke="url(#gridFade)" stroke-width="1"/>
+  <path d="M144 56V364" stroke="#F0E2C4" stroke-opacity="0.07" stroke-width="1"/>
+  <path d="M232 56V364" stroke="#F0E2C4" stroke-opacity="0.07" stroke-width="1"/>
+  <path d="M408 56V364" stroke="#F0E2C4" stroke-opacity="0.07" stroke-width="1"/>
+  <path d="M496 56V364" stroke="#F0E2C4" stroke-opacity="0.07" stroke-width="1"/>
+  <path d="M56 133H584" stroke="#F0E2C4" stroke-opacity="0.07" stroke-width="1"/>
+  <path d="M56 287H584" stroke="#F0E2C4" stroke-opacity="0.07" stroke-width="1"/>
+
+  <ellipse cx="320" cy="216" rx="192" ry="122" fill="url(#beam)"/>
+  <ellipse cx="320" cy="216" rx="138" ry="84" stroke="#D8D0BA" stroke-opacity="0.38" stroke-width="1.5"/>
+  <ellipse cx="320" cy="216" rx="88" ry="52" stroke="#D8D0BA" stroke-opacity="0.24" stroke-width="1.5"/>
+
+  <path d="M184 312C221 274 260 248 316 236C372 224 420 235 468 271" stroke="#8BE3A8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M184 312C221 274 260 248 316 236C372 224 420 235 468 271" stroke="#0D100F" stroke-opacity="0.28" stroke-width="14" stroke-linecap="round"/>
+
+  <g filter="url(#glow)" opacity="0.42">
+    <circle cx="232" cy="250" r="28" fill="#FFB24C"/>
+    <circle cx="356" cy="192" r="26" fill="#FF934A"/>
+    <circle cx="432" cy="244" r="22" fill="#FFC15C"/>
+  </g>
+
+  <g>
+    <circle cx="232" cy="250" r="24" fill="url(#spotHot)"/>
+    <circle cx="356" cy="192" r="21" fill="url(#spotHot)"/>
+    <circle cx="432" cy="244" r="18" fill="url(#spotHot)"/>
+
+    <circle cx="232" cy="250" r="36" stroke="#FF9A45" stroke-opacity="0.42" stroke-dasharray="5 7"/>
+    <circle cx="356" cy="192" r="33" stroke="#FF9A45" stroke-opacity="0.36" stroke-dasharray="5 7"/>
+    <circle cx="432" cy="244" r="29" stroke="#FF9A45" stroke-opacity="0.32" stroke-dasharray="5 7"/>
+  </g>
+
+  <g fill="#E8DCC4">
+    <circle cx="184" cy="312" r="6"/>
+    <circle cx="468" cy="271" r="6"/>
+  </g>
+
+  <g opacity="0.9">
+    <rect x="84" y="82" width="110" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
+    <text x="139" y="100" text-anchor="middle" fill="#E8DCC4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">SCAN MODE</text>
+
+    <rect x="444" y="82" width="112" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
+    <text x="500" y="100" text-anchor="middle" fill="#8BE3A8" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">ROUTE CLEAR</text>
+  </g>
+
+  <g opacity="0.82">
+    <text x="86" y="337" fill="#7E8884" font-family="Inter, sans-serif" font-size="12" letter-spacing="1.1">UNCLEAN PATCHES DETECTED</text>
+    <text x="86" y="356" fill="#F0E2C4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.6">Cleaner walking path highlighted ahead</text>
+  </g>
+</svg>
