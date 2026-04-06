@@ -8,12 +8,12 @@
 <meta property="og:title" content="VeoClara AI — See India Shine">
 <meta property="og:description" content="The next generation of personal visual devices. Tuned for India. Launching soon.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://veoclara.com/veoclara_glasses.png">
+<meta property="og:image" content="https://veoclara.com/veoclara-og.jpg">
 <meta property="og:url" content="https://veoclara.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="VeoClara AI — See India Shine">
 <meta name="twitter:description" content="The next generation of personal visual devices. Tuned for India. Launching soon.">
-<meta name="twitter:image" content="https://veoclara.com/veoclara_glasses.png">
+<meta name="twitter:image" content="https://veoclara.com/veoclara-og.jpg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -901,7 +901,6 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
   let duration = 0;
   let canScrub = false;
   let heroProgress = 0;
-  let heroUnlocked = false;
   let touchY = 0;
 
   const updateScrubMode = () => {
@@ -919,13 +918,14 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
       heroScrubVideo.currentTime = duration * heroProgress;
     }
     if (heroVideoProgress) heroVideoProgress.textContent = `${Math.round(heroProgress * 100)}%`;
-    if (heroProgress >= 1) {
-      heroUnlocked = true;
-      if (heroVideoProgress) heroVideoProgress.textContent = `100%`;
-    }
   };
 
-  const shouldLockHero = () => !heroUnlocked && window.scrollY <= 1;
+  const shouldLockHero = (delta) => {
+    if (window.scrollY > 1) return false;
+    if (delta > 0) return heroProgress < 1;
+    if (delta < 0) return heroProgress > 0;
+    return heroProgress > 0 && heroProgress < 1;
+  };
 
   const scrubByDelta = (delta) => {
     if (!duration) return;
@@ -951,27 +951,25 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
   }
 
   window.addEventListener('wheel', (event) => {
-    if (!shouldLockHero()) return;
+    if (!shouldLockHero(event.deltaY)) return;
     event.preventDefault();
     scrubByDelta(event.deltaY);
   }, { passive: false });
 
   window.addEventListener('touchstart', (event) => {
-    if (!shouldLockHero()) return;
     touchY = event.touches[0]?.clientY ?? 0;
   }, { passive: true });
 
   window.addEventListener('touchmove', (event) => {
-    if (!shouldLockHero()) return;
     const currentY = event.touches[0]?.clientY ?? touchY;
     const delta = touchY - currentY;
+    if (!shouldLockHero(delta * 2.2)) return;
     touchY = currentY;
     event.preventDefault();
     scrubByDelta(delta * 2.2);
   }, { passive: false });
 
   window.addEventListener('keydown', (event) => {
-    if (!shouldLockHero()) return;
     const keyDeltas = {
       ArrowDown: 140,
       ArrowUp: -140,
@@ -980,6 +978,7 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
       ' ': 320,
     };
     if (!(event.key in keyDeltas)) return;
+    if (!shouldLockHero(keyDeltas[event.key])) return;
     event.preventDefault();
     scrubByDelta(keyDeltas[event.key]);
   });
