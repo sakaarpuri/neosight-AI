@@ -208,6 +208,13 @@ nav .nav-cta:hover { background: var(--accent-bright); }
 .hero-product.hero-video-ready video {
   opacity: 1;
 }
+.hero.hero-no-scrub .hero-video-overlay,
+.hero.hero-no-scrub .scroll-ind {
+  display: none;
+}
+.hero.hero-no-scrub .hero-product video {
+  display: none;
+}
 
 .hero-video-overlay {
   position: absolute;
@@ -944,11 +951,15 @@ const heroScrubVideo = document.getElementById('heroScrubVideo');
 const heroSection = document.querySelector('.hero');
 const heroVideoProgress = document.getElementById('heroVideoProgress');
 const heroProduct = heroScrubVideo?.closest('.hero-product');
-if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+const desktopScrubEnabled = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches;
+if (heroSection && !desktopScrubEnabled) {
+  heroSection.classList.add('hero-no-scrub');
+}
+if (heroScrubVideo && heroSection && desktopScrubEnabled) {
   let duration = 0;
   let canScrub = false;
   let heroProgress = 0;
-  let touchY = 0;
+  let heroCompleted = false;
   const heroTopThreshold = 64;
   const setVideoReady = () => heroProduct?.classList.add('hero-video-ready');
 
@@ -958,13 +969,14 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
   };
 
   const updateHeroLockState = () => {
-    const shouldLock = window.scrollY <= heroTopThreshold && heroProgress < 1;
+    const shouldLock = !heroCompleted && window.scrollY <= heroTopThreshold && heroProgress < 1;
     heroSection.classList.toggle('hero-locking', shouldLock);
   };
 
   const applyProgress = (nextProgress) => {
     if (!duration) return;
     heroProgress = Math.min(Math.max(nextProgress, 0), 1);
+    if (heroProgress >= 1) heroCompleted = true;
     updateScrubMode();
     if (canScrub) {
       heroScrubVideo.currentTime = duration * heroProgress;
@@ -976,10 +988,10 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
   };
 
   const shouldLockHero = (delta) => {
+    if (heroCompleted) return false;
     if (window.scrollY > heroTopThreshold) return false;
     if (delta > 0) return heroProgress < 1;
-    if (delta < 0) return heroProgress > 0;
-    return heroProgress > 0 && heroProgress < 1;
+    return false;
   };
 
   const scrubByDelta = (delta) => {
@@ -1018,27 +1030,10 @@ if (heroScrubVideo && heroSection && window.matchMedia('(prefers-reduced-motion:
     scrubByDelta(event.deltaY);
   }, { passive: false });
 
-  window.addEventListener('touchstart', (event) => {
-    touchY = event.touches[0]?.clientY ?? 0;
-    updateHeroLockState();
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (event) => {
-    const currentY = event.touches[0]?.clientY ?? touchY;
-    const delta = touchY - currentY;
-    if (!shouldLockHero(delta * 2.2)) return;
-    touchY = currentY;
-    event.preventDefault();
-    if (window.scrollY !== 0) window.scrollTo(0, 0);
-    scrubByDelta(delta * 2.2);
-  }, { passive: false });
-
   window.addEventListener('keydown', (event) => {
     const keyDeltas = {
       ArrowDown: 140,
-      ArrowUp: -140,
       PageDown: 320,
-      PageUp: -320,
       ' ': 320,
     };
     if (!(event.key in keyDeltas)) return;
