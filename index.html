@@ -53,10 +53,14 @@ nav {
   padding: 16px 48px;
 }
 nav .logo {
-  font-family:'Hanken Grotesk','Inter',sans-serif; font-weight:700; font-size:22px;
-  letter-spacing: -0.04em;
+  font-family:'Hanken Grotesk','Inter',sans-serif;
+  font-weight:500;
+  font-size:22px;
+  letter-spacing: -0.05em;
+  color: #d7f2f7;
+  text-shadow: 0 0 18px rgba(215,242,247,0.08);
 }
-nav .logo span { color: var(--accent); }
+nav .logo span { color: inherit; }
 nav .nav-links { display:flex; gap:32px; align-items:center; }
 nav .nav-links a {
   color: var(--text-dim); text-decoration:none; font-size:13px;
@@ -193,6 +197,14 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   text-transform: uppercase;
   font-weight: 600;
   text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.hero-model-note {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
 
 .hero-cta-row {
@@ -555,11 +567,14 @@ footer {
 }
 .footer-brand {
   font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: 24px; margin-bottom: 12px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  color: #d7f2f7;
+  text-shadow: 0 0 18px rgba(215,242,247,0.06);
 }
-.footer-brand span { color: var(--accent); }
+.footer-brand span { color: inherit; }
 .footer-brand-desc {
   color: var(--text-dim); font-size: 13px; max-width: 280px; line-height: 1.6;
 }
@@ -639,7 +654,7 @@ footer {
     <div class="hero-copy">
       <div class="launch-tag">
         <span class="pulse"></span>
-        <span>LAUNCHING 1PM IST APRIL 9 2026</span>
+        <span>LAUNCHING SOON</span>
       </div>
   <h1>See the beauty of India</h1>
       <p class="hero-sub">The next generation of personal visual devices. Intelligently adaptive, sharply minimal, and tuned for India.</p>
@@ -654,6 +669,7 @@ footer {
           <div class="hero-video-note">SCROLL TO ROTATE · 0:04</div>
         </div>
       </div>
+      <div class="hero-model-note">Model shown: VC Alpha</div>
       <div class="hero-cta-row">
         <a href="#waitlist" class="primary">Join waitlist</a>
         <a href="#features" class="secondary">Explore</a>
@@ -670,31 +686,31 @@ footer {
   <div class="features-grid">
     <div class="feature-column feature-column--stack">
       <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>
+        <div class="feature-graphic">
+          <img src="veoclara-adaptive-vision-graphic.svg" alt="Adaptive vision scanner graphic">
         </div>
         <h3>Adaptive Vision</h3>
         <p>Real-time AI-powered visual enhancement. Every scene, intelligently optimised for clarity and contrast.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L3 7l9 5 9-5-9-5z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
+        <div class="feature-graphic">
+          <img src="veoclara-os-graphic.svg" alt="VeoClara OS engine graphic">
         </div>
-        <h3>Tuned for India</h3>
-        <p>Custom calibration for Indian lighting conditions, ambient environments, and daily commute scenarios.</p>
+        <h3>VeoClara OS</h3>
+        <p>VeoClara OS runs on the world's most powerful on-device imaging engine, morphing your view in real time to remove visible litter and pollution and replace it with a cleaner version of the world around you.</p>
       </div>
     </div>
     <div class="feature-column feature-column--stack">
       <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="feature-graphic">
+          <img src="veoclara-battery-graphic.svg" alt="Battery and power management graphic">
         </div>
         <h3>All-Day Battery</h3>
         <p>8 hours of continuous AI-enhanced vision on a single charge. USB-C quick charge in under 30 minutes.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+        <div class="feature-graphic">
+          <img src="veoclara-feather-light-graphic.svg" alt="Lightweight frame comfort graphic">
         </div>
         <h3>Feather-Light</h3>
         <p>28g titanium frame. Wear them all day without fatigue. Barely there, always on.</p>
@@ -782,9 +798,6 @@ footer {
 <!-- WAITLIST -->
 <section class="waitlist-section" id="waitlist">
   <div class="waitlist-container">
-    <div class="waitlist-count">
-      <strong id="waitCount">2,847</strong> on the waitlist
-    </div>
     <h2>Be the first to <em>see it.</em></h2>
     <p>Join the waitlist for launch updates, first access to the full reveal, and pricing details when they are announced.</p>
 
@@ -794,9 +807,8 @@ footer {
     </form>
 
     <div class="form-success" id="successMsg">
-      <strong id="successTitle">You're on the list.</strong>
+      <strong id="successTitle">You have been added to the waitlist.</strong>
       <span id="successCopy">We'll email you the moment VeoClara goes live.</span>
-      <small>#<span id="position">2,848</span> in the queue</small>
     </div>
 
     <p class="form-note" id="formNote">No spam. Just one email when we launch.</p>
@@ -834,9 +846,6 @@ footer {
 </footer>
 
 <script>
-let count = 2847;
-document.getElementById('waitCount').textContent = count.toLocaleString();
-
 function handleSubmit(e) {
   e.preventDefault();
   const email = document.getElementById('emailInput').value.trim();
@@ -857,7 +866,7 @@ function handleSubmit(e) {
     if (!r.ok || !data.success) {
       throw new Error(data.error || 'Something went wrong. Please try again.');
     }
-    showSuccess(data.position || count + 1, data.message, data.already_joined);
+    showSuccess(data.message, data.already_joined);
   }).catch(() => {
     btn.disabled = false;
     btn.textContent = 'Join waitlist';
@@ -865,33 +874,28 @@ function handleSubmit(e) {
   });
 }
 
-function showSuccess(position, message = "We'll email you the moment VeoClara goes live.", alreadyJoined = false) {
+function showSuccess(message = "We'll email you the moment VeoClara goes live.", alreadyJoined = false) {
   document.getElementById('emailForm').style.display = 'none';
   const msg = document.getElementById('successMsg');
   msg.style.display = 'block';
-  document.getElementById('successTitle').textContent = alreadyJoined ? "You're already on the list." : "You're on the list.";
+  document.getElementById('successTitle').textContent = alreadyJoined ? "You are already on the waitlist." : "You have been added to the waitlist.";
   document.getElementById('successCopy').textContent = message;
-  document.getElementById('position').textContent = position.toLocaleString();
-  const counter = document.getElementById('waitCount');
-  counter.textContent = position.toLocaleString();
   document.getElementById('formNote').textContent = alreadyJoined
-    ? 'We already had your email, so we kept your place in line.'
+    ? 'We already had your email on file, so you are still on the waitlist.'
     : 'No spam. Just launch updates and the pricing announcement.';
-  localStorage.setItem('vp_waitlisted', JSON.stringify({ position, alreadyJoined }));
+  localStorage.setItem('vp_waitlisted', JSON.stringify({ alreadyJoined }));
 }
 
 // If already on list, show success state
 const storedWaitlist = localStorage.getItem('vp_waitlisted');
 if (storedWaitlist) {
-  let storedPosition = count + 1;
   let alreadyJoined = false;
   try {
     const parsed = JSON.parse(storedWaitlist);
-    storedPosition = parsed.position || storedPosition;
     alreadyJoined = !!parsed.alreadyJoined;
   } catch {}
   document.getElementById('emailForm').style.display = 'none';
-  showSuccess(storedPosition, "We'll email you the moment VeoClara goes live.", alreadyJoined);
+  showSuccess("We'll email you the moment VeoClara goes live.", alreadyJoined);
 }
 
 const heroScrubVideo = document.getElementById('heroScrubVideo');
