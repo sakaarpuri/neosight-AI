@@ -320,11 +320,6 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   gap: 24px;
   align-items: stretch;
 }
-.feature-column {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
 .feature-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -337,12 +332,7 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-}
-.feature-column--stack .feature-card {
-  min-height: 312px;
-}
-.feature-column--tall .feature-card {
-  min-height: 468px;
+  min-height: 340px;
 }
 .feature-card:hover {
   border-color: var(--border-bright);
@@ -371,7 +361,7 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 .feature-card .icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
 .feature-card h3 {
@@ -676,8 +666,6 @@ footer {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
   .features-grid { grid-template-columns: 1fr 1fr; }
-  .feature-column--tall { grid-column: 1 / -1; }
-  .feature-column--tall .feature-card { min-height: 360px; }
   .specs-container { grid-template-columns: 1fr; gap: 40px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -694,9 +682,7 @@ footer {
   .hero-video-overlay { inset: auto 12px 12px 12px; }
   .hero-video-note { font-size: 10px; letter-spacing: 0.16em; }
   .features-grid { grid-template-columns: 1fr; }
-  .feature-column--tall { grid-column: auto; }
-  .feature-column--stack .feature-card,
-  .feature-column--tall .feature-card { min-height: 0; }
+  .feature-card { min-height: 0; }
   .spec-list { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
   .price-card { padding: 36px 28px; }
@@ -754,46 +740,47 @@ footer {
   <div class="section-eyebrow">Designed for India</div>
   <h2 class="section-title">Built for the way <em>you see.</em></h2>
   <div class="features-grid">
-    <div class="feature-column feature-column--stack">
-      <div class="feature-card">
-        <div class="feature-graphic">
-          <img src="veoclara-adaptive-vision-graphic.svg" alt="Adaptive vision scanner graphic">
-        </div>
-        <h3>Adaptive Vision</h3>
-        <p>Real-time AI-powered visual enhancement. Every scene, intelligently optimised for clarity and contrast.</p>
+    <div class="feature-card">
+      <div class="feature-graphic">
+        <img src="veoclara-adaptive-vision-graphic.svg?v=2" alt="Adaptive vision scanner graphic">
       </div>
-      <div class="feature-card">
-        <div class="feature-graphic">
-          <img src="veoclara-os-graphic.svg" alt="VeoClara OS engine graphic">
-        </div>
-        <h3>VeoClara OS</h3>
-        <p>VeoClara OS runs on the world's most powerful on-device imaging engine, morphing your view in real time to remove visible litter and pollution and replace it with a cleaner version of the world around you.</p>
-      </div>
+      <h3>Adaptive Vision</h3>
+      <p>Real-time AI-powered visual enhancement. Every scene, intelligently optimised for clarity and contrast.</p>
     </div>
-    <div class="feature-column feature-column--stack">
-      <div class="feature-card">
-        <div class="feature-graphic">
-          <img src="veoclara-battery-graphic.svg" alt="Battery and power management graphic">
-        </div>
-        <h3>All-Day Battery</h3>
-        <p>8 hours of continuous AI-enhanced vision on a single charge. USB-C quick charge in under 30 minutes.</p>
+    <div class="feature-card">
+      <div class="feature-graphic">
+        <img src="veoclara-battery-graphic.svg?v=2" alt="Battery and power management graphic">
       </div>
-      <div class="feature-card">
-        <div class="feature-graphic">
-          <img src="veoclara-feather-light-graphic.svg" alt="Lightweight frame comfort graphic">
-        </div>
-        <h3>Feather-Light</h3>
-        <p>28g titanium frame. Wear them all day without fatigue. Barely there, always on.</p>
-      </div>
+      <h3>All-Day Battery</h3>
+      <p>8 hours of continuous AI-enhanced vision on a single charge. USB-C quick charge in under 30 minutes.</p>
     </div>
-    <div class="feature-column feature-column--tall">
-      <div class="feature-card">
-        <div class="feature-graphic">
-          <img src="veoclara-clean-route-graphic.svg" alt="Scanner interface highlighting spotted street patches and a cleaner route line">
-        </div>
-        <h3>Clean-Route Guidance</h3>
-        <p>Surface-level scan cues flag visibly dirty patches ahead and guide you toward a cleaner walking line through busy streets.</p>
+    <div class="feature-card">
+      <div class="feature-graphic">
+        <img src="veoclara-clean-route-graphic.svg?v=2" alt="Scanner interface highlighting spotted street patches and a cleaner route line">
       </div>
+      <h3>Clean-Route Guidance</h3>
+      <p>Surface-level scan cues flag visibly dirty patches ahead and guide you toward a cleaner walking line through busy streets.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-graphic">
+        <img src="veoclara-os-graphic.svg?v=2" alt="VeoClara OS engine graphic">
+      </div>
+      <h3>VeoClara OS</h3>
+      <p>VeoClara OS runs on the world's most powerful on-device imaging engine, morphing your view in real time to remove visible litter and pollution and replace it with a cleaner version of the world around you.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-graphic">
+        <img src="veoclara-feather-light-graphic.svg?v=2" alt="Lightweight frame comfort graphic">
+      </div>
+      <h3>Feather-Light</h3>
+      <p>28g titanium frame. Wear them all day without fatigue. Barely there, always on.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-graphic">
+        <img src="veoclara-aware-audio-graphic.svg?v=1" alt="Discrete audio guidance graphic">
+      </div>
+      <h3>Discrete Audio</h3>
+      <p>Private voice cues and subtle directional prompts keep guidance close to you without breaking the calm of the street around you.</p>
     </div>
   </div>
 </section>
