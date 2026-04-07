@@ -1,10 +1,15 @@
 export interface Env {
   DB: D1Database;
   STATS?: KVNamespace;
+  TURNSTILE_SECRET?: string;
+  TURNSTILE_SITE_KEY?: string;
 }
 
 type WaitlistBody = {
   email?: string;
+  turnstileToken?: string;
+  website?: string;
+  startedAt?: number | string;
 };
 
 type ApiResponse =
@@ -44,6 +49,8 @@ const normalizeEmail = (email: string) => email.trim().toLowerCase();
 
 const isValidEmail = (email: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
+
+const MIN_FORM_FILL_MS = 1500;
 
 const getClientIp = (request: Request) => {
   const cfIp = request.headers.get("cf-connecting-ip");
@@ -151,6 +158,13 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
   }
 
   const email = typeof body.email === "string" ? normalizeEmail(body.email) : "";
+  const turnstileToken = typeof body.turnstileToken === "string" ? body.turnstileToken : "";
+  const honeypot = typeof body.website === "string" ? body.website.trim() : "";
+  const startedAt = Number(body.startedAt);
+
+  if (honeypot) {
+    return json({ success: false, error: "Could not join the waitlist right now." }, 400);
+  }
 
   if (!email) {
     return json({ success: false, error: "Email is required." }, 400);
@@ -160,9 +174,45 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
     return json({ success: false, error: "Please enter a valid email address." }, 400);
   }
 
+  if (Number.isFinite(startedAt) && Date.now() - startedAt < MIN_FORM_FILL_MS) {
+    return json({ success: false, error: "Please try again." }, 400);
+  }
+
   const rateLimitResponse = await enforceRateLimits(request, env, email);
   if (rateLimitResponse) {
     return rateLimitResponse;
+  }
+
+  if (env.TURNSTILE_SECRET) {
+    if (!turnstileToken) {
+      return json({ success: false, error: "Please complete the security check." }, 400);
+    }
+
+    const verification = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret: env.TURNSTILE_SECRET,
+        response: turnstileToken,
+        remoteip: getClientIp(request),
+      }),
+    });
+
+    const verificationJson = await verification.json<{
+      success?: boolean;
+      "error-codes"?: string[];
+    }>();
+
+    if (!verification.ok || !verificationJson.success) {
+      await logWorkerEvent(env, "waitlist_error", {
+        message: "turnstile_failed",
+        codes: verificationJson?.["error-codes"] || [],
+        ip: getClientIp(request),
+      });
+      return json({ success: false, error: "Please complete the security check and try again." }, 400);
+    }
   }
 
   try {
@@ -236,8 +286,15 @@ async function handleHealth(env: Env): Promise<Response> {
     checks: {
       db: dbOk,
       kvConfigured: Boolean(env.STATS),
+      turnstileConfigured: Boolean(env.TURNSTILE_SECRET && env.TURNSTILE_SITE_KEY),
     },
     error: dbError,
+  });
+}
+
+function handleClientConfig(env: Env): Response {
+  return healthJson({
+    turnstileSiteKey: env.TURNSTILE_SITE_KEY || null,
   });
 }
 
@@ -255,6 +312,10 @@ export default {
 
     if (url.pathname === "/api/health" && request.method === "GET") {
       return handleHealth(env);
+    }
+
+    if (url.pathname === "/api/client-config" && request.method === "GET") {
+      return handleClientConfig(env);
     }
 
     return json({ success: false, error: "Not found." }, 404);

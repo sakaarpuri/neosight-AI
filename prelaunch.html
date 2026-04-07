@@ -16,6 +16,7 @@
 <meta name="twitter:image" content="https://veoclara.com/veoclara-og.jpg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -592,6 +593,22 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   font-size: 15px;
   margin-top: 16px;
 }
+.turnstile-wrap {
+  display: none;
+  justify-content: center;
+  margin: 16px 0 6px;
+}
+.turnstile-wrap.is-ready {
+  display: flex;
+}
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 .form-success strong { display: block; font-size: 17px; margin-bottom: 4px; }
 .form-success small { color: var(--text-dim); display: block; margin-top: 8px; font-size: 12px; }
 
@@ -852,6 +869,11 @@ footer {
 
     <form class="email-form" id="emailForm" onsubmit="handleSubmit(event)">
       <input type="email" id="emailInput" placeholder="your@email.com" required>
+      <input type="text" id="websiteField" class="hp-field" name="website" tabindex="-1" autocomplete="off">
+      <input type="hidden" id="startedAtField">
+      <div class="turnstile-wrap" id="turnstileWrap">
+        <div id="turnstileWidget"></div>
+      </div>
       <button type="submit" id="submitBtn">Join waitlist</button>
     </form>
 
@@ -894,10 +916,46 @@ footer {
 </footer>
 
 <script>
+let turnstileWidgetId = null;
+let turnstileSiteKey = null;
+const turnstileWrap = document.getElementById('turnstileWrap');
+const startedAtField = document.getElementById('startedAtField');
+if (startedAtField) startedAtField.value = String(Date.now());
+
+async function initTurnstile() {
+  try {
+    const res = await fetch('/api/client-config');
+    const config = await res.json();
+    if (!config.turnstileSiteKey || !window.turnstile) return;
+    turnstileSiteKey = config.turnstileSiteKey;
+    turnstileWrap?.classList.add('is-ready');
+    turnstileWidgetId = window.turnstile.render('#turnstileWidget', {
+      sitekey: turnstileSiteKey,
+      theme: 'dark',
+      appearance: 'interaction-only'
+    });
+  } catch {}
+}
+
+window.addEventListener('load', () => {
+  const interval = window.setInterval(() => {
+    if (!window.turnstile) return;
+    window.clearInterval(interval);
+    initTurnstile();
+  }, 150);
+  window.setTimeout(() => window.clearInterval(interval), 6000);
+});
+
 function handleSubmit(e) {
   e.preventDefault();
   const email = document.getElementById('emailInput').value.trim();
   if (!email) return;
+  const website = document.getElementById('websiteField').value.trim();
+  const startedAt = Number(document.getElementById('startedAtField').value || Date.now());
+  const turnstileToken =
+    turnstileWidgetId !== null && window.turnstile
+      ? window.turnstile.getResponse(turnstileWidgetId)
+      : '';
 
   const btn = document.getElementById('submitBtn');
   const note = document.getElementById('formNote');
@@ -905,10 +963,17 @@ function handleSubmit(e) {
   btn.textContent = 'Adding...';
   if (note) note.textContent = 'Checking your place on the waitlist...';
 
+  if (turnstileSiteKey && !turnstileToken) {
+    btn.disabled = false;
+    btn.textContent = 'Join waitlist';
+    if (note) note.textContent = 'Please complete the security check.';
+    return;
+  }
+
   fetch('/api/waitlist', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ email })
+    body: JSON.stringify({ email, website, startedAt, turnstileToken })
   }).then(async (r) => {
     const data = await r.json();
     if (!r.ok || !data.success) {
@@ -919,6 +984,7 @@ function handleSubmit(e) {
     btn.disabled = false;
     btn.textContent = 'Join waitlist';
     if (note) note.textContent = 'Waitlist signup is not connected in this local preview yet. Deploy the Worker to turn it on.';
+    if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
   });
 }
 
