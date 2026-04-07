@@ -848,7 +848,7 @@ footer {
 <section class="waitlist-section" id="waitlist">
   <div class="waitlist-container">
     <h2>Be the first to <em>see it.</em></h2>
-    <p>Join the waitlist for launch updates, first access to the full reveal, and pricing details when they are announced.</p>
+    <p>Join the waitlist for launch updates, first access to the full reveal, and pricing details when they are announced. No spam.</p>
 
     <form class="email-form" id="emailForm" onsubmit="handleSubmit(event)">
       <input type="email" id="emailInput" placeholder="your@email.com" required>
@@ -860,7 +860,6 @@ footer {
       <span id="successCopy">We'll email you the moment VeoClara goes live.</span>
     </div>
 
-    <p class="form-note" id="formNote">No spam. Just one email when we launch.</p>
   </div>
 </section>
 
@@ -904,7 +903,7 @@ function handleSubmit(e) {
   const note = document.getElementById('formNote');
   btn.disabled = true;
   btn.textContent = 'Adding...';
-  note.textContent = 'Checking your place on the waitlist...';
+  if (note) note.textContent = 'Checking your place on the waitlist...';
 
   fetch('/api/waitlist', {
     method: 'POST',
@@ -919,7 +918,7 @@ function handleSubmit(e) {
   }).catch(() => {
     btn.disabled = false;
     btn.textContent = 'Join waitlist';
-    note.textContent = 'Waitlist signup is not connected in this local preview yet. Deploy the Worker to turn it on.';
+    if (note) note.textContent = 'Waitlist signup is not connected in this local preview yet. Deploy the Worker to turn it on.';
   });
 }
 
@@ -929,9 +928,11 @@ function showSuccess(message = "We'll email you the moment VeoClara goes live.",
   msg.style.display = 'block';
   document.getElementById('successTitle').textContent = alreadyJoined ? "You are already on the waitlist." : "You have been added to the waitlist.";
   document.getElementById('successCopy').textContent = message;
-  document.getElementById('formNote').textContent = alreadyJoined
-    ? 'We already had your email on file, so you are still on the waitlist.'
-    : 'No spam. Just launch updates and the pricing announcement.';
+  if (document.getElementById('formNote')) {
+    document.getElementById('formNote').textContent = alreadyJoined
+      ? 'We already had your email on file, so you are still on the waitlist.'
+      : '';
+  }
   localStorage.setItem('vp_waitlisted', JSON.stringify({ alreadyJoined }));
 }
 
