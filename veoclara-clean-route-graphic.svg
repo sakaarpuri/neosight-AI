@@ -65,16 +65,4 @@
     <circle cx="468" cy="271" r="6"/>
   </g>
 
-  <g opacity="0.9">
-    <rect x="84" y="82" width="110" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
-    <text x="139" y="100" text-anchor="middle" fill="#E8DCC4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">SCAN MODE</text>
-
-    <rect x="444" y="82" width="112" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
-    <text x="500" y="100" text-anchor="middle" fill="#8BE3A8" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">ROUTE CLEAR</text>
-  </g>
-
-  <g opacity="0.82">
-    <text x="86" y="337" fill="#7E8884" font-family="Inter, sans-serif" font-size="12" letter-spacing="1.1">UNCLEAN PATCHES DETECTED</text>
-    <text x="86" y="356" fill="#F0E2C4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.6">Cleaner walking path highlighted ahead</text>
-  </g>
 </svg>

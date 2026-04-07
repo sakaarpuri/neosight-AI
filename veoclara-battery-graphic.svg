@@ -14,8 +14,4 @@
   <rect x="226" y="158" width="160" height="66" rx="14" fill="#8BE3A8"/>
   <path d="M302 170L274 204H304L292 226L346 186H316L328 170H302Z" fill="#0F1312"/>
   <path d="M168 290C212 270 264 258 320 258C376 258 428 270 472 290" stroke="#E8DCC4" stroke-opacity="0.18" stroke-width="2"/>
-  <rect x="84" y="82" width="130" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
-  <text x="149" y="100" text-anchor="middle" fill="#E8DCC4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">POWER BUDGET</text>
-  <text x="88" y="338" fill="#7E8884" font-family="Inter, sans-serif" font-size="12" letter-spacing="1.1">ALL-DAY POWER</text>
-  <text x="88" y="358" fill="#F0E2C4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.6">Fast recharge, long-use runtime</text>
 </svg>

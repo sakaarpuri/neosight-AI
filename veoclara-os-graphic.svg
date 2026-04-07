@@ -14,13 +14,8 @@
   <path d="M204 202H436" stroke="#E8DCC4" stroke-opacity="0.12"/>
   <path d="M204 234H380" stroke="#E8DCC4" stroke-opacity="0.12"/>
   <rect x="214" y="162" width="84" height="54" rx="14" fill="#1A2320" stroke="#2E3E37"/>
-  <text x="256" y="197" text-anchor="middle" fill="#8BE3A8" font-family="Hanken Grotesk, Inter, sans-serif" font-size="26" font-weight="700">OS</text>
   <circle cx="392" cy="188" r="34" stroke="#E8DCC4" stroke-opacity="0.36" stroke-width="2"/>
   <circle cx="392" cy="188" r="16" fill="#E8DCC4"/>
   <path d="M392 154V222" stroke="#E8DCC4" stroke-opacity="0.16"/>
   <path d="M358 188H426" stroke="#E8DCC4" stroke-opacity="0.16"/>
-  <rect x="84" y="82" width="120" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
-  <text x="144" y="100" text-anchor="middle" fill="#E8DCC4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">VEOCLARA OS</text>
-  <text x="88" y="338" fill="#7E8884" font-family="Inter, sans-serif" font-size="12" letter-spacing="1.1">ON-DEVICE ENGINE</text>
-  <text x="88" y="358" fill="#F0E2C4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.6">Image pipeline optimized locally</text>
 </svg>

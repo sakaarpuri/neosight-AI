@@ -20,8 +20,4 @@
   <path d="M320 98V314" stroke="#E8DCC4" stroke-opacity="0.12"/>
   <path d="M200 144C230 128 269 118 320 118C371 118 410 128 440 144" stroke="#8BE3A8" stroke-width="10" stroke-linecap="round"/>
   <path d="M192 270C228 288 270 298 320 298C370 298 412 288 448 270" stroke="#8BE3A8" stroke-width="10" stroke-linecap="round"/>
-  <rect x="84" y="82" width="138" height="28" rx="14" fill="#1B211F" stroke="#38403D"/>
-  <text x="153" y="100" text-anchor="middle" fill="#E8DCC4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">ADAPTIVE VISION</text>
-  <text x="88" y="338" fill="#7E8884" font-family="Inter, sans-serif" font-size="12" letter-spacing="1.1">SCENE BALANCE</text>
-  <text x="88" y="358" fill="#F0E2C4" font-family="Hanken Grotesk, Inter, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.6">Clarity tuned frame by frame</text>
 </svg>
