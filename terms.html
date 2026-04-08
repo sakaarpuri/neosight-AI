@@ -46,9 +46,16 @@ nav .logo {
   font-weight:500;
   font-size:22px;
   letter-spacing: -0.05em;
-  text-decoration: none;
+  text-decoration: none !important;
   color: #d7f2f7;
   text-shadow: 0 0 18px rgba(215,242,247,0.08);
+}
+nav .logo:hover,
+nav .logo:focus,
+nav .logo:visited,
+nav .logo:active {
+  text-decoration: none !important;
+  color: #d7f2f7;
 }
 nav .logo span { color: inherit; }
 nav .nav-cta {
@@ -179,7 +186,7 @@ footer a:hover { color: var(--text); }
 </div>
 
 <footer>
-  <p><a href="index.html">Home</a> · <a href="prelaunch.html">Prelaunch</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+  <p><a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
 </footer>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "326bf2d1bbb44b959cb57b3d228585c0"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
