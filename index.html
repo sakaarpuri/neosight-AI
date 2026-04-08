@@ -393,7 +393,10 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   margin-top: 10px;
 }
 .feature-copy .feature-lead {
-  color: var(--text);
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.68;
+  font-weight: 500;
 }
 
 /* ============ SPECS ============ */
@@ -684,6 +687,13 @@ footer {
 .footer-bottom p {
   font-size: 11px; color: var(--text-dim); letter-spacing: 0.3px;
 }
+.footer-bottom .made-in-india {
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
@@ -926,7 +936,7 @@ footer {
   </div>
   <div class="footer-bottom">
     <p>© 2026 VeoClara. All rights reserved.</p>
-    <p>Made in India.</p>
+    <p class="made-in-india">Made in India.</p>
   </div>
 </footer>
 
