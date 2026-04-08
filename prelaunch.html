@@ -61,10 +61,18 @@ nav .logo {
   font-weight:500;
   font-size:22px;
   letter-spacing: -0.05em;
+  text-decoration: none !important;
   color: #d7f2f7;
   text-shadow: 0 0 18px rgba(215,242,247,0.08);
 }
 nav .logo span { color: inherit; }
+nav .logo:hover,
+nav .logo:focus,
+nav .logo:visited,
+nav .logo:active {
+  text-decoration: none !important;
+  color: #d7f2f7;
+}
 nav .nav-links { display:flex; gap:32px; align-items:center; }
 nav .nav-links a {
   color: var(--text-dim); text-decoration:none; font-size:13px;
@@ -372,6 +380,19 @@ nav .nav-cta:hover { background: var(--accent-bright); }
 .feature-card p {
   color: var(--text-dim); font-size: 15px; line-height: 1.68;
   margin-top: auto;
+}
+.feature-copy {
+  margin-top: auto;
+}
+.feature-copy p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.feature-copy p + p {
+  margin-top: 10px;
+}
+.feature-copy .feature-lead {
+  color: var(--text);
 }
 
 /* ============ SPECS ============ */
@@ -766,18 +787,21 @@ footer {
         <img src="veoclara-os-graphic.svg?v=2" alt="VeoClara OS engine graphic">
       </div>
       <h3>VeoClara OS</h3>
-      <p>VeoClara OS runs on the world's most powerful on-device imaging engine, morphing your view in real time to remove visible litter and pollution and replace it with a cleaner version of the world around you.</p>
+      <p>VeoClara OS is a powerful on-device imaging engine, morphing your view in real time to remove visible litter and pollution and replace it with a cleaner version of the world around you.</p>
     </div>
     <div class="feature-card">
       <div class="feature-graphic">
         <img src="veoclara-feather-light-graphic.svg?v=2" alt="Lightweight frame comfort graphic">
       </div>
       <h3>Feather-Light</h3>
-      <p>28g titanium frame. Wear them all day without fatigue. Barely there, always on.</p>
+      <div class="feature-copy">
+        <p class="feature-lead">28g titanium frame.</p>
+        <p>Wear them all day without fatigue. Barely there, always on.</p>
+      </div>
     </div>
     <div class="feature-card">
       <div class="feature-graphic">
-        <img src="veoclara-aware-audio-graphic.svg?v=1" alt="Discrete audio guidance graphic">
+        <img src="veoclara-aware-audio-graphic.svg?v=2" alt="Discrete audio guidance graphic">
       </div>
       <h3>Discrete Audio</h3>
       <p>Private voice cues and subtle directional prompts keep guidance close to you without breaking the calm of the street around you.</p>

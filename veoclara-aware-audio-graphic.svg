@@ -17,9 +17,9 @@
   <path d="M246 256C258 272 274 280 294 280H346C366 280 382 272 394 256" stroke="#E8DCC4" stroke-opacity="0.2" stroke-width="2"/>
   <rect x="278" y="158" width="84" height="108" rx="22" fill="#171D1B" stroke="#424A46"/>
   <rect x="302" y="184" width="36" height="56" rx="18" fill="#D7F2F7"/>
-  <path d="M212 198C230 182 246 176 264 176" stroke="#8BE3A8" stroke-width="8" stroke-linecap="round"/>
-  <path d="M198 160C226 136 250 126 280 126" stroke="#8BE3A8" stroke-opacity="0.8" stroke-width="7" stroke-linecap="round"/>
-  <path d="M428 176C446 176 462 182 480 198" stroke="#8BE3A8" stroke-width="8" stroke-linecap="round"/>
-  <path d="M412 126C442 126 466 136 494 160" stroke="#8BE3A8" stroke-opacity="0.8" stroke-width="7" stroke-linecap="round"/>
+  <path d="M222 212C240 194 258 186 280 186" stroke="#8BE3A8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M204 212C230 182 254 168 286 168" stroke="#8BE3A8" stroke-opacity="0.8" stroke-width="7" stroke-linecap="round"/>
+  <path d="M360 186C382 186 400 194 418 212" stroke="#8BE3A8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M354 168C386 168 410 182 436 212" stroke="#8BE3A8" stroke-opacity="0.8" stroke-width="7" stroke-linecap="round"/>
   <circle cx="320" cy="212" r="8" fill="#E8DCC4"/>
 </svg>
