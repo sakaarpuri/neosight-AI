@@ -676,6 +676,34 @@ footer {
   transition: color 0.2s;
 }
 .footer-col a:hover { color: var(--text); }
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-bright);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+.footer-social a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
 
 .footer-bottom {
   max-width: 1100px; margin: 0 auto;
@@ -916,6 +944,11 @@ footer {
     <div>
       <div class="footer-brand">veo<span>clara</span></div>
       <p class="footer-brand-desc">Building the next generation of personal visual devices. Our home is India.</p>
+      <div class="footer-social">
+        <a href="https://www.youtube.com/@VeoclaraAI" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://x.com/veoclaraai" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.instagram.com/veoclaraai?igsh=MWYzaW5uZ3VnYzQxaQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Product</h4>
