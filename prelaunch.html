@@ -189,7 +189,7 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   box-shadow: 0 28px 90px rgba(0,0,0,0.34);
   animation: fadeUp 1s ease-out 0.45s both;
   overflow: hidden;
-  aspect-ratio: 1604 / 1292;
+  aspect-ratio: 4 / 3;
 }
 .hero-product-fallback,
 .hero-product video {
@@ -207,7 +207,8 @@ nav .nav-cta:hover { background: var(--accent-bright); }
   inset: 18px;
   width: calc(100% - 36px);
   height: calc(100% - 36px);
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   z-index: 2;
   opacity: 0;
   transition: opacity 0.24s ease;
@@ -739,7 +740,7 @@ footer {
       <div class="hero-product">
         <img class="hero-product-fallback" src="veoclara-showcase-front.png" alt="VeoClara glasses">
         <video id="heroScrubVideo" muted playsinline webkit-playsinline preload="auto" poster="veoclara-showcase-front.png" aria-label="VeoClara showcase clip">
-          <source src="veoclara-showcase-video.mp4" type="video/mp4">
+          <source src="veoclara-golden-rotation.mp4" type="video/mp4">
         </video>
         <div class="hero-video-overlay">
           <div class="video-progress" id="heroVideoProgress">0%</div>
