@@ -51,11 +51,34 @@ body {
   padding: 12px 40px;
   font-size: 13px;
 }
+.brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
 .lang-bar .brand {
   font-family:'Hanken Grotesk','Inter',sans-serif; font-weight:700; font-size:18px;
   letter-spacing: -0.02em; color: var(--text);
+  flex-shrink: 0;
 }
 .lang-bar .brand span { color: var(--accent); }
+.lang-bar .issue-prompt {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(45,106,79,0.16);
+  background: rgba(255,255,255,0.76);
+  color: #2c2a25;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  box-shadow: 0 10px 28px rgba(44,36,24,0.07);
+  backdrop-filter: blur(16px);
+}
 .lang-options { display:flex; gap:4px; }
 .lang-options button {
   background: transparent; border:1px solid var(--border); color: var(--text-dim);
@@ -1054,6 +1077,12 @@ footer .footer-links a:hover { color: var(--text); }
 /* ============ RESPONSIVE ============ */
 @media(max-width:768px) {
   .lang-bar { padding:10px 20px; }
+  .brand-cluster { gap: 10px; }
+  .lang-bar .issue-prompt {
+    max-width: min(54vw, 250px);
+    padding: 7px 12px;
+    font-size: 11px;
+  }
   .hero, .reality, .form-section, .map-section { padding-left:20px; padding-right:20px; }
   .hero { min-height: 170vh; padding-top:104px; padding-bottom:22px; }
   .hero-shell { width: 100%; top: 72px; min-height: calc(100vh - 88px); }
@@ -1095,6 +1124,21 @@ footer .footer-links a:hover { color: var(--text); }
   .board { flex:unset; width:100%; max-width:360px; }
 }
 @media(max-width:480px) {
+  .lang-bar {
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .brand-cluster {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .lang-bar .issue-prompt {
+    max-width: min(72vw, 280px);
+    min-height: 0;
+    font-size: 10px;
+    line-height: 1.3;
+  }
   .hero { min-height: 158vh; padding-top:90px; padding-bottom:14px; }
   .hero-title {
     position: static;
@@ -1165,7 +1209,10 @@ footer .footer-links a:hover { color: var(--text); }
 <body>
 
 <div class="lang-bar">
-  <div class="brand">veoclara<span>.com</span></div>
+  <div class="brand-cluster">
+    <div class="brand">veoclara<span>.com</span></div>
+    <div class="issue-prompt">Why is clean India not an election issue?</div>
+  </div>
   <div class="lang-options">
     <button class="active" type="button">EN</button>
   </div>
