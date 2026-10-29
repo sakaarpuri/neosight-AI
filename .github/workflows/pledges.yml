@@ -23,5 +23,6 @@ jobs:
       - run: npm test
       - run: node --check ../campaign.js
       - run: node --check ../product-media.js
+      - run: node ../scripts/build-pages.mjs
       - run: npx wrangler deploy --config wrangler.toml --dry-run
       - run: npx wrangler deploy --config ../wrangler.jsonc --dry-run
