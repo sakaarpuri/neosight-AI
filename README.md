@@ -67,6 +67,11 @@ the public asset directory. For an empty local email-waitlist database only, run
 
 ## Production activation, in order
 
+The root `wrangler.jsonc` describes the static `veoclara` Worker used by the
+connected build job. `.assetsignore` allows only public HTML, frontend scripts
+and the referenced brand media. The `worker/wrangler.toml` configuration is the
+separate `veoclara-api` service; do not deploy one configuration as the other.
+
 Production is **not** activated by this branch alone. Static Pages deployment and
 the API Worker are separate. The existing email waitlist's `TURNSTILE_*` settings
 are intentionally unchanged.
