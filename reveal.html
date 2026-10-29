@@ -95,7 +95,6 @@ body {
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
 @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-@keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-12px) rotate(1deg)} }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
@@ -127,14 +126,60 @@ body {
 
 .hero-glasses {
   position: relative;
-  width: min(80vw, 700px);
+  width: min(100%, 860px);
   margin: 0 auto 40px;
-  animation: fadeInUp 1s ease-out 0.6s both;
 }
-.hero-glasses img {
-  width: 100%;
-  filter: drop-shadow(0 20px 60px rgba(197,255,62,0.08));
-  animation: float 6s ease-in-out infinite;
+.product-frame {
+  position: relative;
+  padding: 18px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(242,238,231,0.96) 58%, rgba(221,215,204,0.92) 100%);
+  border: 1px solid rgba(232,220,196,0.18);
+  box-shadow: 0 28px 90px rgba(0,0,0,0.34);
+}
+.product-frame img, .product-frame video {
+  position: absolute;
+  inset: 18px;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  display: block;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center;
+}
+.product-frame img { transition: opacity 0.24s ease; }
+.product-frame video {
+  opacity: 0;
+  filter: brightness(1.08) contrast(1.06);
+  transition: opacity 0.24s ease;
+}
+.product-frame.is-ready img { opacity: 0; }
+.product-frame.is-ready video { opacity: 1; }
+.product-motion-toggle {
+  position: absolute;
+  right: 34px;
+  bottom: 34px;
+  border: 1px solid rgba(232,220,196,0.3);
+  border-radius: 100px;
+  padding: 9px 15px;
+  background: rgba(15,13,10,0.8);
+  color: #f5f3ee;
+  font: 500 12px 'Hanken Grotesk', 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+.product-caption {
+  margin-top: 16px;
+  color: var(--text-dim);
+  font: 500 11px 'Hanken Grotesk', 'DM Sans', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+@media (max-width: 480px) {
+  .product-frame { padding: 10px; border-radius: 20px; }
+  .product-frame img, .product-frame video { inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); border-radius: 12px; }
+  .product-motion-toggle { right: 20px; bottom: 20px; padding: 8px 12px; }
 }
 
 .price-tag {
@@ -200,9 +245,23 @@ body {
 .stat-card .num { font-family:'Playfair Display',serif; font-size:36px; font-weight:800; color:var(--warm); }
 .stat-card .label { font-size:13px; color:var(--text-dim); margin-top:8px; line-height:1.4; }
 
+.product-detail {
+  width: min(100%, 650px);
+  margin: 40px auto 0;
+  padding: 24px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(242,238,231,0.96) 58%, rgba(221,215,204,0.92) 100%);
+  border: 1px solid rgba(232,220,196,0.18);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+}
 .glasses-side {
-  max-width: 500px; width:80%; margin:40px auto 0;
-  filter: drop-shadow(0 10px 40px rgba(0,0,0,0.4));
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+@media (max-width: 480px) {
+  .product-detail { padding: 12px; border-radius: 20px; }
 }
 
 /* ============ PLEDGE SECTION ============ */
@@ -426,9 +485,16 @@ body {
     <span class="glow" data-i18n="hero_glow">Clean India instead.</span>
   </h1>
   <p class="hero-sub" data-i18n="hero_sub">VeoClara won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.</p>
-  <div class="hero-glasses">
-    <img src="veoclara-showcase-front.png" alt="VeoClara Glasses">
-  </div>
+  <figure class="hero-glasses">
+    <div class="product-frame" id="productFrame">
+      <img src="veoclara-og.jpg" alt="VeoClara concept eyewear" width="1200" height="630" decoding="async">
+      <video id="revealProductVideo" muted playsinline loop preload="metadata" aria-hidden="true" disablepictureinpicture>
+        <source src="veoclara-golden-rotation.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="product-motion-toggle" id="productMotionToggle" hidden>Play rotation</button>
+    </div>
+    <figcaption class="product-caption">VeoClara · VC Alpha concept</figcaption>
+  </figure>
   <div class="price-tag">
     <span class="old">₹9,999</span>
     <span class="free" data-i18n="free">FREE</span>
@@ -445,7 +511,9 @@ body {
   <h2 data-i18n="reveal_h2">India reached the Moon.<br>We haven't reached the drain.</h2>
   <p data-i18n="reveal_p">We build world-class metros, launch satellites, process billions in digital payments — and walk past open garbage every single day. The contrast isn't funny anymore.</p>
 
-  <img src="veoclara-showcase-side.png" alt="VeoClara Side View" class="glasses-side" loading="lazy" decoding="async">
+  <figure class="product-detail">
+    <img src="veoclara-showcase-side.png" alt="VeoClara concept eyewear, side detail" class="glasses-side" width="2304" height="1856" loading="lazy" decoding="async">
+  </figure>
 </section>
 
 <!-- PLEDGE SECTION -->
@@ -769,5 +837,6 @@ document.querySelectorAll('.stat-card, .pledge-form, .leaderboard, .india-map-wr
 </script>
 
 <script src="/campaign.js" defer></script>
+<script src="/product-media.js" defer></script>
 </body>
 </html>

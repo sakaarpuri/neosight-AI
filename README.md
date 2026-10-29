@@ -8,6 +8,11 @@ The public reveal route is `/reveal`. `_redirects` preserves old reveal links.
 The existing internal D1 resource name is retained to keep its database binding
 and stored data intact; it is not the public site name.
 
+The reveal hero reuses the live site's golden rotation film and neutral product
+frame. `product-media.js` provides pause/play, pauses media off-screen or in a
+hidden tab, and respects reduced-motion/data-saving preferences. A lightweight
+existing VeoClara JPEG remains as the fallback when the film cannot load.
+
 ## Pledge behavior
 
 - `POST /api/submit` validates name (1–50 characters), one of 36 states/UTs,
@@ -84,7 +89,7 @@ are intentionally unchanged.
    legacy `submissions` table intact. It creates no sample records.
 5. Run `npm test`, `npm run typecheck` and
    `npx wrangler deploy --dry-run`, then deploy the API with `npm run deploy`.
-6. Deploy the reviewed static changes, including `campaign.js`, through the site's
+6. Deploy the reviewed static changes, including `campaign.js` and `product-media.js`, through the site's
    existing release process. Confirm `/reveal`, the legacy redirects, privacy and terms.
 7. Verify live empty/real totals, a controlled pledge and database read-back,
    same-request retry, a failure state and a mobile browser. Remove any controlled

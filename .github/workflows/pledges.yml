@@ -22,4 +22,5 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: node --check ../campaign.js
+      - run: node --check ../product-media.js
       - run: npx wrangler deploy --dry-run
