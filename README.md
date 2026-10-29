@@ -1,5 +1,12 @@
 # VeoClara
 
+The reveal homepage is live at https://veoclara.com/ following PR #2.
+Cloudflare Pages must build with `node scripts/build-pages.mjs` and publish
+`dist`, rather than the repository root. This uses the same `.assetsignore`
+allowlist as the static Worker, includes routing and security headers, and
+adds a real 404 page. Backend source, configuration and development files
+are excluded from both static publishing paths.
+
 The proposed homepage in `index.html` is the post-reveal VeoClara awareness
 campaign. `prelaunch.html` preserves the earlier waitlist teaser and is excluded
 from search indexing. `campaign.js` connects its pledge form
