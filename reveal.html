@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neo-Sight AI — Clean India Instead</title>
-<meta name="description" content="Neo-Sight AI is a satire and awareness project. Take the Saaf Nazar pledge for cleaner streets and hygienic living conditions across India.">
-<link rel="canonical" href="https://veoclara.com/Neolanding">
-<meta property="og:title" content="Clean India instead — Saaf Nazar Initiative">
+<title>VeoClara AI — Clean India Instead</title>
+<meta name="description" content="VeoClara is a satire and awareness project. Take the VeoClara pledge for cleaner streets and hygienic living conditions across India.">
+<link rel="canonical" href="https://veoclara.com/reveal">
+<meta property="og:title" content="VeoClara — Clean India Instead">
 <meta property="og:description" content="The glasses aren't real. Your pledge for a cleaner India can be.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://veoclara.com/Neolanding">
+<meta property="og:url" content="https://veoclara.com/reveal">
 <meta property="og:image" content="https://veoclara.com/veoclara-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VeoClara — Clean India Instead">
+<meta name="twitter:description" content="The glasses aren't real. Your pledge for a cleaner India can be.">
+<meta name="twitter:image" content="https://veoclara.com/veoclara-og.jpg">
 <link rel="icon" href="/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -51,8 +54,8 @@ body {
   padding: 10px 40px;
   font-size: 13px;
 }
-.lang-bar .brand { font-family:'Playfair Display',serif; font-weight:700; letter-spacing:1px; font-size:15px; }
-.lang-bar .brand span { color: var(--accent); }
+.lang-bar .brand { font-family:'Hanken Grotesk','DM Sans',sans-serif; font-weight:500; letter-spacing:-0.05em; font-size:22px; color:#d7f2f7; text-decoration:none; text-shadow:0 0 18px rgba(215,242,247,0.08); }
+.lang-bar .brand span { color: inherit; }
 .lang-options { display:flex; gap:6px; }
 .lang-options button {
   background: transparent; border:1px solid var(--border); color: var(--text-dim);
@@ -405,7 +408,7 @@ body {
 
 <!-- LANGUAGE BAR -->
 <div class="lang-bar">
-  <div class="brand">NEO-SIGHT <span>AI</span></div>
+  <a class="brand" href="/" aria-label="VeoClara home">veo<span>clara</span></a>
   <div class="lang-options">
     <button class="active" data-lang="en" onclick="setLang('en')">EN</button>
     <button data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
@@ -422,9 +425,9 @@ body {
     <span class="strike" data-i18n="hero_strike">Buy these glasses.</span><br>
     <span class="glow" data-i18n="hero_glow">Clean India instead.</span>
   </h1>
-  <p class="hero-sub" data-i18n="hero_sub">Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.</p>
+  <p class="hero-sub" data-i18n="hero_sub">VeoClara won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.</p>
   <div class="hero-glasses">
-    <img src="neo-sight glasses.png" alt="Neo-Sight AI Glasses">
+    <img src="veoclara-showcase-front.png" alt="VeoClara Glasses">
   </div>
   <div class="price-tag">
     <span class="old">₹9,999</span>
@@ -442,13 +445,13 @@ body {
   <h2 data-i18n="reveal_h2">India reached the Moon.<br>We haven't reached the drain.</h2>
   <p data-i18n="reveal_p">We build world-class metros, launch satellites, process billions in digital payments — and walk past open garbage every single day. The contrast isn't funny anymore.</p>
 
-  <img src="new glass angle 2.png" alt="Neo-Sight AI Side View" class="glasses-side" loading="lazy" decoding="async">
+  <img src="veoclara-showcase-side.png" alt="VeoClara Side View" class="glasses-side" loading="lazy" decoding="async">
 </section>
 
 <!-- PLEDGE SECTION -->
 <section class="pledge" id="pledge">
   <h2 data-i18n="pledge_h2">Make your voice count.</h2>
-  <div class="initiative-name">SAAF NAZAR INITIATIVE</div>
+  <div class="initiative-name">VEOCLARA INITIATIVE</div>
 
   <form class="pledge-form" id="pledgeForm" aria-describedby="pledgePrivacy">
     <div class="pledge-statement">
@@ -611,23 +614,23 @@ body {
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="tagline" data-i18n="footer_tagline">"Neo-Sight AI is not a real product. The dirt is."</div>
+  <div class="tagline" data-i18n="footer_tagline">"VeoClara is not a real product. The dirt is."</div>
   <div class="disclaimer" data-i18n="footer_disclaimer">
     This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter.
     There is only the question: if India can build what it has built — why does the street outside still look like that?
   </div>
   <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="mailto:hello@veoclara.com">Contact</a></p>
-  <div class="credits">Saaf Nazar Initiative — A citizen-led awareness project</div>
+  <div class="credits">VeoClara Initiative — A citizen-led awareness project</div>
 </footer>
 
 <script>
 // ============ SHARE ============
 function shareTwitter() {
-  const text = encodeURIComponent("I just pledged for a cleaner India through the Saaf Nazar Initiative. Neo-Sight AI glasses won't clean our streets — but we can. Take the pledge:");
-  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`);
+  const text = encodeURIComponent("I just pledged for a cleaner India through the VeoClara Initiative. VeoClara glasses won't clean our streets — but we can. Take the pledge:");
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(new URL('/reveal', window.location.origin).href)}`);
 }
 function shareWA() {
-  const text = encodeURIComponent("I just pledged for a cleaner India. Neo-Sight AI glasses aren't real — but the dirt is. Take the pledge: " + window.location.href);
+  const text = encodeURIComponent("I just pledged for a cleaner India. VeoClara glasses aren't real — but the dirt is. Take the pledge: " + new URL('/reveal', window.location.origin).href);
   window.open(`https://wa.me/?text=${text}`);
 }
 function copyLink() {
@@ -635,7 +638,7 @@ function copyLink() {
     document.getElementById('shareStatus').textContent = 'Copy the address from your browser to share this page.';
     return;
   }
-  navigator.clipboard.writeText(new URL('/Neolanding', window.location.origin).href).then(() => {
+  navigator.clipboard.writeText(new URL('/reveal', window.location.origin).href).then(() => {
     document.getElementById('shareStatus').textContent = 'Link copied.';
   }).catch(() => { document.getElementById('shareStatus').textContent = 'Could not copy the link. Copy the address from your browser instead.'; });
 }
@@ -646,7 +649,7 @@ const translations = {
     badge: "This is not a real product",
     hero_strike: "Buy these glasses.",
     hero_glow: "Clean India instead.",
-    hero_sub: "Neo-Sight AI won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.",
+    hero_sub: "VeoClara won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.",
     free: "FREE",
     cta: "Take the pledge instead →",
     reveal_label: "The reality",
@@ -663,14 +666,14 @@ const translations = {
     map_sub: "Every saved pledge helps show that this matters.",
     counter_label: "PLEDGES AND COUNTING",
     lb_title: "By State", lb_sub: "pledges",
-    footer_tagline: '"Neo-Sight AI is not a real product. The dirt is."',
+    footer_tagline: '"VeoClara is not a real product. The dirt is."',
     footer_disclaimer: 'This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter. There is only the question: if India can build what it has built — why does the street outside still look like that?'
   },
   hi: {
     badge: "यह एक असली उत्पाद नहीं है",
     hero_strike: "ये चश्मा खरीदो।",
     hero_glow: "इसके बजाय भारत साफ़ करो।",
-    hero_sub: "Neo-Sight AI आपकी सड़कें साफ़ नहीं करेगा। कोई चश्मा नहीं करेगा। लेकिन आपने क्लिक किया — इसका मतलब आपको फ़र्क पड़ता है। 20 सेकंड दीजिए।",
+    hero_sub: "VeoClara आपकी सड़कें साफ़ नहीं करेगा। कोई चश्मा नहीं करेगा। लेकिन आपने क्लिक किया — इसका मतलब आपको फ़र्क पड़ता है। 20 सेकंड दीजिए।",
     free: "मुफ़्त",
     cta: "इसके बजाय संकल्प लें →",
     reveal_label: "हक़ीक़त",
@@ -687,14 +690,14 @@ const translations = {
     map_sub: "हर सहेजा गया संकल्प दिखाता है: यह मायने रखता है।",
     counter_label: "संकल्प और बढ़ रहे हैं",
     lb_title: "राज्य अनुसार", lb_sub: "संकल्प",
-    footer_tagline: '"Neo-Sight AI एक असली उत्पाद नहीं है। गंदगी असली है।"',
+    footer_tagline: '"VeoClara एक असली उत्पाद नहीं है। गंदगी असली है।"',
     footer_disclaimer: 'यह एक <strong>व्यंग्य और जागरूकता परियोजना</strong> है। कोई चश्मा नहीं है। कोई AI फ़िल्टर नहीं है। बस एक सवाल है: अगर भारत वो सब बना सकता है जो उसने बनाया है — तो बाहर सड़क अभी भी वैसी क्यों है?'
   },
   ta: {
     badge: "இது உண்மையான தயாரிப்பு அல்ல",
     hero_strike: "இந்த கண்ணாடியை வாங்குங்கள்.",
     hero_glow: "அதற்கு பதிலாக இந்தியாவை சுத்தம் செய்யுங்கள்.",
-    hero_sub: "Neo-Sight AI உங்கள் தெருக்களை சுத்தம் செய்யாது. ஆனால் நீங்கள் கிளிக் செய்தீர்கள் — அதாவது உங்களுக்கு அக்கறை உள்ளது.",
+    hero_sub: "VeoClara உங்கள் தெருக்களை சுத்தம் செய்யாது. ஆனால் நீங்கள் கிளிக் செய்தீர்கள் — அதாவது உங்களுக்கு அக்கறை உள்ளது.",
     free: "இலவசம்",
     cta: "உறுதிமொழி எடுங்கள் →",
     reveal_label: "உண்மை",
@@ -706,14 +709,14 @@ const translations = {
     submit_btn: "நான் உறுதிமொழி எடுக்கிறேன்",
     success_h3: "நீங்கள் எண்ணப்பட்டீர்கள்.", success_p: "உங்கள் குரல் சேர்க்கப்பட்டது.",
     map_h2: "இந்தியா எங்கிருந்து பேசுகிறது", counter_label: "உறுதிமொழிகள்",
-    footer_tagline: '"Neo-Sight AI உண்மையான தயாரிப்பு அல்ல. அழுக்கு உண்மை."',
+    footer_tagline: '"VeoClara உண்மையான தயாரிப்பு அல்ல. அழுக்கு உண்மை."',
     footer_disclaimer: 'இது ஒரு <strong>நையாண்டி மற்றும் விழிப்புணர்வு திட்டம்</strong>.'
   },
   bn: {
     badge: "এটি একটি আসল পণ্য নয়",
     hero_strike: "এই চশমা কিনুন।",
     hero_glow: "এর বদলে ভারত পরিষ্কার করুন।",
-    hero_sub: "Neo-Sight AI আপনার রাস্তা পরিষ্কার করবে না। কোনো চশমাই করবে না। কিন্তু আপনি ক্লিক করেছেন — মানে আপনি চিন্তা করেন।",
+    hero_sub: "VeoClara আপনার রাস্তা পরিষ্কার করবে না। কোনো চশমাই করবে না। কিন্তু আপনি ক্লিক করেছেন — মানে আপনি চিন্তা করেন।",
     free: "বিনামূল্যে",
     cta: "এর বদলে প্রতিশ্রুতি নিন →",
     reveal_label: "বাস্তবতা",
@@ -725,7 +728,7 @@ const translations = {
     submit_btn: "আমি প্রতিশ্রুতি দিচ্ছি",
     success_h3: "আপনাকে গণনা করা হয়েছে।", success_p: "আপনার কণ্ঠ যোগ করা হয়েছে।",
     map_h2: "ভারত কোথা থেকে কথা বলছে", counter_label: "প্রতিশ্রুতি চলছে",
-    footer_tagline: '"Neo-Sight AI একটি আসল পণ্য নয়। ময়লা আসল।"',
+    footer_tagline: '"VeoClara একটি আসল পণ্য নয়। ময়লা আসল।"',
     footer_disclaimer: 'এটি একটি <strong>ব্যঙ্গ ও সচেতনতা প্রকল্প</strong>।'
   }
 };

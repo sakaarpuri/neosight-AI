@@ -1,8 +1,12 @@
-# Neo-Sight / VeoClara
+# VeoClara
 
-The existing homepage is the VeoClara email waitlist. `Neolanding.html` is the
-post-reveal Saaf Nazar awareness campaign. `campaign.js` connects its pledge form
+The existing homepage is the VeoClara email waitlist. `reveal.html` is the
+post-reveal VeoClara awareness campaign. `campaign.js` connects its pledge form
 to the separate pledge service in the existing Cloudflare API Worker.
+
+The public reveal route is `/reveal`. `_redirects` preserves old reveal links.
+The existing internal D1 resource name is retained to keep its database binding
+and stored data intact; it is not the public site name.
 
 ## Pledge behavior
 
@@ -81,7 +85,7 @@ are intentionally unchanged.
 5. Run `npm test`, `npm run typecheck` and
    `npx wrangler deploy --dry-run`, then deploy the API with `npm run deploy`.
 6. Deploy the reviewed static changes, including `campaign.js`, through the site's
-   existing release process. Confirm the post-reveal route, privacy and terms.
+   existing release process. Confirm `/reveal`, the legacy redirects, privacy and terms.
 7. Verify live empty/real totals, a controlled pledge and database read-back,
    same-request retry, a failure state and a mobile browser. Remove any controlled
    test record by its ID; the delete trigger automatically adjusts totals. Allow

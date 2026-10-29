@@ -8,7 +8,8 @@
   const status = document.getElementById('pledgeStatus');
   const retrySecurity = document.getElementById('retrySecurity');
   const statsStatus = document.getElementById('statsStatus');
-  const storageKey = 'neosight_pledge_v1';
+  const storageKey = 'veoclara_pledge_v1';
+  const legacyStorageKey = 'neosight_pledge_v1';
   let busy = false;
   let widgetId = null;
   let token = '';
@@ -171,7 +172,8 @@
     }
   });
 
-  const saved = readStorage(storageKey);
+  // Migrate confirmed receipts so the brand change does not ask returning visitors to pledge again.
+  const saved = readStorage(storageKey) || readStorage(legacyStorageKey);
   if (saved && typeof saved.requestId === 'string'
       && /^[0-9a-f-]{36}$/i.test(saved.requestId)
       && Array.from(state.options).some(option => option.value && option.value === saved.state)) showSaved(saved);
