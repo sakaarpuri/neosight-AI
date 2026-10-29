@@ -6,7 +6,16 @@ workers_dev = false
 # Update these route patterns if your production domain changes.
 routes = [
   { pattern = "veoclara.com/api/*", zone_name = "veoclara.com" },
-  { pattern = "www.veoclara.com/api/*", zone_name = "veoclara.com" }
+  { pattern = "www.veoclara.com/api/*", zone_name = "veoclara.com" },
+  # Return the API Worker's 404 before any stale Pages asset cache is read.
+  { pattern = "veoclara.com/worker/*", zone_name = "veoclara.com" },
+  { pattern = "www.veoclara.com/worker/*", zone_name = "veoclara.com" },
+  { pattern = "veoclara.com/scripts/*", zone_name = "veoclara.com" },
+  { pattern = "www.veoclara.com/scripts/*", zone_name = "veoclara.com" },
+  { pattern = "veoclara.com/README.md", zone_name = "veoclara.com" },
+  { pattern = "www.veoclara.com/README.md", zone_name = "veoclara.com" },
+  { pattern = "veoclara.com/wrangler.jsonc", zone_name = "veoclara.com" },
+  { pattern = "www.veoclara.com/wrangler.jsonc", zone_name = "veoclara.com" }
 ]
 
 [[d1_databases]]

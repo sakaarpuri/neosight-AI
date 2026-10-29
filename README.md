@@ -6,6 +6,9 @@ Cloudflare Pages must build with `node scripts/build-pages.mjs` and publish
 allowlist as the static Worker, includes routing and security headers, and
 adds a real 404 page. Backend source, configuration and development files
 are excluded from both static publishing paths.
+The API Worker also returns 404 for repository source paths (`worker/`,
+`scripts/`, `README.md` and `wrangler.jsonc`) before Pages caching. These routes
+prevent old assets from being served after removal from a static deployment.
 
 The proposed homepage in `index.html` is the post-reveal VeoClara awareness
 campaign. `prelaunch.html` preserves the earlier waitlist teaser and is excluded
