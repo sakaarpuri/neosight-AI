@@ -1,0 +1,5 @@
+# Local development only. These public Cloudflare testing keys must never be deployed.
+PLEDGE_TURNSTILE_SITE_KEY="1x00000000000000000000AA"
+PLEDGE_TURNSTILE_SECRET="1x0000000000000000000000000000000AA"
+# Replace with an independently generated random value (at least 32 characters).
+PLEDGE_IP_SECRET="replace-with-a-long-random-local-secret-before-running"

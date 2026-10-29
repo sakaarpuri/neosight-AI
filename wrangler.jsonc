@@ -1,0 +1,10 @@
+{
+  "$schema": "./worker/node_modules/wrangler/config-schema.json",
+  "name": "veoclara",
+  "compatibility_date": "2026-04-08",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

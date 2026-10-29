@@ -1,0 +1,14 @@
+# Publish only reviewed public files from the root directory.
+*
+!/*.html
+!/campaign.js
+!/product-media.js
+!/favicon.png
+!/apple-touch-icon.png
+!/safari-pinned-tab.svg
+!/veoclara-*.svg
+!/veoclara-showcase-front.png
+!/veoclara-showcase-side.png
+!/veoclara-og.png
+!/veoclara-og.jpg
+!/veoclara-golden-rotation.mp4

@@ -1,8 +1,13 @@
+import { handlePledge, handlePledgeStats } from './pledges.ts';
+
 export interface Env {
   DB: D1Database;
   STATS?: KVNamespace;
   TURNSTILE_SECRET?: string;
   TURNSTILE_SITE_KEY?: string;
+  PLEDGE_IP_SECRET?: string;
+  PLEDGE_TURNSTILE_SECRET?: string;
+  PLEDGE_TURNSTILE_SITE_KEY?: string;
 }
 
 type WaitlistBody = {
@@ -157,6 +162,9 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
     return json({ success: false, error: "Invalid JSON body." }, 400);
   }
 
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return json({ success: false, error: 'Invalid JSON body.' }, 400);
+  }
   const email = typeof body.email === "string" ? normalizeEmail(body.email) : "";
   const turnstileToken = typeof body.turnstileToken === "string" ? body.turnstileToken : "";
   const honeypot = typeof body.website === "string" ? body.website.trim() : "";
@@ -294,13 +302,24 @@ async function handleHealth(env: Env): Promise<Response> {
 
 function handleClientConfig(env: Env): Response {
   return healthJson({
+    success: true,
     turnstileSiteKey: env.TURNSTILE_SITE_KEY || null,
+    pledgeTurnstileSiteKey: env.PLEDGE_TURNSTILE_SITE_KEY || null,
   });
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx?: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+
+    if (url.pathname === '/api/submit') {
+      return request.method === 'POST' ? handlePledge(request, env)
+        : healthJson({ success: false, error: 'Method not allowed.' }, 405);
+    }
+    if (url.pathname === '/api/stats') {
+      return request.method === 'GET' ? handlePledgeStats(request, env, ctx)
+        : healthJson({ success: false, error: 'Method not allowed.' }, 405);
+    }
 
     if (request.method === "OPTIONS") {
       return json({ success: true, position: 0, message: "ok" });

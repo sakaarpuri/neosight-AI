@@ -1,11 +1,13 @@
-# Neo-Sight AI — Saaf Nazar Initiative
-## Codex Handover Brief
+# VeoClara — VeoClara Initiative
+## Historical planning brief
+
+> Archived reference. The current brand is VeoClara at https://veoclara.com. Use the repository README for current implementation and deployment instructions; this early brief describes superseded architecture and demo plans.
 
 ---
 
 ## Project Overview
 
-Satirical landing page for a fake AI glasses product ("Neo-Sight AI") that redirects visitors into signing a cleanliness awareness statement for India. Users arrive expecting a product page, instead they see the satire and are asked to "show it matters" by submitting their name, state, and optional city. A live counter and state-wise leaderboard show participation across India.
+Satirical landing page for a fake AI glasses product ("VeoClara") that redirects visitors into signing a cleanliness awareness statement for India. Users arrive expecting a product page, instead they see the satire and are asked to "show it matters" by submitting their name, state, and optional city. A live counter and state-wise leaderboard show participation across India.
 
 ---
 
@@ -15,7 +17,7 @@ Satirical landing page for a fake AI glasses product ("Neo-Sight AI") that redir
 GitHub Repo
 ├── site/                    # Static site (Cloudflare Pages)
 │   ├── index.html           # Main landing page (provided)
-│   ├── neo-sight_glasses.png # Product image front (provided)
+│   ├── veoclara-showcase-front.png # Product image front (provided)
 │   └── new_glass_angle_2.png # Product image side (provided)
 ├── worker/                  # Cloudflare Worker (API)
 │   ├── src/
@@ -169,7 +171,7 @@ btn.addEventListener('click', async () => {
     document.getElementById('totalNum').textContent = data.total.toLocaleString();
     document.getElementById('doneCount').textContent = data.total.toLocaleString();
     // Set localStorage flag to prevent re-submission from same browser
-    localStorage.setItem('neosight_submitted', 'true');
+    localStorage.setItem('veoclara_submitted', 'true');
   } else {
     btn.disabled = false;
     btn.textContent = 'Count me in →';
@@ -180,7 +182,7 @@ btn.addEventListener('click', async () => {
 
 ### 3. On page load — check if already submitted
 ```javascript
-if (localStorage.getItem('neosight_submitted')) {
+if (localStorage.getItem('veoclara_submitted')) {
   // Hide form, show a "You've already been counted" message
   // Still show stats and leaderboard
 }
@@ -223,12 +225,12 @@ Jammu & Kashmir, Ladakh, Lakshadweep, Puducherry
 
 ### 1. Create D1 database
 ```bash
-npx wrangler d1 create neosight-db
+npx wrangler d1 create neosightai-db
 ```
 
 ### 2. Run migrations
 ```bash
-npx wrangler d1 execute neosight-db --file=./schema.sql
+npx wrangler d1 execute neosightai-db --file=./schema.sql
 ```
 
 ### 3. If using KV, create namespace
@@ -238,13 +240,13 @@ npx wrangler kv:namespace create STATS_CACHE
 
 ### 4. Configure wrangler.toml
 ```toml
-name = "neosight-api"
+name = "veoclara-api"
 main = "src/index.ts"
 compatibility_date = "2024-01-01"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "neosight-db"
+database_name = "neosightai-db"
 database_id = "<from step 1>"
 
 [[kv_namespaces]]
@@ -294,7 +296,7 @@ Generate a seed SQL script with INSERT statements. Names can be generic Indian f
 ## Files Provided
 
 1. `landing-light.html` — Complete landing page (rename to index.html)
-2. `neo-sight_glasses.png` — Product hero image (front angle)
+2. `veoclara-showcase-front.png` — Product hero image (front angle)
 3. `new_glass_angle_2.png` — Product image (side angle)
 
 ---

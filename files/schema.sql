@@ -1,4 +1,4 @@
--- Neo-Sight AI / Saaf Nazar Initiative
+-- VeoClara / VeoClara Initiative
 -- D1 Database Schema
 
 CREATE TABLE IF NOT EXISTS submissions (
