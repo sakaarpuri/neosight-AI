@@ -56,14 +56,14 @@ with a D1 adapter and mocked external CAPTCHA verification.
 Serve a directory containing the public root HTML/JS/images with Wrangler assets:
 
 ```sh
-npx wrangler dev --local --host localhost --port 8787 --assets /absolute/path/to/public-assets
+npx wrangler dev --config wrangler.toml --local --host localhost --port 8787 --assets /absolute/path/to/public-assets
 ```
 
 Use `--host localhost`: without it Wrangler rewrites requests to the configured
 production route hostname, and the production guard correctly rejects test keys.
 Do not include `worker/`, `files/`, `.git/`, environment files or node_modules in
 the public asset directory. For an empty local email-waitlist database only, run
-`npx wrangler d1 execute neosightai-db --local --file=schema.sql` as well.
+`npx wrangler d1 execute neosightai-db --config wrangler.toml --local --file=schema.sql` as well.
 
 ## Production activation, in order
 
@@ -82,9 +82,9 @@ are intentionally unchanged.
 3. Set these new Worker secrets from `worker/`, without putting values in Git:
 
    ```sh
-   npx wrangler secret put PLEDGE_TURNSTILE_SITE_KEY
-   npx wrangler secret put PLEDGE_TURNSTILE_SECRET
-   openssl rand -hex 32 | npx wrangler secret put PLEDGE_IP_SECRET
+   npx wrangler secret put --config wrangler.toml PLEDGE_TURNSTILE_SITE_KEY
+   npx wrangler secret put --config wrangler.toml PLEDGE_TURNSTILE_SECRET
+   openssl rand -hex 32 | npx wrangler secret put --config wrangler.toml PLEDGE_IP_SECRET
    ```
 
    Keep the IP secret stable: rotating it changes duplicate fingerprints.
@@ -93,7 +93,7 @@ are intentionally unchanged.
    `pledge_rate_limits`, their indexes and triggers. It leaves `waitlist` and any
    legacy `submissions` table intact. It creates no sample records.
 5. Run `npm test`, `npm run typecheck` and
-   `npx wrangler deploy --dry-run`, then deploy the API with `npm run deploy`.
+   `npx wrangler deploy --config wrangler.toml --dry-run`, then deploy the API with `npm run deploy`.
 6. Deploy the reviewed static changes, including `campaign.js` and `product-media.js`, through the site's
    existing release process. Confirm `/reveal`, the legacy redirects, privacy and terms.
 7. Verify live empty/real totals, a controlled pledge and database read-back,
