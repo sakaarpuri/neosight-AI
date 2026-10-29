@@ -264,6 +264,36 @@ body {
   .product-detail { padding: 12px; border-radius: 20px; }
 }
 
+/* ============ CAMPAIGN STORY ============ */
+.campaign-story { max-width:1200px; margin:0 auto; padding:80px 40px 100px; }
+.campaign-story .section-label { margin-bottom:20px; }
+.story-layout { display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:center; }
+.story-copy h2 { font-family:'Playfair Display',serif; font-size:clamp(30px,3.5vw,46px); line-height:1.18; letter-spacing:-0.025em; margin-bottom:26px; }
+.story-copy p { font-size:16px; line-height:1.85; color:var(--text-dim); margin-top:18px; max-width:60ch; }
+.story-copy .story-truth { color:var(--text); }
+.story-snapshots { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+.story-snapshots figure:nth-child(2) { margin-top:48px; }
+.story-snapshots a { color:var(--text); text-decoration:none; display:block; border-radius:12px; }
+.story-snapshots a:focus-visible, .story-action:focus-visible { outline:2px solid var(--accent); outline-offset:6px; }
+.story-snapshots img { width:100%; height:auto; display:block; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+.story-snapshots figcaption { font-size:12px; line-height:1.6; color:var(--text-dim); padding-top:12px; }
+.story-snapshots figcaption span { display:block; color:var(--text); font-size:13px; }
+.story-result { display:grid; grid-template-columns:1fr 1.65fr; gap:48px; align-items:center; border-top:1px solid var(--border); margin-top:64px; padding-top:36px; }
+.story-view-count { font-family:'Hanken Grotesk','DM Sans',sans-serif; font-size:clamp(64px,8vw,104px); line-height:1; letter-spacing:-0.065em; color:var(--accent); font-weight:500; }
+.story-view-label { display:block; font-size:13px; margin-top:10px; color:var(--text); }
+.story-result p { font-size:16px; line-height:1.8; color:var(--text-dim); max-width:62ch; }
+.story-result .story-source { font-size:11px; margin-top:14px; }
+.story-source a { color:var(--text-dim); text-underline-offset:3px; }
+.story-action { display:inline-block; margin-top:20px; color:var(--accent); font-size:14px; line-height:1.6; text-underline-offset:5px; }
+@media(max-width:800px) {
+  .campaign-story { padding:64px 24px 70px; }
+  .story-layout { grid-template-columns:1fr; gap:36px; }
+  .story-snapshots { max-width:520px; }
+  .story-result { grid-template-columns:1fr; gap:24px; margin-top:40px; padding-top:30px; }
+  .story-snapshots figure:nth-child(2) { margin-top:30px; }
+}
+@media(prefers-reduced-motion:reduce) { .campaign-story { scroll-behavior:auto; } }
+
 /* ============ PLEDGE SECTION ============ */
 .pledge {
   padding: 80px 40px 100px;
@@ -516,6 +546,41 @@ body {
   </figure>
 </section>
 
+<!-- THE STORY BEHIND THE CAMPAIGN -->
+<section class="campaign-story" id="the-story" aria-labelledby="storyHeading">
+  <div class="section-label" data-i18n="story_label">Behind the launch</div>
+  <div class="story-layout">
+    <div class="story-copy">
+      <h2 id="storyHeading" data-i18n="story_heading">What were VeoClara AI glasses like?</h2>
+      <p data-i18n="story_pitch">The pitch was simple: AI glasses that made litter and pollution disappear from your view. A polished frame, a product film and a futuristic interface made the idea feel like the next big launch.</p>
+      <p class="story-truth" data-i18n="story_reveal">It was an awareness stunt. The glasses and their dirt-removing software were fictional. We used the language of a tech launch to ask a real question: why imagine filtering out dirty streets instead of fixing them?</p>
+      <p data-i18n="story_purpose">The reveal brings that promise back to reality. A cleaner view needs cleaner streets — and a shared commitment to making them that way.</p>
+    </div>
+    <div class="story-snapshots" aria-label="Original Instagram campaign snapshots">
+      <figure>
+        <a href="https://www.instagram.com/veoclaraai/reel/DW3ODLKiMw5/" target="_blank" rel="noopener noreferrer">
+          <img src="/veoclara-social-reel.jpg" width="234" height="365" loading="lazy" decoding="async" alt="Original VeoClara Instagram reel cover showing golden glasses and Instagram’s 1.3M view count">
+          <figcaption><span data-i18n="story_reel">The original campaign reel</span><span data-i18n="story_open">View on Instagram ↗</span></figcaption>
+        </a>
+      </figure>
+      <figure>
+        <a href="https://www.instagram.com/veoclaraai/p/DW_MHSZiGGz/" target="_blank" rel="noopener noreferrer">
+          <img src="/veoclara-social-launch.jpg" width="311" height="415" loading="lazy" decoding="async" alt="Original VeoClara Instagram post contrasting an unfiltered street scene with an imagined cleaner view">
+          <figcaption><span data-i18n="story_post">The launch’s visual promise</span><span data-i18n="story_open">View on Instagram ↗</span></figcaption>
+        </a>
+      </figure>
+    </div>
+  </div>
+  <div class="story-result">
+    <div><div class="story-view-count">1.3M</div><span class="story-view-label" data-i18n="story_views">Views on the original Instagram reel</span></div>
+    <div>
+      <p data-i18n="story_impact">The original reel reached 1.3 million views on Instagram. That attention is where the campaign started; the next step is turning it into a real commitment to cleaner streets.</p>
+      <p class="story-source"><a href="https://www.instagram.com/veoclaraai/reels/" target="_blank" rel="noopener noreferrer" data-i18n="story_source">Source: @veoclaraai on Instagram · displayed count captured 29 October 2026</a></p>
+      <a class="story-action" href="#pledge" data-i18n="story_action">From watching to acting: take the pledge →</a>
+    </div>
+  </div>
+</section>
+
 <!-- PLEDGE SECTION -->
 <section class="pledge" id="pledge">
   <h2 data-i18n="pledge_h2">Make your voice count.</h2>
@@ -714,6 +779,18 @@ function copyLink() {
 // ============ i18n ============
 const translations = {
   en: {
+    story_label: "Behind the launch",
+    story_heading: "What were VeoClara AI glasses like?",
+    story_pitch: "The pitch was simple: AI glasses that made litter and pollution disappear from your view. A polished frame, a product film and a futuristic interface made the idea feel like the next big launch.",
+    story_reveal: "It was an awareness stunt. The glasses and their dirt-removing software were fictional. We used the language of a tech launch to ask a real question: why imagine filtering out dirty streets instead of fixing them?",
+    story_purpose: "The reveal brings that promise back to reality. A cleaner view needs cleaner streets — and a shared commitment to making them that way.",
+    story_reel: "The original campaign reel",
+    story_open: "View on Instagram ↗",
+    story_post: "The launch’s visual promise",
+    story_views: "Views on the original Instagram reel",
+    story_impact: "The original reel reached 1.3 million views on Instagram. That attention is where the campaign started; the next step is turning it into a real commitment to cleaner streets.",
+    story_source: "Source: @veoclaraai on Instagram · displayed count captured 29 October 2026",
+    story_action: "From watching to acting: take the pledge →",
     badge: "This is not a real product",
     hero_strike: "Buy these glasses.",
     hero_glow: "Clean India instead.",
@@ -738,6 +815,18 @@ const translations = {
     footer_disclaimer: 'This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter. There is only the question: if India can build what it has built — why does the street outside still look like that?'
   },
   hi: {
+    story_label: "लॉन्च के पीछे की कहानी",
+    story_heading: "VeoClara AI चश्मे का विचार क्या था?",
+    story_pitch: "विचार था ऐसा AI चश्मा जो आपकी नज़र से कचरा और प्रदूषण गायब कर दे। आकर्षक फ़्रेम, प्रोडक्ट फ़िल्म और भविष्य जैसा इंटरफ़ेस — सब कुछ एक बड़े टेक लॉन्च जैसा दिखाया गया।",
+    story_reveal: "यह जागरूकता फैलाने के लिए रचा गया अभियान था। चश्मा और गंदगी हटाने वाला सॉफ़्टवेयर काल्पनिक थे। मकसद एक असली सवाल पूछना था: गंदी सड़कों को ठीक करने के बजाय उन्हें नज़र से छिपाने की कल्पना क्यों करें?",
+    story_purpose: "अब बात हक़ीक़त की है। साफ़ नज़ारे के लिए साफ़ सड़कें चाहिए — और उन्हें साफ़ बनाने का साझा संकल्प।",
+    story_reel: "अभियान की मूल रील",
+    story_open: "Instagram पर देखें ↗",
+    story_post: "लॉन्च में दिखाया गया वादा",
+    story_views: "मूल Instagram रील के व्यूज़",
+    story_impact: "मूल रील को Instagram पर 13 लाख व्यूज़ मिले। अभियान ने ध्यान खींचा; अब अगला कदम उस ध्यान को साफ़ सड़कों के लिए असली संकल्प में बदलना है।",
+    story_source: "स्रोत: Instagram पर @veoclaraai · 29 अक्टूबर 2026 को दिखी संख्या",
+    story_action: "देखने से आगे बढ़ें: संकल्प लें →",
     badge: "यह एक असली उत्पाद नहीं है",
     hero_strike: "ये चश्मा खरीदो।",
     hero_glow: "इसके बजाय भारत साफ़ करो।",
@@ -762,6 +851,18 @@ const translations = {
     footer_disclaimer: 'यह एक <strong>व्यंग्य और जागरूकता परियोजना</strong> है। कोई चश्मा नहीं है। कोई AI फ़िल्टर नहीं है। बस एक सवाल है: अगर भारत वो सब बना सकता है जो उसने बनाया है — तो बाहर सड़क अभी भी वैसी क्यों है?'
   },
   ta: {
+    story_label: "அறிமுகத்தின் பின்னணி",
+    story_heading: "VeoClara AI கண்ணாடிகளின் யோசனை என்ன?",
+    story_pitch: "உங்கள் பார்வையிலிருந்து குப்பையையும் மாசையும் மறைக்கும் AI கண்ணாடிகள் என்பதே யோசனை. அழகான சட்டகம், தயாரிப்பு வீடியோ, எதிர்காலத் தோற்றமுள்ள இடைமுகம் ஆகியவை ஒரு பெரிய தொழில்நுட்ப அறிமுகம் போன்ற உணர்வை உருவாக்கின.",
+    story_reveal: "இது விழிப்புணர்வுக்காக உருவாக்கப்பட்ட பிரசாரம். கண்ணாடிகளும் அழுக்கை மறைக்கும் மென்பொருளும் கற்பனையானவை. ஒரு உண்மையான கேள்வியை எழுப்புவதே நோக்கம்: அழுக்கான தெருக்களைச் சீரமைப்பதற்குப் பதிலாக அவற்றைப் பார்வையிலிருந்து மறைக்க ஏன் நினைக்கிறோம்?",
+    story_purpose: "இப்போது உண்மையைப் பார்ப்போம். தூய்மையான காட்சிக்குத் தூய்மையான தெருக்களும், அவற்றை உருவாக்க அனைவரின் உறுதியும் தேவை.",
+    story_reel: "பிரசாரத்தின் அசல் ரீல்",
+    story_open: "Instagram-இல் பார்க்க ↗",
+    story_post: "அறிமுகத்தில் காட்டப்பட்ட வாக்குறுதி",
+    story_views: "அசல் Instagram ரீலின் பார்வைகள்",
+    story_impact: "அசல் ரீல் Instagram-இல் 13 லட்சம் பார்வைகளைப் பெற்றது. இந்தக் கவனத்தைத் தூய்மையான தெருக்களுக்கான உண்மையான உறுதிமொழியாக மாற்றுவதே அடுத்த படி.",
+    story_source: "ஆதாரம்: Instagram-இல் @veoclaraai · 29 அக்டோபர் 2026 அன்று காட்டப்பட்ட எண்ணிக்கை",
+    story_action: "பார்ப்பதிலிருந்து செயலுக்கு: உறுதிமொழி எடுங்கள் →",
     badge: "இது உண்மையான தயாரிப்பு அல்ல",
     hero_strike: "இந்த கண்ணாடியை வாங்குங்கள்.",
     hero_glow: "அதற்கு பதிலாக இந்தியாவை சுத்தம் செய்யுங்கள்.",
@@ -781,6 +882,18 @@ const translations = {
     footer_disclaimer: 'இது ஒரு <strong>நையாண்டி மற்றும் விழிப்புணர்வு திட்டம்</strong>.'
   },
   bn: {
+    story_label: "লঞ্চের পেছনের গল্প",
+    story_heading: "VeoClara AI চশমার ধারণাটা কী ছিল?",
+    story_pitch: "ধারণা ছিল এমন AI চশমা, যা আপনার দৃষ্টি থেকে আবর্জনা ও দূষণ মুছে দেবে। আকর্ষণীয় ফ্রেম, প্রোডাক্ট ফিল্ম আর ভবিষ্যতের মতো ইন্টারফেস দিয়ে এটিকে বড় প্রযুক্তি লঞ্চের রূপ দেওয়া হয়েছিল।",
+    story_reveal: "এটি ছিল সচেতনতা তৈরির একটি প্রচারাভিযান। চশমা ও ময়লা সরানোর সফটওয়্যার ছিল কাল্পনিক। উদ্দেশ্য ছিল একটি বাস্তব প্রশ্ন তোলা: নোংরা রাস্তা ঠিক করার বদলে তা চোখের আড়াল করার কথা কেন ভাবি?",
+    story_purpose: "এবার বাস্তবের দিকে তাকাই। পরিষ্কার দৃশ্যের জন্য পরিষ্কার রাস্তা দরকার — আর তা গড়ে তোলার যৌথ অঙ্গীকার।",
+    story_reel: "প্রচারের মূল রিল",
+    story_open: "Instagram-এ দেখুন ↗",
+    story_post: "লঞ্চে দেখানো প্রতিশ্রুতি",
+    story_views: "মূল Instagram রিলের ভিউ",
+    story_impact: "মূল রিলটি Instagram-এ ১৩ লক্ষ ভিউ পেয়েছে। প্রচারটি নজর কেড়েছে; এবার সেই মনোযোগকে পরিষ্কার রাস্তার জন্য বাস্তব প্রতিশ্রুতিতে বদলানোর পালা।",
+    story_source: "সূত্র: Instagram-এ @veoclaraai · ২৯ অক্টোবর ২০২৬-এ প্রদর্শিত সংখ্যা",
+    story_action: "দেখা থেকে কাজে: প্রতিশ্রুতি নিন →",
     badge: "এটি একটি আসল পণ্য নয়",
     hero_strike: "এই চশমা কিনুন।",
     hero_glow: "এর বদলে ভারত পরিষ্কার করুন।",
