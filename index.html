@@ -1,1192 +1,852 @@
 <!DOCTYPE html>
-<html lang="en" id="top">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VeoClara AI — See India Shine</title>
-<meta name="description" content="AI-powered smart eyewear, designed and tuned for India. Join the early access waitlist for our April 2026 launch.">
-<meta property="og:title" content="VeoClara AI — See India Shine">
-<meta property="og:description" content="AI-powered eyewear, tuned for India. Launching April 2026.">
+<title>VeoClara AI — Clean India Instead</title>
+<meta name="description" content="VeoClara is a satire and awareness project. Take the VeoClara pledge for cleaner streets and hygienic living conditions across India.">
+<link rel="canonical" href="https://veoclara.com/">
+<meta property="og:title" content="VeoClara — Clean India Instead">
+<meta property="og:description" content="The glasses aren't real. Your pledge for a cleaner India can be.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://veoclara.com/veoclara-og.png">
-<meta property="og:url" content="https://veoclara.com">
+<meta property="og:url" content="https://veoclara.com/">
+<meta property="og:image" content="https://veoclara.com/veoclara-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="VeoClara AI — See India Shine">
-<meta name="twitter:description" content="AI-powered eyewear, tuned for India. Launching April 2026.">
-<meta name="twitter:image" content="https://veoclara.com/veoclara-og.png">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d7f2f7">
-<meta name="theme-color" content="#0a0a0a">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<meta name="twitter:title" content="VeoClara — Clean India Instead">
+<meta name="twitter:description" content="The glasses aren't real. Your pledge for a cleaner India can be.">
+<meta name="twitter:image" content="https://veoclara.com/veoclara-og.jpg">
+<link rel="icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
   --bg: #0a0a0a;
-  --surface: #0f0f0f;
-  --surface2: #161616;
-  --border: #242424;
-  --border-bright: #333;
-  --text: #f5f3ee;
-  --text-dim: #888480;
-  --accent: #e8dcc4;
-  --accent-bright: #ffffff;
-  --success: #7dd88f;
+  --surface: #141414;
+  --surface2: #1c1c1c;
+  --border: #2a2a2a;
+  --text: #f0ece4;
+  --text-dim: #8a8580;
+  --accent: #c5ff3e;
+  --accent-dim: #6b8a1f;
+  --warm: #e8c37e;
+  --red: #ff4d4d;
+  --glass-gradient: linear-gradient(135deg, #2a2d30, #4a4d50, #2a2d30);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
 }
 
-/* ============ NAV ============ */
-nav {
+/* ============ LANGUAGE BAR ============ */
+.lang-bar {
   position: fixed; top:0; left:0; right:0; z-index:1000;
-  background: rgba(10,10,10,0.85);
+  background: rgba(10,10,10,0.92);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 48px;
+  padding: 10px 40px;
+  font-size: 13px;
 }
-nav .logo {
-  font-family:'Hanken Grotesk','Inter',sans-serif;
-  font-weight:500;
-  font-size:22px;
-  letter-spacing: -0.05em;
-  text-decoration: none !important;
-  color: #d7f2f7;
-  text-shadow: 0 0 18px rgba(215,242,247,0.08);
+.lang-bar .brand { font-family:'Hanken Grotesk','DM Sans',sans-serif; font-weight:500; letter-spacing:-0.05em; font-size:22px; color:#d7f2f7; text-decoration:none; text-shadow:0 0 18px rgba(215,242,247,0.08); }
+.lang-bar .brand span { color: inherit; }
+.lang-options { display:flex; gap:6px; }
+.lang-options button {
+  background: transparent; border:1px solid var(--border); color: var(--text-dim);
+  padding: 4px 12px; border-radius: 4px; cursor:pointer; font-size:12px;
+  font-family:'DM Sans',sans-serif; transition: all 0.3s;
 }
-nav .logo span { color: inherit; }
-nav .logo:hover,
-nav .logo:focus,
-nav .logo:visited,
-nav .logo:active {
-  text-decoration: none !important;
-  color: #d7f2f7;
+.lang-options button.active, .lang-options button:hover {
+  background: var(--accent); color: var(--bg); border-color: var(--accent);
 }
-nav .nav-links { display:flex; gap:32px; align-items:center; }
-nav .nav-links a {
-  color: var(--text-dim); text-decoration:none; font-size:13px;
-  letter-spacing:0.3px; transition: color 0.2s;
-}
-nav .nav-links a:hover { color: var(--text); }
-nav .nav-cta {
-  background: var(--accent); color: var(--bg);
-  padding: 10px 24px; border-radius: 100px;
-  font-size: 13px; font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-nav .nav-cta:hover { background: var(--accent-bright); }
 
 /* ============ HERO ============ */
 .hero {
   min-height: 100vh;
-  padding: 96px 40px 48px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  padding: 100px 40px 60px;
   position: relative;
-  display: flex;
-  align-items: center;
-}
-.hero.hero-locking {
-  touch-action: none;
-  overscroll-behavior: contain;
+  overflow: hidden;
 }
 .hero::before {
   content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(232,220,196,0.06) 0%, transparent 50%);
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(197,255,62,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(232,195,126,0.03) 0%, transparent 50%);
   pointer-events:none;
 }
 
-.hero-shell {
-  position: relative;
-  min-height: calc(100vh - 112px);
-  max-width: 1120px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 1;
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background: var(--surface2); border:1px solid var(--border);
+  padding: 6px 16px; border-radius: 100px; font-size:12px; color:var(--text-dim);
+  margin-bottom: 30px;
+  animation: fadeInDown 0.8s ease-out;
 }
+.hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation: pulse 2s infinite; }
 
-.hero-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.launch-tag {
-  display:inline-flex; align-items:center; gap:10px;
-  background: var(--surface2); border:1px solid var(--border-bright);
-  padding: 8px 20px; border-radius: 100px; font-size:12px; color:var(--text);
-  margin-bottom: 32px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  animation: fadeIn 0.8s ease-out;
-}
-.launch-tag .pulse {
-  width:6px; height:6px; border-radius:50%;
-  background:var(--success);
-  box-shadow: 0 0 10px var(--success);
-  animation: pulseGlow 2s infinite;
-}
-@keyframes pulseGlow {
-  0%,100% { opacity:1; box-shadow: 0 0 10px var(--success); }
-  50% { opacity:0.6; box-shadow: 0 0 4px var(--success); }
-}
-@keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 
 .hero h1 {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: clamp(44px, 8vw, 96px);
-  font-weight: 700;
-  line-height: 0.96;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 7vw, 90px);
+  font-weight: 800;
+  line-height: 1.05;
   margin-bottom: 24px;
-  letter-spacing: -0.07em;
-  animation: fadeUp 0.8s ease-out 0.15s both;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
 }
-.hero h1 em { color: var(--accent); font-style: normal; }
+.hero h1 .strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+  color: var(--text-dim);
+}
+.hero h1 .glow {
+  color: var(--accent);
+  text-shadow: 0 0 40px rgba(197,255,62,0.2);
+}
 
 .hero-sub {
-  font-size: clamp(16px, 1.9vw, 20px);
+  font-size: clamp(16px, 2vw, 20px);
   color: var(--text-dim);
-  max-width: 560px;
+  max-width: 600px;
   line-height: 1.6;
-  margin-bottom: 48px;
-  animation: fadeUp 0.8s ease-out 0.3s both;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
-.hero-stage {
-  width: min(100%, 920px);
-  margin: 16px auto 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.hero-glasses {
+  position: relative;
+  width: min(100%, 860px);
+  margin: 0 auto 40px;
 }
-
-.hero-product {
-  width: min(88vw, 860px);
-  margin: 0 auto 24px;
+.product-frame {
   position: relative;
   padding: 18px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   border-radius: 28px;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(242,238,231,0.96) 58%, rgba(221,215,204,0.92) 100%);
+  background: radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(242,238,231,0.96) 58%, rgba(221,215,204,0.92) 100%);
   border: 1px solid rgba(232,220,196,0.18);
   box-shadow: 0 28px 90px rgba(0,0,0,0.34);
-  animation: fadeUp 1s ease-out 0.45s both;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
 }
-.hero-product-fallback,
-.hero-product video {
-  width: 100%;
-  display: block;
-  border-radius: 18px;
-}
-.hero-product-fallback {
-  position: relative;
-  z-index: 1;
-  transition: opacity 0.24s ease;
-}
-.hero-product video {
+.product-frame img, .product-frame video {
   position: absolute;
   inset: 18px;
   width: calc(100% - 36px);
   height: calc(100% - 36px);
+  display: block;
+  border-radius: 18px;
   object-fit: cover;
   object-position: center;
-  z-index: 2;
+}
+.product-frame img { transition: opacity 0.24s ease; }
+.product-frame video {
   opacity: 0;
+  filter: brightness(1.08) contrast(1.06);
   transition: opacity 0.24s ease;
-  background: transparent;
-  filter: brightness(1.08) contrast(1.06) drop-shadow(0 30px 80px rgba(232,220,196,0.12));
 }
-.hero-product.hero-video-ready .hero-product-fallback {
-  opacity: 0;
-}
-.hero-product.hero-video-ready video {
-  opacity: 1;
-}
-.hero.hero-no-scrub .hero-video-overlay,
-.hero.hero-no-scrub .scroll-ind {
-  display: none;
-}
-.hero.hero-no-scrub .hero-product video {
-  display: none;
-}
-
-.hero-video-overlay {
+.product-frame.is-ready img { opacity: 0; }
+.product-frame.is-ready video { opacity: 1; }
+.product-motion-toggle {
   position: absolute;
-  inset: auto 18px 18px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  pointer-events: none;
+  right: 34px;
+  bottom: 34px;
+  border: 1px solid rgba(232,220,196,0.3);
+  border-radius: 100px;
+  padding: 9px 15px;
+  background: rgba(15,13,10,0.8);
+  color: #f5f3ee;
+  font: 500 12px 'Hanken Grotesk', 'DM Sans', sans-serif;
+  cursor: pointer;
 }
-
-.hero-video-note {
-  font-size: 12px;
-  color: rgba(15,15,15,0.78);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
-}
-
-.hero-model-note {
-  margin-top: 10px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.product-caption {
+  margin-top: 16px;
   color: var(--text-dim);
+  font: 500 11px 'Hanken Grotesk', 'DM Sans', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+@media (max-width: 480px) {
+  .product-frame { padding: 10px; border-radius: 20px; }
+  .product-frame img, .product-frame video { inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); border-radius: 12px; }
+  .product-motion-toggle { right: 20px; bottom: 20px; padding: 8px 12px; }
 }
 
-.hero-cta-row {
-  display:flex; gap:12px; justify-content:center; margin-top:8px;
-  flex-wrap:wrap;
-  animation: fadeUp 0.8s ease-out 0.6s both;
+.price-tag {
+  display: inline-flex; align-items:center; gap:16px;
+  font-size: 28px; font-weight: 700;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
 }
-.hero-cta-row a {
+.price-tag .old { text-decoration:line-through; color:var(--text-dim); font-size:22px; }
+.price-tag .free { color:var(--accent); font-family:'Playfair Display',serif; font-size:36px; }
+
+.hero-cta {
+  margin-top: 30px;
+  animation: fadeInUp 0.8s ease-out 1s both;
+}
+.hero-cta a {
   display:inline-block;
-  padding: 14px 36px; border-radius: 100px;
-  font-weight: 600; font-size: 14px;
-  text-decoration: none; letter-spacing: 0.3px;
+  background: var(--accent); color: var(--bg);
+  padding: 16px 48px; border-radius: 6px;
+  font-weight: 700; font-size: 16px;
+  text-decoration: none; letter-spacing: 0.5px;
   transition: all 0.3s;
 }
-.hero-cta-row .primary {
-  background: var(--accent); color: var(--bg);
-}
-.hero-cta-row .primary:hover { background: var(--accent-bright); transform:translateY(-1px); }
-.hero-cta-row .secondary {
-  background: transparent; color: var(--text);
-  border: 1px solid var(--border-bright);
-}
-.hero-cta-row .secondary:hover { border-color: var(--accent); color: var(--accent); }
+.hero-cta a:hover { transform:translateY(-2px); box-shadow: 0 8px 30px rgba(197,255,62,0.25); }
 
-.scroll-ind {
-  margin-top: 20px;
-  font-size: 11px; color: var(--text-dim);
-  letter-spacing: 3px; text-transform: uppercase;
-  animation: fadeIn 1.2s ease-out 1s both;
-}
-.video-label {
-  font-size: 12px; color: var(--text-dim);
-  letter-spacing: 2px; text-transform: uppercase;
-}
-.video-progress {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 110px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(232,220,196,0.12);
-  border: 1px solid rgba(232,220,196,0.18);
-  color: var(--accent);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.scroll-hint {
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  color:var(--text-dim); font-size:12px; letter-spacing:2px;
+  animation: fadeInUp 1s ease-out 1.4s both;
 }
 
-/* ============ FEATURES ============ */
-.features {
+/* ============ THE REVEAL SECTION ============ */
+.reveal {
   padding: 100px 40px;
-  border-top: 1px solid var(--border);
-}
-.section-eyebrow {
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 16px; font-weight: 500;
   text-align: center;
+  position: relative;
 }
-.section-title {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 700; line-height: 1.02;
-  text-align: center; margin-bottom: 60px;
-  letter-spacing: -0.06em;
+.reveal::before {
+  content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
-.section-title em { color: var(--accent); font-style: normal; }
+.section-label {
+  font-size:12px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--accent); margin-bottom:20px;
+}
+.reveal h2 {
+  font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,48px);
+  font-weight:700; margin-bottom:20px; line-height:1.2;
+}
+.reveal p {
+  color:var(--text-dim); max-width:650px; margin:0 auto 50px; line-height:1.7; font-size:17px;
+}
 
-.features-grid {
-  max-width: 980px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  align-items: stretch;
+.stats-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px; max-width:900px; margin:0 auto 60px;
 }
-.feature-card {
+.stat-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  padding:30px 20px; text-align:center;
+  transition: all 0.3s;
+}
+.stat-card:hover { border-color:var(--accent); transform:translateY(-4px); }
+.stat-card .num { font-family:'Playfair Display',serif; font-size:36px; font-weight:800; color:var(--warm); }
+.stat-card .label { font-size:13px; color:var(--text-dim); margin-top:8px; line-height:1.4; }
+
+.product-detail {
+  width: min(100%, 650px);
+  margin: 40px auto 0;
+  padding: 24px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(242,238,231,0.96) 58%, rgba(221,215,204,0.92) 100%);
+  border: 1px solid rgba(232,220,196,0.18);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+}
+.glasses-side {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+@media (max-width: 480px) {
+  .product-detail { padding: 12px; border-radius: 20px; }
+}
+
+/* ============ PLEDGE SECTION ============ */
+.pledge {
+  padding: 80px 40px 100px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.pledge h2 {
+  font-family:'Playfair Display',serif; font-size:clamp(26px,3.5vw,40px);
+  text-align:center; margin-bottom:10px;
+}
+.pledge .initiative-name {
+  text-align:center; color:var(--accent); font-size:14px;
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:40px;
+}
+
+.pledge-form {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 28px 22px;
+  padding: 40px;
+}
+
+.pledge-statement {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.pledge-statement::before {
+  content: '"'; position:absolute; top:-5px; left:16px;
+  font-family:'Playfair Display',serif; font-size:60px; color:var(--accent); opacity:0.3;
+}
+.pledge-checkbox {
+  display:flex; align-items:flex-start; gap:14px; cursor:pointer;
+}
+.pledge-checkbox input[type="checkbox"] {
+  appearance: none; width:22px; height:22px; min-width:22px;
+  border:2px solid var(--border); border-radius:4px;
+  background:transparent; cursor:pointer; margin-top:2px;
   transition: all 0.3s;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-  min-height: 340px;
 }
-.feature-card:hover {
-  border-color: var(--border-bright);
-  transform: translateY(-2px);
+.pledge-checkbox input[type="checkbox"]:checked {
+  background:var(--accent); border-color:var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230a0a0a'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  background-size: 16px; background-position:center; background-repeat:no-repeat;
 }
-.feature-card .icon {
-  width: 44px; height: 44px; border-radius: 12px;
-  background: var(--surface2);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 20px;
+.pledge-checkbox .pledge-text {
+  font-size:16px; line-height:1.5; color:var(--text);
 }
-.feature-card .feature-graphic {
-  width: min(100%, 232px);
-  height: 152px;
-  margin: 0 auto 22px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(232,220,196,0.12);
-  box-shadow: 0 16px 36px rgba(0,0,0,0.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(11, 14, 13, 0.72);
-}
-.feature-card .feature-graphic img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-}
-.feature-card .icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
-.feature-card h3 {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: 22px; font-weight: 700; margin-bottom: 10px;
-  letter-spacing: -0.04em;
-}
-.feature-card p {
-  color: var(--text-dim); font-size: 15px; line-height: 1.68;
-  margin-top: auto;
-}
-.feature-copy {
-  margin-top: auto;
-}
-.feature-copy p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.feature-copy p + p {
-  margin-top: 10px;
-}
-.feature-copy .feature-lead {
-  color: var(--text-dim);
-  font-size: 15px;
-  line-height: 1.68;
-  font-weight: 400;
-}
+.pledge-checkbox .pledge-text span { color:var(--accent); font-weight:600; }
 
-/* ============ SPECS ============ */
-.specs {
-  padding: 100px 40px;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-}
-.specs-container {
-  max-width: 1100px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  align-items: center;
-}
-.specs-image {
-  width: 100%;
-  padding: 20px;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(242,238,231,0.96) 58%, rgba(221,215,204,0.92) 100%);
-  border: 1px solid rgba(232,220,196,0.16);
-  box-shadow: 0 22px 64px rgba(0,0,0,0.24);
-}
-.specs-image img {
-  width: 100%;
-  filter: brightness(1.1) contrast(1.06) drop-shadow(0 20px 60px rgba(0,0,0,0.22));
-}
-.specs-content h2 {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 700; margin-bottom: 12px;
-  letter-spacing: -0.05em;
-}
-.specs-content h2 em { color: var(--accent); font-style: normal; }
-.specs-content > p {
-  color: var(--text-dim); margin-bottom: 32px; font-size: 15px;
-}
-.specs-content {
-  text-align: center;
-}
-.spec-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 24px;
-}
-.spec-row {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  display: flex; flex-direction: column; gap: 4px;
-  text-align: center;
-}
-.spec-row .label {
-  font-size: 11px; color: var(--text-dim);
-  letter-spacing: 1.5px; text-transform: uppercase;
-}
-.spec-row .value {
-  font-size: 15px; color: var(--text); font-weight: 500;
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-}
+.form-row { display:flex; gap:16px; margin-top:24px; }
+.form-row.single { flex-direction:column; }
 
-/* ============ PRICING ============ */
-.pricing {
-  padding: 100px 40px;
-  text-align: center;
-  border-top: 1px solid var(--border);
+.form-group {
+  flex:1; display:flex; flex-direction:column; gap:6px;
 }
-.price-card {
-  max-width: 520px; margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--border-bright);
-  border-radius: 20px;
-  padding: 48px 40px;
-  position: relative;
-  overflow: hidden;
+.form-group label {
+  font-size:12px; color:var(--text-dim); letter-spacing:1px; text-transform:uppercase;
 }
-.price-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+.form-group input, .form-group select {
+  background: var(--bg); border:1px solid var(--border); border-radius:8px;
+  padding: 12px 16px; color:var(--text); font-size:15px;
+  font-family:'DM Sans',sans-serif; outline:none; transition: border-color 0.3s;
 }
-.price-badge {
-  display: inline-block;
+.form-group input:focus, .form-group select:focus { border-color:var(--accent); }
+.form-group select { cursor:pointer; }
+.form-group select option { background:var(--bg); }
+
+.submit-btn {
+  width:100%; margin-top:30px;
   background: var(--accent); color: var(--bg);
-  padding: 6px 16px; border-radius: 100px;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  margin-bottom: 24px;
+  border:none; padding:16px; border-radius:8px;
+  font-size:16px; font-weight:700; cursor:pointer;
+  font-family:'DM Sans',sans-serif; letter-spacing:0.5px;
+  transition: all 0.3s;
 }
-.price-card h2 {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: 32px; font-weight: 700; margin-bottom: 16px;
-  letter-spacing: -0.04em;
-}
-.price-card .prices {
-  display: flex; align-items: baseline; justify-content: center; gap: 16px;
-  margin-bottom: 8px;
-}
-.price-card .mrp {
-  font-size: 20px; color: var(--text-dim); text-decoration: line-through;
-}
-.price-card .early {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: 56px; color: var(--accent);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-}
-.price-card .save {
-  color: var(--success); font-size: 14px; margin-bottom: 32px;
-}
-.price-perks {
-  text-align: left;
-  display: inline-block;
-  margin: 0 auto 32px;
-}
-.price-perks li {
-  list-style: none;
-  padding: 8px 0;
-  font-size: 14px;
-  color: var(--text-dim);
-  display: flex; align-items: center; gap: 12px;
-}
-.price-perks li::before {
-  content: '';
-  width: 16px; height: 16px; border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--accent);
-  position: relative;
-  flex-shrink: 0;
-}
-.price-perks li::after {
-  content: '✓';
-  position: absolute;
-  color: var(--accent);
-  font-size: 10px;
-  margin-left: 3px;
-  margin-top: 1px;
-}
-.price-perks li { position: relative; }
+.submit-btn:hover { box-shadow: 0 6px 25px rgba(197,255,62,0.3); transform:translateY(-1px); }
+.submit-btn:disabled { opacity:0.4; cursor:not-allowed; transform:none; box-shadow:none; }
 
-/* ============ WAITLIST FORM ============ */
-.waitlist-section {
-  padding: 100px 40px;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
+.signup-nudge {
+  text-align:center; margin-top:20px; font-size:13px; color:var(--text-dim);
 }
-.waitlist-container {
-  max-width: 560px; margin: 0 auto;
-  text-align: center;
+.signup-nudge a { color:var(--accent); text-decoration:underline; cursor:pointer; }
+
+[hidden] { display: none !important; }
+.pledge-status, .stats-status { min-height: 1.5em; margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--text); }
+.pledge-privacy { margin-top: 20px; font-size: 13px; line-height: 1.6; color: var(--text-dim); }
+.pledge-privacy a, .footer a { color: var(--accent); }
+.pledge-security { margin-top: 20px; min-height: 65px; }
+.retry-button { padding: 10px 16px; margin-top: 12px; color: var(--text); background: var(--surface2); border: 1px solid var(--text-dim); border-radius: 8px; cursor: pointer; }
+.hp-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.india-map-wrap { min-width: 0; width: 100%; }
+.map-caption { color: var(--text-dim); font-size: 12px; margin-top: 10px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-.waitlist-count {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--bg); border: 1px solid var(--border-bright);
-  padding: 8px 20px; border-radius: 100px;
-  font-size: 13px; color: var(--text-dim);
-  margin-bottom: 32px;
+/* ============ MAP SECTION ============ */
+.map-section {
+  padding: 80px 40px;
+  text-align:center;
+  position:relative;
 }
-.waitlist-count strong { color: var(--accent); font-weight: 600; }
-.waitlist-container h2 {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 700; margin-bottom: 16px;
-  letter-spacing: -0.06em;
-  line-height: 1.1;
+.map-section h2 {
+  font-family:'Playfair Display',serif; font-size:clamp(26px,3.5vw,40px);
+  margin-bottom:10px;
 }
-.waitlist-container h2 em { color: var(--accent); font-style: normal; }
-.waitlist-container > p {
-  color: var(--text-dim); margin-bottom: 36px; font-size: 16px;
+.map-section .sub { color:var(--text-dim); margin-bottom:40px; font-size:15px; }
+
+.map-container {
+  max-width: 800px; margin:0 auto;
+  display:flex; gap:40px; align-items:flex-start;
+  flex-wrap:wrap; justify-content:center;
 }
 
-.email-form {
-  display: flex; gap: 8px;
-  background: var(--bg);
-  border: 1px solid var(--border-bright);
-  border-radius: 100px;
-  padding: 6px;
-  transition: border-color 0.3s;
+.india-map-wrap {
+  flex:1; min-width:0; width:100%; max-width:500px;
+  position:relative;
 }
-.email-form:focus-within { border-color: var(--accent); }
-.email-form input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 12px 20px;
-  color: var(--text);
-  font-size: 15px;
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-}
-.email-form input::placeholder { color: var(--text-dim); }
-.email-form button {
-  background: var(--accent); color: var(--bg);
-  border: none;
-  padding: 12px 28px;
-  border-radius: 100px;
-  font-size: 14px; font-weight: 600;
-  cursor: pointer;
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.email-form button:hover { background: var(--accent-bright); }
-.email-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.india-map-wrap svg { width:100%; height:auto; }
 
-.form-success {
-  display: none;
-  padding: 20px;
-  background: rgba(125, 216, 143, 0.08);
-  border: 1px solid rgba(125, 216, 143, 0.3);
-  border-radius: 16px;
-  color: var(--success);
-  font-size: 15px;
-  margin-top: 16px;
+.leaderboard {
+  flex:0 0 260px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:24px;
+  text-align:left; max-height:500px; overflow-y:auto;
 }
-.turnstile-wrap {
-  display: none;
-  justify-content: center;
-  margin: 16px 0 6px;
+.leaderboard h3 {
+  font-family:'Playfair Display',serif; font-size:18px; margin-bottom:16px;
+  display:flex; justify-content:space-between; align-items:center;
 }
-.turnstile-wrap.is-ready {
-  display: flex;
+.leaderboard h3 span { font-size:12px; color:var(--text-dim); font-family:'DM Sans',sans-serif; }
+.lb-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 0; border-bottom:1px solid var(--border);
+  font-size:14px;
 }
-.hp-field {
-  position: absolute !important;
-  left: -9999px !important;
-  width: 1px !important;
-  height: 1px !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-.form-success strong { display: block; font-size: 17px; margin-bottom: 4px; }
-.form-success small { color: var(--text-dim); display: block; margin-top: 8px; font-size: 12px; }
+.lb-row:last-child { border:none; }
+.lb-row .rank { color:var(--text-dim); width:28px; font-size:12px; }
+.lb-row .state { flex:1; }
+.lb-row .count { color:var(--accent); font-weight:700; font-family:'Playfair Display',serif; font-size:16px; }
 
-.form-note {
-  font-size: 12px; color: var(--text-dim);
-  margin-top: 20px;
-  letter-spacing: 0.3px;
+.total-counter {
+  margin-top:40px;
+  font-family:'Playfair Display',serif;
 }
+.total-counter .big-num {
+  font-size:clamp(48px,8vw,80px); font-weight:800; color:var(--accent);
+  text-shadow: 0 0 60px rgba(197,255,62,0.15);
+}
+.total-counter .label { font-size:14px; color:var(--text-dim); font-family:'DM Sans',sans-serif; letter-spacing:2px; }
 
 /* ============ FOOTER ============ */
-footer {
-  padding: 60px 40px 40px;
-  border-top: 1px solid var(--border);
-  background: var(--bg);
+.footer {
+  text-align:center; padding:60px 40px 40px;
+  border-top:1px solid var(--border);
 }
-.footer-grid {
-  max-width: 1100px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
+.footer .disclaimer {
+  font-size:14px; color:var(--text-dim); max-width:500px; margin:0 auto 20px; line-height:1.6;
 }
-.footer-brand {
-  font-family: 'Hanken Grotesk', 'Inter', sans-serif;
-  font-size: 24px;
-  margin-bottom: 12px;
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  color: #d7f2f7;
-  text-shadow: 0 0 18px rgba(215,242,247,0.06);
+.footer .disclaimer strong { color:var(--text); }
+.footer .tagline {
+  font-family:'Playfair Display',serif; font-size:20px; color:var(--warm);
+  margin-bottom:30px;
 }
-.footer-brand span { color: inherit; }
-.footer-brand-desc {
-  color: var(--text-dim); font-size: 13px; max-width: 280px; line-height: 1.6;
-}
-.footer-col h4 {
-  font-size: 11px; color: var(--text);
-  letter-spacing: 1.5px; text-transform: uppercase;
-  margin-bottom: 16px; font-weight: 600;
-}
-.footer-col a {
-  display: block;
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 13px;
-  margin-bottom: 10px;
-  transition: color 0.2s;
-}
-.footer-col a:hover { color: var(--text); }
-.footer-social {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 18px;
-}
-.footer-social a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 96px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border-bright);
-  background: var(--surface);
-  color: var(--text);
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: all 0.2s ease;
-}
-.footer-social a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-1px);
-}
+.footer .credits { font-size:11px; color:var(--text-dim); opacity:0.5; }
 
-.footer-bottom {
-  max-width: 1100px; margin: 0 auto;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 16px;
+/* ============ SUCCESS STATE ============ */
+.success-message {
+  display:none; text-align:center; padding:40px 20px;
 }
-.footer-bottom p {
-  font-size: 11px; color: var(--text-dim); letter-spacing: 0.3px;
+.success-message .check {
+  width:64px; height:64px; border-radius:50%; background:var(--accent);
+  display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px;
 }
-.footer-bottom .made-in-india {
-  font-size: 16px;
-  color: var(--accent);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
+.success-message .check svg { width:32px; height:32px; }
+.success-message h3 { font-family:'Playfair Display',serif; font-size:24px; margin-bottom:10px; }
+.success-message p { color:var(--text-dim); font-size:15px; }
 
 /* ============ RESPONSIVE ============ */
-@media (max-width: 900px) {
-  .features-grid { grid-template-columns: 1fr 1fr; }
-  .specs-container { grid-template-columns: 1fr; gap: 40px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+@media(max-width:768px) {
+  .lang-bar { padding:10px 20px; }
+  .hero, .reveal, .pledge, .map-section { padding-left:20px; padding-right:20px; }
+  .form-row { flex-direction:column; }
+  .pledge-form { padding:24px; }
+  .map-container { flex-direction:column; align-items:center; }
+  .leaderboard { flex:unset; width:100%; max-width:400px; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
 }
-@media (max-width: 768px) {
-  nav { padding: 14px 24px; }
-  nav .nav-links { display: none; }
-  nav .nav-cta { padding: 8px 18px; font-size: 12px; }
-  .hero, .features, .specs, .pricing, .waitlist-section { padding-left: 24px; padding-right: 24px; }
-  .features, .specs, .pricing, .waitlist-section { padding-top: 70px; padding-bottom: 70px; }
-  .hero { min-height: 100vh; }
-  .hero-shell { min-height: calc(100vh - 96px); }
-  .hero-stage { width: 100%; }
-  .hero-product { width: min(100%, 92vw); padding: 14px; }
-  .hero-video-overlay { inset: auto 12px 12px 12px; }
-  .hero-video-note { font-size: 10px; letter-spacing: 0.16em; }
-  .features-grid { grid-template-columns: 1fr; }
-  .feature-card { min-height: 0; }
-  .spec-list { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-  .price-card { padding: 36px 28px; }
-  .email-form { flex-direction: column; border-radius: 16px; padding: 8px; }
-  .email-form button { width: 100%; }
+@media(max-width:480px) {
+  .stats-grid { grid-template-columns:1fr; }
+  .lang-options button { padding:4px 8px; font-size:11px; }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#top" class="logo">veo<span>clara</span></a>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#specs">Specs</a>
-    <a href="#pricing">Pricing</a>
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <a class="brand" href="/" aria-label="VeoClara home">veo<span>clara</span></a>
+  <div class="lang-options">
+    <button class="active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+    <button data-lang="ta" onclick="setLang('ta')">தமிழ்</button>
+    <button data-lang="bn" onclick="setLang('bn')">বাংলা</button>
   </div>
-  <a href="#waitlist" class="nav-cta">Join waitlist</a>
-</nav>
+</div>
 
+<main>
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-shell">
-    <div class="hero-copy">
-      <div class="launch-tag">
-        <span class="pulse"></span>
-        <span>LAUNCHING SOON</span>
-      </div>
-  <h1>See the beauty of India</h1>
-      <p class="hero-sub">The next generation of personal visual devices. Intelligently adaptive, sharply minimal, and tuned for India.</p>
+  <div class="hero-badge"><div class="dot"></div> <span data-i18n="badge">This is not a real product</span></div>
+  <h1>
+    <span class="strike" data-i18n="hero_strike">Buy these glasses.</span><br>
+    <span class="glow" data-i18n="hero_glow">Clean India instead.</span>
+  </h1>
+  <p class="hero-sub" data-i18n="hero_sub">VeoClara won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.</p>
+  <figure class="hero-glasses">
+    <div class="product-frame" id="productFrame">
+      <img src="veoclara-og.jpg" alt="VeoClara concept eyewear" width="1200" height="630" decoding="async">
+      <video id="revealProductVideo" muted playsinline loop preload="metadata" aria-hidden="true" disablepictureinpicture>
+        <source src="veoclara-golden-rotation.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="product-motion-toggle" id="productMotionToggle" hidden>Play rotation</button>
     </div>
-    <div class="hero-stage">
-      <div class="hero-product">
-        <img class="hero-product-fallback" src="veoclara-showcase-front.png" alt="VeoClara glasses">
-        <video id="heroScrubVideo" muted playsinline webkit-playsinline preload="auto" poster="veoclara-showcase-front.png" aria-label="VeoClara showcase clip">
-          <source src="veoclara-golden-rotation.mp4" type="video/mp4">
-        </video>
-        <div class="hero-video-overlay">
-          <div class="video-progress" id="heroVideoProgress">0%</div>
-          <div class="hero-video-note">SCROLL TO ROTATE · 0:04</div>
-        </div>
+    <figcaption class="product-caption">VeoClara · VC Alpha concept</figcaption>
+  </figure>
+  <div class="price-tag">
+    <span class="old">₹9,999</span>
+    <span class="free" data-i18n="free">FREE</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#pledge" data-i18n="cta">Take the pledge instead →</a>
+  </div>
+  <div class="scroll-hint">↓ SCROLL ↓</div>
+</section>
+
+<!-- REVEAL SECTION -->
+<section class="reveal">
+  <div class="section-label" data-i18n="reveal_label">The reality</div>
+  <h2 data-i18n="reveal_h2">India reached the Moon.<br>We haven't reached the drain.</h2>
+  <p data-i18n="reveal_p">We build world-class metros, launch satellites, process billions in digital payments — and walk past open garbage every single day. The contrast isn't funny anymore.</p>
+
+  <figure class="product-detail">
+    <img src="veoclara-showcase-side.png" alt="VeoClara concept eyewear, side detail" class="glasses-side" width="2304" height="1856" loading="lazy" decoding="async">
+  </figure>
+</section>
+
+<!-- PLEDGE SECTION -->
+<section class="pledge" id="pledge">
+  <h2 data-i18n="pledge_h2">Make your voice count.</h2>
+  <div class="initiative-name">VEOCLARA INITIATIVE</div>
+
+  <form class="pledge-form" id="pledgeForm" aria-describedby="pledgePrivacy">
+    <div class="pledge-statement">
+      <label class="pledge-checkbox">
+        <input type="checkbox" id="pledgeCheck" name="pledgeAccepted" required>
+        <span class="pledge-text" data-i18n="pledge_text">
+          I believe <span>cleanliness and hygienic living conditions for all</span> should be a top priority for India's local and national leaders — and I will do my part as a citizen to help.
+        </span>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="userName" data-i18n="label_name">Your Name</label>
+        <input type="text" id="userName" name="name" autocomplete="given-name" maxlength="50" placeholder="First name is enough" required>
       </div>
-      <div class="hero-model-note">Model shown: VC Alpha</div>
-      <div class="hero-cta-row">
-        <a href="#waitlist" class="primary">Join waitlist</a>
-        <a href="#features" class="secondary">Explore</a>
+      <div class="form-group">
+        <label for="userState" data-i18n="label_state">State</label>
+        <select id="userState" name="state" autocomplete="address-level1" required>
+          <option value="">Select your state</option>
+          <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
+          <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+          <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+          <option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option>
+          <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+          <option>Manipur</option><option>Meghalaya</option><option>Mizoram</option>
+          <option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+          <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option>
+          <option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option>
+          <option>Uttarakhand</option><option>West Bengal</option>
+          <option>Andaman & Nicobar Islands</option><option>Chandigarh</option>
+          <option>Dadra & Nagar Haveli and Daman & Diu</option><option>Delhi</option>
+          <option>Jammu & Kashmir</option><option>Ladakh</option>
+          <option>Lakshadweep</option><option>Puducherry</option>
+        </select>
       </div>
-      <div class="scroll-ind">Scroll to rotate, then continue</div>
+    </div>
+
+    <div class="form-row single">
+      <div class="form-group">
+        <label for="userCity" data-i18n="label_city">City / Town</label>
+        <input type="text" id="userCity" name="city" autocomplete="address-level2" maxlength="50" placeholder="Optional but helps show local support">
+      </div>
+    </div>
+
+    <div class="hp-field" aria-hidden="true">
+      <label for="pledgeWebsite">Leave this field empty</label>
+      <input id="pledgeWebsite" type="text" name="website" tabindex="-1" autocomplete="off">
+    </div>
+    <p class="pledge-privacy" id="pledgePrivacy">We save your name, state and optional city to record your pledge. Only state totals are public. No email is needed. <a href="/privacy.html">Privacy</a></p>
+    <div id="pledgeSecurity" class="pledge-security"></div>
+    <p id="pledgeStatus" class="pledge-status" role="status" aria-live="polite">Loading the security check…</p>
+    <button class="retry-button" type="button" id="retrySecurity" hidden>Retry security check</button>
+    <button class="submit-btn" type="submit" id="submitBtn" disabled data-i18n="submit_btn">I pledge — count me in</button>
+    <noscript><p>Please enable JavaScript to securely save your pledge. This page never counts an unsaved pledge.</p></noscript>
+  </form>
+
+  <div class="success-message" id="successMsg" role="status" aria-live="polite" tabindex="-1">
+    <div class="check"><svg viewBox="0 0 24 24" fill="#0a0a0a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+    <h3 data-i18n="success_h3">You're counted.</h3>
+    <p data-i18n="success_p">Your pledge has been saved. Share this to make it louder.</p>
+    <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button type="button" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;cursor:pointer;font-family:inherit;" onclick="shareTwitter()">Share on X</button>
+      <button type="button" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;cursor:pointer;font-family:inherit;" onclick="shareWA()">WhatsApp</button>
+      <button type="button" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;cursor:pointer;font-family:inherit;" onclick="copyLink()">Copy link</button>
+    </div>
+    <p id="shareStatus" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div class="section-label" data-i18n="map_label">The movement</div>
+  <h2 data-i18n="map_h2">Where India is speaking up</h2>
+  <p class="sub" data-i18n="map_sub">Every saved pledge helps show that this matters.</p>
+
+  <div class="total-counter">
+    <div class="big-num" id="totalCount">—</div>
+    <div class="label" data-i18n="counter_label">PLEDGES AND COUNTING</div>
+    <p id="statsStatus" class="stats-status" role="status" aria-live="polite">Loading saved pledge totals…</p>
+    <button id="retryStats" type="button" class="retry-button" hidden>Retry totals</button>
+  </div>
+
+  <div class="map-container">
+    <div class="india-map-wrap">
+      <!-- Simplified India Map SVG -->
+      <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+        <!-- India outline simplified -->
+        <path d="M280 40 L320 35 L370 50 L400 45 L420 55 L440 50 L460 70 L470 90 L490 100
+                 L500 85 L520 90 L530 110 L510 120 L520 140 L540 150 L550 170
+                 L540 190 L550 210 L560 230 L550 250 L555 270 L545 290 L550 310
+                 L540 330 L545 350 L535 370 L540 390 L530 410 L520 430 L510 440
+                 L500 460 L485 470 L475 490 L460 510 L445 520 L430 540 L415 550
+                 L400 560 L385 570 L370 590 L355 600 L340 610 L320 615 L300 610
+                 L285 600 L275 585 L265 570 L250 560 L235 545 L225 530 L215 510
+                 L210 490 L200 475 L190 460 L180 445 L175 430 L165 415 L155 400
+                 L150 385 L145 370 L140 355 L130 340 L125 320 L120 300 L115 280
+                 L110 260 L105 240 L100 220 L110 200 L120 185 L130 170 L140 155
+                 L155 140 L165 130 L175 115 L190 100 L205 90 L215 80 L230 70
+                 L245 60 L260 50 Z"
+              fill="var(--surface2)" stroke="var(--border)" stroke-width="1.5"/>
+
+        <!-- State dots with labels - approximate positions -->
+        <g class="map-dots">
+          <!-- J&K -->
+          <circle style="display:none" data-state-dot="Jammu &amp; Kashmir" cx="220" cy="80" r="6" fill="var(--accent)" opacity="0.8"></circle>
+          <!-- Punjab -->
+          <circle style="display:none" data-state-dot="Punjab" cx="220" cy="130" r="7" fill="var(--accent)" opacity="0.9"/>
+          <!-- Delhi -->
+          <circle style="display:none" data-state-dot="Delhi" cx="260" cy="165" r="8" fill="var(--accent)" opacity="1"></circle>
+          <!-- Rajasthan -->
+          <circle style="display:none" data-state-dot="Rajasthan" cx="195" cy="220" r="7" fill="var(--accent)" opacity="0.7"/>
+          <!-- UP -->
+          <circle style="display:none" data-state-dot="Uttar Pradesh" cx="320" cy="200" r="9" fill="var(--accent)" opacity="1"></circle>
+          <!-- Gujarat -->
+          <circle style="display:none" data-state-dot="Gujarat" cx="155" cy="300" r="7" fill="var(--accent)" opacity="0.8"/>
+          <!-- MP -->
+          <circle style="display:none" data-state-dot="Madhya Pradesh" cx="280" cy="280" r="6" fill="var(--accent)" opacity="0.7"/>
+          <!-- Bihar -->
+          <circle style="display:none" data-state-dot="Bihar" cx="390" cy="220" r="7" fill="var(--accent)" opacity="0.8"/>
+          <!-- West Bengal -->
+          <circle style="display:none" data-state-dot="West Bengal" cx="420" cy="270" r="7" fill="var(--accent)" opacity="0.8"/>
+          <!-- Maharashtra -->
+          <circle style="display:none" data-state-dot="Maharashtra" cx="220" cy="360" r="9" fill="var(--accent)" opacity="1"></circle>
+          <!-- Telangana -->
+          <circle style="display:none" data-state-dot="Telangana" cx="290" cy="390" r="6" fill="var(--accent)" opacity="0.7"/>
+          <!-- Karnataka -->
+          <circle style="display:none" data-state-dot="Karnataka" cx="240" cy="440" r="8" fill="var(--accent)" opacity="0.9"/>
+          <!-- Tamil Nadu -->
+          <circle style="display:none" data-state-dot="Tamil Nadu" cx="290" cy="510" r="8" fill="var(--accent)" opacity="0.9"/>
+          <!-- Kerala -->
+          <circle style="display:none" data-state-dot="Kerala" cx="240" cy="520" r="6" fill="var(--accent)" opacity="0.7"/>
+          <!-- Odisha -->
+          <circle style="display:none" data-state-dot="Odisha" cx="380" cy="320" r="5" fill="var(--accent)" opacity="0.6"/>
+          <!-- NE States -->
+
+          <!-- Assam -->
+          <circle style="display:none" data-state-dot="Assam" cx="470" cy="160" r="6" fill="var(--accent)" opacity="0.7"/>
+        </g>
+
+        <!-- Glow effect -->
+        <defs>
+          <radialGradient id="dotGlow">
+            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <p class="map-caption">Illustrative graphic; the state list shows the saved totals.</p>
+    </div>
+
+    <div class="leaderboard">
+      <h3 data-i18n="lb_title">By State</h3>
+      <div id="leaderboardRows"><p>Loading saved pledges…</p></div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="section-eyebrow">Designed for India · By Indians</div>
-  <h2 class="section-title">Built for the way <em>you see.</em></h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-graphic">
-        <img src="veoclara-adaptive-vision-graphic.svg?v=2" alt="Adaptive vision scanner graphic">
-      </div>
-      <h3>Adaptive Vision</h3>
-      <p>Real-time AI-powered visual enhancement. Every scene, intelligently optimised for clarity and contrast.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-graphic">
-        <img src="veoclara-battery-graphic.svg?v=2" alt="Battery and power management graphic">
-      </div>
-      <h3>All-Day Battery</h3>
-      <p>8 hours of continuous AI-enhanced vision on a single charge. USB-C quick charge in under 30 minutes.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-graphic">
-        <img src="veoclara-clean-route-graphic.svg?v=2" alt="Scanner interface highlighting spotted street patches and a cleaner route line">
-      </div>
-      <h3>Clean-Route Guidance</h3>
-      <p>Surface-level scan cues flag visibly dirty patches ahead and guide you toward a cleaner walking line through busy streets.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-graphic">
-        <img src="veoclara-os-graphic.svg?v=2" alt="VeoClara OS engine graphic">
-      </div>
-      <h3>VeoClara OS</h3>
-      <p>VeoClara OS is a powerful on-device imaging engine, morphing your view in real time to remove visible litter and pollution and replace it with a cleaner version of the world around you.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-graphic">
-        <img src="veoclara-feather-light-graphic.svg?v=2" alt="Lightweight frame comfort graphic">
-      </div>
-      <h3>Feather-Light</h3>
-      <div class="feature-copy">
-        <p class="feature-lead">28g titanium frame.</p>
-        <p>Wear them all day without fatigue. Barely there, always on.</p>
-      </div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-graphic">
-        <img src="veoclara-aware-audio-graphic.svg?v=2" alt="Discrete audio guidance graphic">
-      </div>
-      <h3>Discrete Audio</h3>
-      <p>Private voice cues and subtle directional prompts keep guidance close to you without breaking the calm of the street around you.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SPECS -->
-<section class="specs" id="specs">
-  <div class="specs-container">
-    <div class="specs-image">
-      <img src="veoclara-showcase-side.png" alt="VeoClara Side">
-    </div>
-    <div class="specs-content">
-      <div class="section-eyebrow">Technical Specifications</div>
-      <h2>Engineered <em>in detail.</em></h2>
-      <p>Every component selected for precision, performance, and wearability.</p>
-      <div class="spec-list">
-        <div class="spec-row">
-          <span class="label">Weight</span>
-          <span class="value">28 grams</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Frame</span>
-          <span class="value">Brushed Titanium</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Lens</span>
-          <span class="value">Gorilla Glass</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Battery</span>
-          <span class="value">8 Hours</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Charging</span>
-          <span class="value">USB-C · 30 min</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Connectivity</span>
-          <span class="value">BT 5.3 · Wi-Fi 6</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Sensors</span>
-          <span class="value">Dual Ambient</span>
-        </div>
-        <div class="spec-row">
-          <span class="label">Compatibility</span>
-          <span class="value">iOS 16+ · Android 13+</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LAUNCH ACCESS -->
-<section class="pricing" id="pricing">
-  <div class="section-eyebrow">Launch details</div>
-  <div class="price-card">
-    <div class="price-badge">Waitlist now open</div>
-    <h2>VeoClara</h2>
-    <div class="save">We’ll share pricing, availability, and ordering details when VeoClara officially launches. Join the waitlist to be among the first to hear it.</div>
-    <ul class="price-perks">
-      <li>Be first to get the pricing announcement</li>
-      <li>Receive launch updates and reveal emails</li>
-      <li>Know when ordering opens</li>
-      <li>Get availability details before the wider rollout</li>
-      <li>No payment or commitment required today</li>
-    </ul>
-    <a href="#waitlist" class="primary" style="display:inline-block;background:var(--accent);color:var(--bg);padding:14px 40px;border-radius:100px;text-decoration:none;font-weight:600;font-size:14px;">Join waitlist</a>
-  </div>
-</section>
-
-<!-- WAITLIST -->
-<section class="waitlist-section" id="waitlist">
-  <div class="waitlist-container">
-    <h2>Be the first to <em>see it.</em></h2>
-    <p>Join the waitlist for launch updates, first access to the full reveal, and pricing details when they are announced. No spam.</p>
-
-    <form class="email-form" id="emailForm" onsubmit="handleSubmit(event)">
-      <input type="email" id="emailInput" placeholder="your@email.com" required>
-      <input type="text" id="websiteField" class="hp-field" name="website" tabindex="-1" autocomplete="off">
-      <input type="hidden" id="startedAtField">
-      <div class="turnstile-wrap" id="turnstileWrap">
-        <div id="turnstileWidget"></div>
-      </div>
-      <button type="submit" id="submitBtn">Join waitlist</button>
-    </form>
-
-    <div class="form-success" id="successMsg">
-      <strong id="successTitle">You have been added to the waitlist.</strong>
-      <span id="successCopy">We'll email you the moment VeoClara goes live.</span>
-    </div>
-
-  </div>
-</section>
+</main>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">veo<span>clara</span></div>
-      <p class="footer-brand-desc">Building the next generation of personal visual devices. Our home is India.</p>
-      <div class="footer-social">
-        <a href="https://www.youtube.com/@VeoclaraAI" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a href="https://x.com/veoclaraai" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="https://www.instagram.com/veoclaraai?igsh=MWYzaW5uZ3VnYzQxaQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="#features">Features</a>
-      <a href="#specs">Specifications</a>
-      <a href="#pricing">Launch access</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="mailto:hello@veoclara.com">hello@veoclara.com</a>
-      <a href="mailto:press@veoclara.com">Press inquiries</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-    </div>
+<footer class="footer">
+  <div class="tagline" data-i18n="footer_tagline">"VeoClara is not a real product. The dirt is."</div>
+  <div class="disclaimer" data-i18n="footer_disclaimer">
+    This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter.
+    There is only the question: if India can build what it has built — why does the street outside still look like that?
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 VeoClara. All rights reserved.</p>
-    <p class="made-in-india">Made in India.</p>
-  </div>
+  <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="mailto:hello@veoclara.com">Contact</a></p>
+  <div class="credits">VeoClara Initiative — A citizen-led awareness project</div>
 </footer>
 
 <script>
-let turnstileWidgetId = null;
-let turnstileSiteKey = null;
-const turnstileWrap = document.getElementById('turnstileWrap');
-const startedAtField = document.getElementById('startedAtField');
-if (startedAtField) startedAtField.value = String(Date.now());
-
-async function initTurnstile() {
-  try {
-    const res = await fetch('/api/client-config');
-    const config = await res.json();
-    if (!config.turnstileSiteKey || !window.turnstile) return;
-    turnstileSiteKey = config.turnstileSiteKey;
-    turnstileWrap?.classList.add('is-ready');
-    turnstileWidgetId = window.turnstile.render('#turnstileWidget', {
-      sitekey: turnstileSiteKey,
-      theme: 'dark',
-      appearance: 'interaction-only'
-    });
-  } catch {}
+// ============ SHARE ============
+function shareTwitter() {
+  const text = encodeURIComponent("I just pledged for a cleaner India through the VeoClara Initiative. VeoClara glasses won't clean our streets — but we can. Take the pledge:");
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(new URL('/', window.location.origin).href)}`);
 }
-
-window.addEventListener('load', () => {
-  const interval = window.setInterval(() => {
-    if (!window.turnstile) return;
-    window.clearInterval(interval);
-    initTurnstile();
-  }, 150);
-  window.setTimeout(() => window.clearInterval(interval), 6000);
-});
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const email = document.getElementById('emailInput').value.trim();
-  if (!email) return;
-  const website = document.getElementById('websiteField').value.trim();
-  const startedAt = Number(document.getElementById('startedAtField').value || Date.now());
-  const turnstileToken =
-    turnstileWidgetId !== null && window.turnstile
-      ? window.turnstile.getResponse(turnstileWidgetId)
-      : '';
-
-  const btn = document.getElementById('submitBtn');
-  const note = document.getElementById('formNote');
-  btn.disabled = true;
-  btn.textContent = 'Adding...';
-  if (note) note.textContent = 'Checking your place on the waitlist...';
-
-  if (turnstileSiteKey && !turnstileToken) {
-    btn.disabled = false;
-    btn.textContent = 'Join waitlist';
-    if (note) note.textContent = 'Please complete the security check.';
+function shareWA() {
+  const text = encodeURIComponent("I just pledged for a cleaner India. VeoClara glasses aren't real — but the dirt is. Take the pledge: " + new URL('/', window.location.origin).href);
+  window.open(`https://wa.me/?text=${text}`);
+}
+function copyLink() {
+  if (!navigator.clipboard?.writeText) {
+    document.getElementById('shareStatus').textContent = 'Copy the address from your browser to share this page.';
     return;
   }
-
-  fetch('/api/waitlist', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ email, website, startedAt, turnstileToken })
-  }).then(async (r) => {
-    const data = await r.json();
-    if (!r.ok || !data.success) {
-      throw new Error(data.error || 'Something went wrong. Please try again.');
-    }
-    showSuccess(data.message, data.already_joined);
-  }).catch(() => {
-    btn.disabled = false;
-    btn.textContent = 'Join waitlist';
-    if (note) note.textContent = 'Waitlist signup is not connected in this local preview yet. Deploy the Worker to turn it on.';
-    if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
-  });
+  navigator.clipboard.writeText(new URL('/', window.location.origin).href).then(() => {
+    document.getElementById('shareStatus').textContent = 'Link copied.';
+  }).catch(() => { document.getElementById('shareStatus').textContent = 'Could not copy the link. Copy the address from your browser instead.'; });
 }
 
-function showSuccess(message = "We'll email you the moment VeoClara goes live.", alreadyJoined = false) {
-  document.getElementById('emailForm').style.display = 'none';
-  const msg = document.getElementById('successMsg');
-  msg.style.display = 'block';
-  document.getElementById('successTitle').textContent = alreadyJoined ? "You are already on the waitlist." : "You have been added to the waitlist.";
-  document.getElementById('successCopy').textContent = message;
-  if (document.getElementById('formNote')) {
-    document.getElementById('formNote').textContent = alreadyJoined
-      ? 'We already had your email on file, so you are still on the waitlist.'
-      : '';
+// ============ i18n ============
+const translations = {
+  en: {
+    badge: "This is not a real product",
+    hero_strike: "Buy these glasses.",
+    hero_glow: "Clean India instead.",
+    hero_sub: "VeoClara won't clean your streets. No glasses will. But you clicked — and that means you care. Take 20 seconds to make it count.",
+    free: "FREE",
+    cta: "Take the pledge instead →",
+    reveal_label: "The reality",
+    reveal_h2: "India reached the Moon.<br>We haven't reached the drain.",
+    reveal_p: "We build world-class metros, launch satellites, process billions in digital payments — and walk past open garbage every single day. The contrast isn't funny anymore.",
+    stat1: "GDP (2025)", stat2: "Most polluted cities globally are Indian",
+    stat3: "Of waste is actually processed", stat4: "People. One priority missing.",
+    pledge_h2: "Make your voice count.",
+    pledge_text: 'I believe <span>cleanliness and hygienic living conditions for all</span> should be a top priority for India\'s local and national leaders — and I will do my part as a citizen to help.',
+    label_name: "Your Name", label_state: "State", label_city: "City / Town",
+    submit_btn: "I pledge — count me in",
+    success_h3: "You're counted.", success_p: "Your pledge has been saved. Share this to make it louder.",
+    map_label: "The movement", map_h2: "Where India is speaking up",
+    map_sub: "Every saved pledge helps show that this matters.",
+    counter_label: "PLEDGES AND COUNTING",
+    lb_title: "By State", lb_sub: "pledges",
+    footer_tagline: '"VeoClara is not a real product. The dirt is."',
+    footer_disclaimer: 'This is a <strong>satire and awareness project</strong>. There are no glasses. There is no AI filter. There is only the question: if India can build what it has built — why does the street outside still look like that?'
+  },
+  hi: {
+    badge: "यह एक असली उत्पाद नहीं है",
+    hero_strike: "ये चश्मा खरीदो।",
+    hero_glow: "इसके बजाय भारत साफ़ करो।",
+    hero_sub: "VeoClara आपकी सड़कें साफ़ नहीं करेगा। कोई चश्मा नहीं करेगा। लेकिन आपने क्लिक किया — इसका मतलब आपको फ़र्क पड़ता है। 20 सेकंड दीजिए।",
+    free: "मुफ़्त",
+    cta: "इसके बजाय संकल्प लें →",
+    reveal_label: "हक़ीक़त",
+    reveal_h2: "भारत चाँद पर पहुँचा।<br>नाले तक नहीं पहुँचे।",
+    reveal_p: "हम विश्व-स्तरीय मेट्रो बनाते हैं, उपग्रह छोड़ते हैं, अरबों डिजिटल भुगतान प्रोसेस करते हैं — और हर दिन खुले कचरे के बगल से गुज़रते हैं।",
+    stat1: "GDP (2025)", stat2: "दुनिया के सबसे प्रदूषित शहर भारतीय हैं",
+    stat3: "कचरे का वास्तव में प्रोसेस होता है", stat4: "लोग। एक प्राथमिकता गायब।",
+    pledge_h2: "अपनी आवाज़ गिनाएँ।",
+    pledge_text: 'मेरा मानना है कि <span>सभी के लिए स्वच्छता और स्वस्थ रहने की स्थिति</span> भारत के स्थानीय और राष्ट्रीय नेताओं के लिए सर्वोच्च प्राथमिकता होनी चाहिए — और मैं एक नागरिक के रूप में अपना हिस्सा करूँगा।',
+    label_name: "आपका नाम", label_state: "राज्य", label_city: "शहर / कस्बा",
+    submit_btn: "मैं संकल्प लेता/लेती हूँ",
+    success_h3: "आप गिने गए।", success_p: "आपकी आवाज़ जोड़ दी गई है। शेयर करें।",
+    map_label: "आंदोलन", map_h2: "भारत कहाँ से बोल रहा है",
+    map_sub: "हर सहेजा गया संकल्प दिखाता है: यह मायने रखता है।",
+    counter_label: "संकल्प और बढ़ रहे हैं",
+    lb_title: "राज्य अनुसार", lb_sub: "संकल्प",
+    footer_tagline: '"VeoClara एक असली उत्पाद नहीं है। गंदगी असली है।"',
+    footer_disclaimer: 'यह एक <strong>व्यंग्य और जागरूकता परियोजना</strong> है। कोई चश्मा नहीं है। कोई AI फ़िल्टर नहीं है। बस एक सवाल है: अगर भारत वो सब बना सकता है जो उसने बनाया है — तो बाहर सड़क अभी भी वैसी क्यों है?'
+  },
+  ta: {
+    badge: "இது உண்மையான தயாரிப்பு அல்ல",
+    hero_strike: "இந்த கண்ணாடியை வாங்குங்கள்.",
+    hero_glow: "அதற்கு பதிலாக இந்தியாவை சுத்தம் செய்யுங்கள்.",
+    hero_sub: "VeoClara உங்கள் தெருக்களை சுத்தம் செய்யாது. ஆனால் நீங்கள் கிளிக் செய்தீர்கள் — அதாவது உங்களுக்கு அக்கறை உள்ளது.",
+    free: "இலவசம்",
+    cta: "உறுதிமொழி எடுங்கள் →",
+    reveal_label: "உண்மை",
+    reveal_h2: "இந்தியா நிலவை அடைந்தது.<br>சாக்கடையை அடையவில்லை.",
+    reveal_p: "உலகத்தரம் வாய்ந்த மெட்ரோக்கள், செயற்கைக்கோள்கள், டிஜிட்டல் பேமெண்ட்கள் — ஆனால் திறந்த குப்பையை கடந்து நடக்கிறோம்.",
+    pledge_h2: "உங்கள் குரலை எண்ணுங்கள்.",
+    pledge_text: '<span>அனைவருக்கும் தூய்மையான வாழ்க்கை நிலைமைகள்</span> இந்தியாவின் தலைவர்களுக்கு முன்னுரிமையாக இருக்க வேண்டும் என்று நான் நம்புகிறேன்.',
+    label_name: "உங்கள் பெயர்", label_state: "மாநிலம்", label_city: "நகரம்",
+    submit_btn: "நான் உறுதிமொழி எடுக்கிறேன்",
+    success_h3: "நீங்கள் எண்ணப்பட்டீர்கள்.", success_p: "உங்கள் குரல் சேர்க்கப்பட்டது.",
+    map_h2: "இந்தியா எங்கிருந்து பேசுகிறது", counter_label: "உறுதிமொழிகள்",
+    footer_tagline: '"VeoClara உண்மையான தயாரிப்பு அல்ல. அழுக்கு உண்மை."',
+    footer_disclaimer: 'இது ஒரு <strong>நையாண்டி மற்றும் விழிப்புணர்வு திட்டம்</strong>.'
+  },
+  bn: {
+    badge: "এটি একটি আসল পণ্য নয়",
+    hero_strike: "এই চশমা কিনুন।",
+    hero_glow: "এর বদলে ভারত পরিষ্কার করুন।",
+    hero_sub: "VeoClara আপনার রাস্তা পরিষ্কার করবে না। কোনো চশমাই করবে না। কিন্তু আপনি ক্লিক করেছেন — মানে আপনি চিন্তা করেন।",
+    free: "বিনামূল্যে",
+    cta: "এর বদলে প্রতিশ্রুতি নিন →",
+    reveal_label: "বাস্তবতা",
+    reveal_h2: "ভারত চাঁদে পৌঁছেছে।<br>নর্দমায় পৌঁছায়নি।",
+    reveal_p: "আমরা বিশ্বমানের মেট্রো তৈরি করি, স্যাটেলাইট পাঠাই — আর প্রতিদিন খোলা আবর্জনা পেরিয়ে হাঁটি।",
+    pledge_h2: "আপনার কণ্ঠ গণনা করুন।",
+    pledge_text: 'আমি বিশ্বাস করি <span>সকলের জন্য পরিচ্ছন্নতা ও স্বাস্থ্যকর জীবনযাপন</span> ভারতের নেতাদের জন্য শীর্ষ অগ্রাধিকার হওয়া উচিত।',
+    label_name: "আপনার নাম", label_state: "রাজ্য", label_city: "শহর",
+    submit_btn: "আমি প্রতিশ্রুতি দিচ্ছি",
+    success_h3: "আপনাকে গণনা করা হয়েছে।", success_p: "আপনার কণ্ঠ যোগ করা হয়েছে।",
+    map_h2: "ভারত কোথা থেকে কথা বলছে", counter_label: "প্রতিশ্রুতি চলছে",
+    footer_tagline: '"VeoClara একটি আসল পণ্য নয়। ময়লা আসল।"',
+    footer_disclaimer: 'এটি একটি <strong>ব্যঙ্গ ও সচেতনতা প্রকল্প</strong>।'
   }
-  localStorage.setItem('vp_waitlisted', JSON.stringify({ alreadyJoined }));
+};
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-options button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+  });
+  document.documentElement.lang = lang;
+
+  if (!translations[lang]) return;
+  const t = { ...translations.en, ...translations[lang] };
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(t[key]) el.innerHTML = t[key];
+  });
 }
 
-// If already on list, show success state
-const storedWaitlist = localStorage.getItem('vp_waitlisted');
-if (storedWaitlist) {
-  let alreadyJoined = false;
-  try {
-    const parsed = JSON.parse(storedWaitlist);
-    alreadyJoined = !!parsed.alreadyJoined;
-  } catch {}
-  document.getElementById('emailForm').style.display = 'none';
-  showSuccess("We'll email you the moment VeoClara goes live.", alreadyJoined);
-}
-
-const heroScrubVideo = document.getElementById('heroScrubVideo');
-const heroSection = document.querySelector('.hero');
-const heroVideoProgress = document.getElementById('heroVideoProgress');
-const heroProduct = heroScrubVideo?.closest('.hero-product');
-const desktopScrubEnabled = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches;
-if (heroSection && !desktopScrubEnabled) {
-  heroSection.classList.add('hero-no-scrub');
-}
-if (heroScrubVideo && heroSection && desktopScrubEnabled) {
-  let duration = 0;
-  let canScrub = false;
-  let heroProgress = 0;
-  let heroCompleted = false;
-  const heroTopThreshold = 64;
-  const setVideoReady = () => heroProduct?.classList.add('hero-video-ready');
-
-  const updateScrubMode = () => {
-    if (!duration) return;
-    canScrub = heroScrubVideo.seekable.length > 0 && heroScrubVideo.seekable.end(heroScrubVideo.seekable.length - 1) > 0;
-  };
-
-  const updateHeroLockState = () => {
-    const shouldLock = !heroCompleted && window.scrollY <= heroTopThreshold && heroProgress < 1;
-    heroSection.classList.toggle('hero-locking', shouldLock);
-  };
-
-  const applyProgress = (nextProgress) => {
-    if (!duration) return;
-    heroProgress = Math.min(Math.max(nextProgress, 0), 1);
-    if (heroProgress >= 1) heroCompleted = true;
-    updateScrubMode();
-    if (canScrub) {
-      heroScrubVideo.currentTime = duration * heroProgress;
-    } else {
-      heroScrubVideo.currentTime = duration * heroProgress;
-    }
-    if (heroVideoProgress) heroVideoProgress.textContent = `${Math.round(heroProgress * 100)}%`;
-    updateHeroLockState();
-  };
-
-  const shouldLockHero = (delta) => {
-    if (heroCompleted) return false;
-    if (window.scrollY > heroTopThreshold) return false;
-    if (delta > 0) return heroProgress < 1;
-    return false;
-  };
-
-  const scrubByDelta = (delta) => {
-    if (!duration) return;
-    applyProgress(heroProgress + delta / 1200);
-  };
-
-  heroScrubVideo.pause();
-  heroScrubVideo.addEventListener('loadedmetadata', () => {
-    duration = heroScrubVideo.duration || 0;
-    updateScrubMode();
-    applyProgress(heroProgress);
-  });
-  heroScrubVideo.addEventListener('loadeddata', () => {
-    setVideoReady();
-    updateScrubMode();
-    applyProgress(heroProgress);
-  });
-  heroScrubVideo.addEventListener('canplay', () => {
-    setVideoReady();
-    updateScrubMode();
-  });
-  heroScrubVideo.addEventListener('progress', updateScrubMode);
-  if (heroScrubVideo.readyState >= 1) {
-    duration = heroScrubVideo.duration || 0;
-    updateScrubMode();
-    applyProgress(heroProgress);
-  }
-  if (heroScrubVideo.readyState >= 2) setVideoReady();
-  heroScrubVideo.load();
-  updateHeroLockState();
-
-  window.addEventListener('wheel', (event) => {
-    if (!shouldLockHero(event.deltaY)) return;
-    event.preventDefault();
-    scrubByDelta(event.deltaY);
-  }, { passive: false });
-
-  window.addEventListener('keydown', (event) => {
-    const keyDeltas = {
-      ArrowDown: 140,
-      PageDown: 320,
-      ' ': 320,
-    };
-    if (!(event.key in keyDeltas)) return;
-    if (!shouldLockHero(keyDeltas[event.key])) return;
-    event.preventDefault();
-    scrubByDelta(keyDeltas[event.key]);
-  });
-
-  window.addEventListener('scroll', updateHeroLockState, { passive: true });
-}
-
-// Scroll reveal
+// ============ ANIMATE ON SCROLL ============
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
     }
   });
-}, { threshold: 0.1 });
+}, {threshold:0.1});
 
-document.querySelectorAll('.feature-card, .spec-row, .price-card, .hero-product').forEach((el) => {
+document.querySelectorAll('.stat-card, .pledge-form, .leaderboard, .india-map-wrap, .total-counter').forEach(el => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   el.style.opacity = '0';
-  el.style.transform = 'translateY(24px)';
-  el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'all 0.8s ease-out';
   observer.observe(el);
 });
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "326bf2d1bbb44b959cb57b3d228585c0"}'></script><!-- End Cloudflare Web Analytics -->
+
+<script src="/campaign.js" defer></script>
+<script src="/product-media.js" defer></script>
+<!-- Cloudflare Web Analytics: production traffic only. -->
+<script>
+if (location.hostname === 'veoclara.com' || location.hostname === 'www.veoclara.com') {
+  const beacon = document.createElement('script');
+  beacon.defer = true;
+  beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  beacon.setAttribute('data-cf-beacon', "{\"token\": \"326bf2d1bbb44b959cb57b3d228585c0\"}");
+  document.body.append(beacon);
+}
+</script>
 </body>
 </html>
